@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Do Operacional ao Estratégico · Guia de Otávio Guidini</title>
+<meta name="description" content="Guia Do Operacional ao Estratégico, de Otávio Guidini: framework de 4 camadas e plano de 14 dias para profissionais da indústria serem reconhecidos pelo que entregam.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0F0C22">
+<meta property="og:title" content="Otávio Guidini · Liderança que nasce no chão de fábrica">
+<meta property="og:description" content="Método, guia e mentoria para técnicos, líderes e coordenadores da indústria.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23200E6A'/%3E%3Ctext x='32' y='43' font-family='Arial Black,Arial' font-weight='900' font-size='28' fill='%23E9A23B' text-anchor='middle'%3EOG%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Public+Sans:ital,wght@0,400..700;1,400&display=swap">
+<style>
+:root{
+  --night:#0F0C22;
+  --night-2:#171333;
+  --indigo:#200E6A;
+  --indigo-2:#32209A;
+  --caramel:#E9A23B;
+  --caramel-2:#F3BD66;
+  --caramel-soft:#FBEBCD;
+  --paper:#F4F3F8;
+  --sheet:#FFFFFF;
+  --ink:#15122A;
+  --ink-2:#4A4665;
+  --ink-3:#7D7996;
+  --line:#DDDAE9;
+  --steel:#B8B4CC;
+  --on-dark:#EDEBF8;
+  --on-dark-2:#B3ADD3;
+  --on-dark-3:#7F79A6;
+  --rule-dark:rgba(237,235,248,.14);
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+@media (min-width:900px){body{padding-bottom:0}}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);line-height:1.06;margin:0;text-wrap:balance}
+p{margin:0}
+:focus-visible{outline:3px solid var(--caramel);outline-offset:3px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+@media (min-width:900px){.wrap{padding:0 36px}}
+.tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase}
+.sec-title{font-size:clamp(1.9rem,1.25rem + 2.6vw,3.2rem);font-weight:900;font-variation-settings:"wdth" 116;letter-spacing:-.022em}
+.lead{font-size:1.1rem;color:var(--ink-2);max-width:58ch}
+
+/* ---------- prévia ---------- */
+.preview{background:var(--caramel);color:var(--night);font-family:var(--mono);font-size:.72rem;padding:8px 20px;text-align:center}
+.preview a{font-weight:600}
+
+/* ---------- topo ---------- */
+.nav{background:var(--night);color:var(--on-dark)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:18px;padding-bottom:18px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo b{width:38px;height:38px;display:grid;place-items:center;background:var(--indigo);color:var(--caramel);font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 125;font-size:.95rem;border:1px solid rgba(233,162,59,.35)}
+.logo span{font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 112;font-size:.98rem;letter-spacing:.01em;line-height:1.1}
+.logo small{display:block;font-family:var(--mono);font-weight:400;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--on-dark-3)}
+.nav ul{display:none;list-style:none;margin:0;padding:0;gap:28px;font-size:.92rem}
+.nav ul a{text-decoration:none;color:var(--on-dark-2)}
+.nav ul a:hover{color:var(--on-dark)}
+@media (min-width:900px){.nav ul{display:flex}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 108;font-size:1rem;padding:16px 24px;border-radius:3px;transition:background .15s,color .15s,transform .15s;border:0;cursor:pointer}
+.btn:hover{transform:translateY(-1px)}
+.btn-caramel{background:var(--caramel);color:var(--night)}
+.btn-caramel:hover{background:var(--caramel-2)}
+.btn-ghost{background:transparent;color:var(--on-dark);box-shadow:inset 0 0 0 1.5px var(--rule-dark)}
+.btn-ghost:hover{box-shadow:inset 0 0 0 1.5px var(--on-dark-2)}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-indigo:hover{background:var(--indigo-2)}
+.nav .btn{padding:11px 16px;font-size:.88rem}
+
+/* ---------- hero ---------- */
+.hero{background:var(--night);color:var(--on-dark);position:relative;overflow:hidden}
+.hero .pid{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.55}
+.pid .pipe{fill:none;stroke:rgba(184,180,204,.22);stroke-width:1.2}
+.pid .flow{fill:none;stroke:var(--caramel);stroke-width:2;stroke-dasharray:6 18;opacity:.8;animation:flow 2.4s linear infinite}
+.pid .eq{fill:none;stroke:rgba(184,180,204,.3);stroke-width:1.2}
+.pid text{font-family:var(--mono);font-size:10px;fill:rgba(184,180,204,.55);letter-spacing:.08em}
+@keyframes flow{to{stroke-dashoffset:-48}}
+.hero-grid{position:relative;display:grid;gap:40px;padding-top:34px;padding-bottom:0}
+@media (min-width:900px){.hero-grid{grid-template-columns:1.1fr .9fr;gap:56px;align-items:end;padding-top:64px}}
+.hero-copy{display:grid;gap:22px;padding-bottom:8px}
+@media (min-width:900px){.hero-copy{padding-bottom:84px}}
+.hero .kicker{display:flex;align-items:center;gap:10px;color:var(--caramel)}
+.hero .kicker::before{content:"";width:26px;height:2px;background:var(--caramel)}
+.hero h1{font-size:clamp(2.6rem,1.4rem + 5.2vw,5.4rem);font-weight:900;font-variation-settings:"wdth" 118;letter-spacing:-.03em;line-height:.98}
+.hero h1 em{font-family:var(--serif);font-style:italic;font-weight:400;font-variation-settings:normal;color:var(--caramel);letter-spacing:-.01em}
+.hero .intro{font-size:1.12rem;color:var(--on-dark-2);max-width:48ch}
+.hero .intro b{color:var(--on-dark);font-weight:600}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+
+/* ---------- fotos (slot) ---------- */
+.photo{position:relative;overflow:hidden;background:
+  linear-gradient(180deg,rgba(15,12,34,0) 55%,rgba(15,12,34,.85) 100%),
+  repeating-linear-gradient(0deg,rgba(184,180,204,.07) 0 1px,transparent 1px 28px),
+  repeating-linear-gradient(90deg,rgba(184,180,204,.07) 0 1px,transparent 1px 28px),
+  radial-gradient(120% 90% at 30% 20%,#2A1A7A 0%,#1A1245 55%,#120E2C 100%)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.photo .ph{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:10px;text-align:center;padding:24px}
+.photo .ph .mono-og{font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 125;font-size:clamp(5rem,14vw,9rem);line-height:.85;color:transparent;-webkit-text-stroke:1.5px rgba(233,162,59,.55)}
+.photo .ph .tag{color:var(--on-dark-3)}
+.photo .ph .tag b{color:var(--caramel);font-weight:500}
+.hero-photo{aspect-ratio:4/5;width:100%;max-width:460px;justify-self:center;border:1px solid rgba(233,162,59,.25);border-bottom:0}
+@media (min-width:900px){.hero-photo{justify-self:end}}
+.nameplate{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:18px 20px;display:flex;justify-content:space-between;align-items:end;gap:12px}
+.nameplate b{font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 112;font-size:1.15rem;color:#fff;display:block}
+.nameplate span{font-family:var(--mono);font-size:.68rem;color:var(--on-dark-2);letter-spacing:.08em;text-transform:uppercase}
+.nameplate i{font-style:normal;font-family:var(--mono);font-size:.64rem;color:var(--caramel);border:1px solid rgba(233,162,59,.5);padding:3px 7px;white-space:nowrap}
+
+/* ---------- credenciais ---------- */
+.creds{background:var(--night-2);color:var(--on-dark);border-top:1px solid var(--rule-dark)}
+.creds .wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:900px){.creds .wrap{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.cred{padding:22px 16px 22px 0;display:grid;gap:6px;align-content:start;border-bottom:1px solid var(--rule-dark)}
+@media (min-width:900px){.cred{border-bottom:0;border-right:1px solid var(--rule-dark);padding:26px 22px}.cred:first-child{padding-left:0}.cred:last-child{border-right:0}}
+.cred b{font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 118;font-size:clamp(1.6rem,1.2rem + 1.4vw,2.3rem);line-height:1;color:var(--caramel);font-variant-numeric:tabular-nums}
+.cred span{font-size:.86rem;color:var(--on-dark-2);line-height:1.45}
+
+/* ---------- seções base ---------- */
+.band{padding:76px 0}
+@media (min-width:900px){.band{padding:108px 0}}
+.band.white{background:var(--sheet)}
+.band.dark{background:var(--night);color:var(--on-dark)}
+.band.dark .lead{color:var(--on-dark-2)}
+.head{display:grid;gap:16px;margin-bottom:40px;max-width:760px}
+.head .tag{color:var(--indigo)}
+.band.dark .head .tag{color:var(--caramel)}
+
+/* ---------- vídeo ---------- */
+.video-grid{display:grid;gap:32px}
+@media (min-width:900px){.video-grid{grid-template-columns:1.25fr .75fr;gap:56px;align-items:center}}
+.player{position:relative;aspect-ratio:16/9;border:1px solid var(--line);box-shadow:0 30px 60px -34px rgba(32,14,106,.55)}
+.player video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:3;background:#000}
+.player .play{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;background:var(--caramel);border:0;cursor:pointer;display:grid;place-items:center;box-shadow:0 0 0 10px rgba(233,162,59,.18)}
+.player .play::after{content:"";margin-left:6px;border-left:24px solid var(--night);border-top:15px solid transparent;border-bottom:15px solid transparent}
+.player .play:hover{background:var(--caramel-2)}
+.player .dur{position:absolute;z-index:2;right:14px;bottom:12px;font-family:var(--mono);font-size:.72rem;color:#fff;background:rgba(15,12,34,.7);padding:3px 8px}
+.player .soon{position:absolute;z-index:2;left:14px;bottom:12px;right:90px;font-family:var(--mono);font-size:.72rem;color:var(--on-dark-2)}
+.player .msg{position:absolute;z-index:4;inset:0;background:rgba(15,12,34,.92);color:var(--on-dark);display:grid;place-items:center;text-align:center;padding:24px;gap:10px;align-content:center}
+.player .msg[hidden]{display:none}
+.player .msg a{color:var(--caramel)}
+.chapters{list-style:none;margin:0;padding:0;display:grid;border-top:1px solid var(--line)}
+.chapters li{display:grid;grid-template-columns:58px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.chapters .t{font-family:var(--mono);font-size:.8rem;color:var(--indigo);font-variant-numeric:tabular-nums;padding-top:2px}
+.chapters b{font-family:var(--display);font-weight:700;display:block;line-height:1.3}
+.chapters span{font-size:.9rem;color:var(--ink-2)}
+
+/* ---------- tradução ---------- */
+.trans{display:grid;gap:18px}
+@media (min-width:900px){.trans{grid-template-columns:1fr auto 1fr;align-items:stretch;gap:22px}}
+.msg-card{background:var(--sheet);border:1px solid var(--line);padding:22px 22px 18px;display:grid;gap:12px;align-content:start}
+.msg-card header{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.msg-card .who{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase}
+.msg-card .time{font-family:var(--mono);font-size:.7rem;color:var(--ink-3)}
+.msg-card p{font-family:var(--mono);font-size:.9rem;line-height:1.65}
+.msg-card.before .who{color:#A8436A}
+.msg-card.before p{color:var(--ink-3)}
+.msg-card .verdict{font-family:var(--mono);font-size:.74rem;color:#A8436A;border-top:1px dashed var(--line);padding-top:10px}
+.msg-card.after{border:2px solid var(--indigo);box-shadow:8px 8px 0 var(--indigo)}
+.msg-card.after .who{color:var(--indigo);font-weight:600}
+.msg-card.after .verdict{color:var(--indigo)}
+.hl{background:linear-gradient(transparent 55%,var(--caramel-soft) 55%);box-shadow:inset 0 -3px 0 var(--caramel);padding:0 2px}
+.trans .arrow{display:grid;place-items:center;font-family:var(--mono);font-size:.72rem;color:var(--ink-3);text-align:center}
+.trans .arrow b{display:block;font-size:1.6rem;color:var(--indigo);font-family:var(--display);line-height:1}
+@media (max-width:899px){.trans .arrow b{transform:rotate(90deg)}}
+.note{font-family:var(--mono);font-size:.7rem;color:var(--ink-3);margin-top:14px}
+
+/* ---------- método ---------- */
+.method{display:grid;gap:0;position:relative}
+@media (min-width:900px){.method{grid-template-columns:repeat(4,1fr)}}
+.stage{position:relative;padding:28px 24px 28px 0;display:grid;gap:12px;align-content:start;border-top:1px solid var(--rule-dark)}
+@media (min-width:900px){.stage{border-top:0;padding:0 26px 0 0}}
+.stage .node{display:flex;align-items:center;gap:12px}
+.stage .num{width:52px;height:52px;border-radius:50%;border:2px solid var(--caramel);display:grid;place-items:center;font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 120;font-size:1.3rem;color:var(--caramel);background:var(--night);position:relative;z-index:1}
+.stage:last-child .num{background:var(--caramel);color:var(--night)}
+@media (min-width:900px){
+  .stage .node::after{content:"";flex:1;height:2px;background:repeating-linear-gradient(90deg,var(--caramel) 0 8px,transparent 8px 16px);opacity:.6}
+  .stage:last-child .node::after{display:none}
+}
+.stage h3{font-size:1.45rem;font-weight:800;font-variation-settings:"wdth" 114;color:#fff}
+.stage p{color:var(--on-dark-2);font-size:.97rem}
+.stage .ex{font-family:var(--mono);font-size:.74rem;color:var(--on-dark-3);border-left:2px solid var(--caramel);padding-left:10px}
+
+/* ---------- história ---------- */
+.story{display:grid;gap:40px}
+@media (min-width:900px){.story{grid-template-columns:.85fr 1.15fr;gap:72px;align-items:start}}
+.story-photo{aspect-ratio:4/5;border:1px solid var(--line)}
+@media (min-width:900px){.story-photo{position:sticky;top:28px}}
+.story-copy{display:grid;gap:22px}
+.story-copy p{color:var(--ink-2);font-size:1.06rem;max-width:60ch}
+.story-copy p b{color:var(--ink)}
+.pull{font-family:var(--serif);font-style:italic;font-size:clamp(1.7rem,1.2rem + 1.8vw,2.5rem);line-height:1.18;color:var(--indigo);border-left:3px solid var(--caramel);padding-left:20px;max-width:26ch}
+.career{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:0}
+.career li{display:grid;grid-template-columns:22px 1fr;gap:16px;position:relative;padding-bottom:22px}
+.career li::before{content:"";width:14px;height:14px;border:2px solid var(--indigo);background:var(--sheet);margin-top:5px;position:relative;z-index:1}
+.career li::after{content:"";position:absolute;left:7px;top:19px;bottom:0;width:2px;background:var(--line)}
+.career li:last-child::after{display:none}
+.career li:last-child::before{background:var(--caramel);border-color:var(--caramel)}
+.career b{font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 108;font-size:1.08rem;display:block}
+.career span{font-size:.93rem;color:var(--ink-2)}
+
+.plant{margin-top:6px;background:var(--night);color:var(--on-dark);display:grid;gap:0;border-top:3px solid var(--caramel)}
+.plant-head{display:grid;gap:4px;padding:20px 22px 16px;border-bottom:1px solid var(--rule-dark)}
+.plant-head .tag{color:var(--caramel)}
+.plant-head b{font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 118;font-size:1.7rem;line-height:1.05;color:#fff}
+.plant-sub{font-size:.92rem;color:var(--on-dark-2)}
+.plant dl{margin:0;display:grid;grid-template-columns:1fr 1fr}
+.plant dl div{padding:14px 22px;border-bottom:1px solid var(--rule-dark);display:grid;gap:2px}
+.plant dl div:nth-child(odd):not(.wide){border-right:1px solid var(--rule-dark)}
+.plant dl div.wide{grid-column:1/-1;border-bottom:0}
+.plant dt{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--on-dark-3)}
+.plant dd{margin:0;font-family:var(--display);font-weight:700;font-size:.98rem;color:#fff}
+
+/* ---------- caminhos ---------- */
+.paths{display:grid;gap:16px}
+@media (min-width:700px){.paths{grid-template-columns:1fr 1fr}}
+@media (min-width:1080px){.paths{grid-template-columns:repeat(4,1fr)}}
+.path{background:var(--sheet);border:1px solid var(--line);padding:26px 22px 22px;display:grid;grid-template-rows:auto auto 1fr auto;gap:12px;transition:border-color .15s,transform .15s}
+.path:hover{border-color:var(--indigo);transform:translateY(-2px)}
+.path .price{font-family:var(--mono);font-size:.78rem;color:var(--indigo);font-weight:600;letter-spacing:.04em}
+.path h3{font-size:1.3rem;font-weight:800;font-variation-settings:"wdth" 110}
+.path p{font-size:.95rem;color:var(--ink-2)}
+.path a{font-family:var(--display);font-weight:800;color:var(--indigo);text-decoration:none;display:inline-flex;gap:8px;align-items:center;padding-top:10px;border-top:1px solid var(--line)}
+.path a::after{content:"→"}
+.path.star{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.path.star .price{color:var(--caramel)}
+.path.star p{color:var(--on-dark-2)}
+.path.star a{color:var(--caramel);border-top-color:rgba(255,255,255,.18)}
+
+/* ---------- depoimentos ---------- */
+.quotes{display:grid;gap:16px}
+@media (min-width:900px){.quotes{grid-template-columns:repeat(3,1fr)}}
+.q{background:var(--paper);padding:26px 24px;display:grid;gap:18px;align-content:space-between;border-top:3px solid var(--caramel)}
+.q blockquote{margin:0;font-family:var(--serif);font-size:1.35rem;line-height:1.3;color:var(--ink)}
+.q footer{display:flex;gap:12px;align-items:center}
+.q .av{width:40px;height:40px;border-radius:50%;background:var(--indigo);color:var(--caramel);display:grid;place-items:center;font-family:var(--display);font-weight:900;font-size:.8rem}
+.q footer b{display:block;font-family:var(--display);font-weight:700;font-size:.95rem}
+.q footer span{font-family:var(--mono);font-size:.7rem;color:var(--ink-3)}
+.q.pending blockquote{color:var(--ink-3)}
+
+/* ---------- guia ---------- */
+.offer{display:grid;gap:44px;align-items:center}
+@media (min-width:900px){.offer{grid-template-columns:.8fr 1.2fr;gap:72px}}
+.cover{aspect-ratio:3/4;max-width:320px;width:78%;margin:0 auto;background:var(--indigo);color:#fff;padding:28px 24px;display:grid;align-content:space-between;box-shadow:16px 16px 0 var(--caramel),0 40px 70px -30px rgba(15,12,34,.7);transform:rotate(-2.5deg);position:relative;overflow:hidden}
+.cover::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.04) 0 1px,transparent 1px 22px),repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 1px,transparent 1px 22px)}
+.cover > *{position:relative}
+.cover .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark-2)}
+.cover h3{font-size:2rem;font-weight:900;font-variation-settings:"wdth" 122;line-height:.98}
+.cover h3 em{font-style:normal;color:var(--caramel)}
+.cover .a{font-family:var(--display);font-weight:600;font-size:.86rem;color:var(--on-dark-2);display:flex;justify-content:space-between}
+.box{display:grid;gap:22px}
+.box ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.box li{display:grid;grid-template-columns:24px 1fr;gap:10px;color:var(--ink-2)}
+.box li::before{content:"";width:16px;height:16px;margin-top:5px;background:var(--caramel);clip-path:polygon(14% 44%,0 60%,40% 100%,100% 22%,86% 8%,40% 70%)}
+.box li b{color:var(--ink)}
+.price-row{display:flex;flex-wrap:wrap;align-items:end;gap:10px 22px;padding-top:22px;border-top:1px solid var(--line)}
+.big{font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 118;font-size:3.4rem;line-height:.9;color:var(--indigo);font-variant-numeric:tabular-nums}
+.big sup{font-size:1.1rem;vertical-align:1.6rem;margin-right:4px}
+.inst{font-family:var(--mono);font-size:.8rem;color:var(--ink-2);padding-bottom:6px}
+.guar{display:flex;gap:14px;align-items:center;font-size:.92rem;color:var(--ink-2)}
+.seal{flex:none;width:56px;height:56px;border-radius:50%;border:2px solid var(--indigo);display:grid;place-items:center;text-align:center;font-family:var(--display);font-weight:900;color:var(--indigo);line-height:.85;font-size:1.25rem}
+.seal small{display:block;font-family:var(--mono);font-size:.5rem;font-weight:500;letter-spacing:.08em}
+
+/* ---------- empresas ---------- */
+.b2b{display:grid;gap:40px}
+@media (min-width:900px){.b2b{grid-template-columns:1fr 1fr;gap:72px;align-items:start}}
+.formats{display:grid;gap:0;border-top:1px solid var(--rule-dark)}
+.format{display:grid;grid-template-columns:1fr auto;gap:6px 16px;padding:18px 0;border-bottom:1px solid var(--rule-dark)}
+.format b{font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 110;font-size:1.12rem;color:#fff}
+.format .d{font-family:var(--mono);font-size:.74rem;color:var(--caramel);align-self:center}
+.format p{grid-column:1/-1;color:var(--on-dark-2);font-size:.93rem}
+
+/* ---------- faq ---------- */
+.faq{max-width:820px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;padding:20px 40px 20px 0;font-family:var(--display);font-weight:700;font-size:1.08rem;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:6px;top:15px;font-family:var(--mono);font-size:1.4rem;color:var(--indigo)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 0 20px;color:var(--ink-2);max-width:66ch}
+
+/* ---------- final ---------- */
+.final{background:var(--indigo);color:#fff;padding:84px 0;position:relative;overflow:hidden}
+.final .wrap{display:grid;gap:26px;justify-items:start;position:relative}
+.final h2{font-size:clamp(2.1rem,1.3rem + 3.6vw,4rem);font-weight:900;font-variation-settings:"wdth" 120;letter-spacing:-.025em;max-width:18ch}
+.final h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--caramel)}
+.final p{color:var(--on-dark-2);max-width:52ch;font-size:1.08rem}
+.final .row{display:flex;flex-wrap:wrap;gap:12px}
+.foot{background:var(--night);color:var(--on-dark-3);font-size:.86rem}
+.foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-top:30px;padding-bottom:30px}
+.foot nav{display:flex;flex-wrap:wrap;gap:18px}
+.foot a{color:var(--on-dark-2);text-decoration:none}
+.foot a:hover{color:var(--caramel)}
+
+/* ---------- barra fixa ---------- */
+.stick{position:fixed;z-index:20;left:0;right:0;bottom:0;background:var(--night);color:var(--on-dark);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid rgba(233,162,59,.3)}
+.stick b{font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 110;font-size:.98rem;line-height:1.2;display:block}
+.stick span{font-family:var(--mono);font-size:.66rem;color:var(--on-dark-3)}
+.stick .btn{padding:12px 16px;font-size:.92rem;white-space:nowrap}
+@media (min-width:900px){.stick{display:none}}
+</style>
+</head>
+<body>
+
+<div class="preview">Prévia · página do guia · <a href="../">← voltar para o site do Otávio</a></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#topo" aria-label="Otávio Guidini, início"><b>OG</b><span>Otávio Guidini<small>Liderança industrial</small></span></a>
+    <ul>
+      <li><a href="#metodo">Método</a></li>
+      <li><a href="../">Sobre o Otávio</a></li>
+      <li><a href="#guia">Guia</a></li>
+      <li><a href="#empresas">Para empresas</a></li>
+    </ul>
+    <a class="btn btn-caramel" href="https://diagnostico-gestaocomotavio.lovable.app" target="_blank" rel="noopener">Diagnóstico grátis</a>
+  </div>
+</header>
+
+<section class="hero" id="topo">
+  <svg class="pid" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path class="pipe" d="M-20 560 H300 V420 H520 V300 H760"/>
+    <path class="flow" d="M-20 560 H300 V420 H520 V300 H760"/>
+    <path class="pipe" d="M1220 120 H980 V210 H860"/>
+    <path class="flow" d="M1220 120 H980 V210 H860"/>
+    <rect class="eq" x="760" y="250" width="100" height="150" rx="50"/>
+    <circle class="eq" cx="300" cy="560" r="22"/>
+    <path class="eq" d="M289 548 L316 560 L289 572 Z"/>
+    <circle class="eq" cx="520" cy="420" r="9"/>
+    <path class="pipe" d="M860 330 H1040 V640"/>
+    <text x="780" y="236">TQ-101</text>
+    <text x="252" y="604">B-03</text>
+    <text x="534" y="446">FT-12</text>
+    <text x="1054" y="600">LINHA 2</text>
+  </svg>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="tag kicker">Coordenador industrial · especialista em liderança</span>
+      <h1>Liderança que nasce no <em>chão de fábrica.</em></h1>
+      <p class="intro">Eu sou <b>Otávio Guidini</b>. Sou engenheiro de alimentos e coordenador industrial, e respondo por <b>mais de 100 pessoas</b> em uma indústria de alimentos. Comecei no planejamento de manutenção. Hoje ensino a técnicos, líderes e coordenadores o que ninguém ensina a quem é promovido por ser bom tecnicamente: liderar pessoas e ser reconhecido pelo que entrega.</p>
+      <div class="hero-actions">
+        <a class="btn btn-caramel" href="https://diagnostico-gestaocomotavio.lovable.app" target="_blank" rel="noopener">Fazer o diagnóstico de 2 min</a>
+        <a class="btn btn-ghost" href="#guia">Conhecer o guia</a>
+      </div>
+    </div>
+    <figure class="photo hero-photo" style="margin:0">
+      <img src="../fotos/retrato.jpg" alt="Otávio Guidini em ambiente industrial" onerror="this.remove()">
+      <div class="ph"><span class="mono-og">OG</span><span class="tag"><b>Foto 01</b> · retrato no chão de fábrica</span></div>
+      <figcaption class="nameplate"><span><b>Otávio Guidini</b><span>Coordenador industrial · Black Belt Lean Six Sigma</span></span><i>Campinas · SP</i></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="creds" aria-label="Credenciais">
+  <div class="wrap">
+    <div class="cred"><b>+100</b><span>pessoas sob a coordenação dele hoje</span></div>
+    <div class="cred"><b>28 mil</b><span>profissionais acompanham no Instagram</span></div>
+    <div class="cred"><b>&lt; 4 anos</b><span>de analista de PCM a coordenador industrial</span></div>
+    <div class="cred"><b>Black Belt</b><span>Lean Six Sigma · MBA USP/Esalq</span></div>
+  </div>
+</section>
+
+<section class="band white" id="video">
+  <div class="wrap video-grid">
+    <div>
+      <div class="player" id="player">
+        <div class="photo" style="position:absolute;inset:0">
+          <img src="../fotos/video-capa.jpg" alt="" onerror="this.remove()">
+          <div class="ph" style="align-content:start;justify-items:start;text-align:left;padding:18px"><span class="tag" style="color:var(--caramel)">Assista antes de tudo</span></div>
+        </div>
+        <button class="play" type="button" aria-label="Assistir ao vídeo de apresentação"></button>
+        <span class="soon">Por que o técnico mais competente quase nunca é o primeiro promovido</span>
+        <span class="dur">1:30</span>
+        <div class="msg" hidden><strong style="font-family:var(--display);font-size:1.2rem">Vídeo em gravação</strong><span style="color:var(--on-dark-2);font-size:.92rem">O roteiro está pronto no <a href="../roteiro.html#video-principal">kit de gravação</a>.</span></div>
+      </div>
+    </div>
+    <div class="head" style="margin-bottom:0">
+      <span class="tag">Em 90 segundos</span>
+      <h2 class="sec-title" style="font-size:clamp(1.7rem,1.2rem + 1.8vw,2.4rem)">O problema não é competência. É tradução.</h2>
+      <ol class="chapters">
+        <li><span class="t">0:00</span><div><b>A linha parou às 3h. Eu resolvi.</b><span>E na segunda ninguém sabia.</span></div></li>
+        <li><span class="t">0:25</span><div><b>O erro de quase todo técnico</b><span>Achar que o trabalho fala por si.</span></div></li>
+        <li><span class="t">0:55</span><div><b>O que muda quando você traduz</b><span>R$, horas de linha, risco evitado.</span></div></li>
+        <li><span class="t">1:15</span><div><b>Por onde começar hoje</b><span>O diagnóstico gratuito.</span></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag">Onde a carreira trava</span>
+      <h2 class="sec-title">O mesmo fato. Duas carreiras diferentes.</h2>
+      <p class="lead">Quem é promovido nem sempre é quem mais resolve. Muitas vezes é quem sabe mostrar o que resolveu na língua de quem decide.</p>
+    </div>
+    <div class="trans">
+      <article class="msg-card before">
+        <header><span class="who">Como quase todo mundo reporta</span><span class="time">WhatsApp · 07:12</span></header>
+        <p>Bom dia. Ontem à noite a bomba 3 deu problema, troquei o selo e a linha voltou. Tudo ok.</p>
+        <span class="verdict">O gestor lê “deu problema” e esquece.</span>
+      </article>
+      <div class="arrow"><div><b>→</b>traduzido</div></div>
+      <article class="msg-card after">
+        <header><span class="who">Como quem é lembrado reporta</span><span class="time">WhatsApp · 07:12</span></header>
+        <p>Bom dia. Às 23h40 identifiquei vazamento no selo da bomba 3 e fiz a troca em <span class="hl">50 min</span>, antes da parada total. Evitamos <span class="hl">~6 h de linha parada</span> e o <span class="hl">descarte do lote</span>. Sugiro incluir o selo no preventivo mensal: <span class="hl">R$ 1,2 mil contra um risco de R$ 40 mil</span>.</p>
+        <span class="verdict">O gestor encaminha pra diretoria com o seu nome.</span>
+      </article>
+    </div>
+    <p class="note">Exemplo ilustrativo.</p>
+  </div>
+</section>
+
+<section class="band dark" id="metodo">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag">O método</span>
+      <h2 class="sec-title" style="color:#fff">Quatro camadas entre executar e ser visto</h2>
+      <p class="lead">Funciona como uma linha: cada etapa alimenta a próxima. A maioria dos profissionais técnicos para na primeira.</p>
+    </div>
+    <div class="method">
+      <div class="stage"><div class="node"><span class="num">1</span></div><h3>Registrar</h3><p>Tirar a entrega da conversa de corredor e colocar no e-mail, no relatório, na ata.</p><span class="ex">“Troca feita às 23h40, registrada na OS 4417.”</span></div>
+      <div class="stage"><div class="node"><span class="num">2</span></div><h3>Medir</h3><p>Traduzir cada entrega em R$, %, horas de linha e risco evitado.</p><span class="ex">“Evitou ~6 h de parada.”</span></div>
+      <div class="stage"><div class="node"><span class="num">3</span></div><h3>Posicionar</h3><p>Levar os números para a reunião e defender ideias com dados, sem parecer arrogante.</p><span class="ex">“Proponho incluir no preventivo.”</span></div>
+      <div class="stage"><div class="node"><span class="num">4</span></div><h3>Conversar</h3><p>Ter a conversa de carreira com o gestor com um histórico de resultados em mãos.</p><span class="ex">“Quero ser considerado para a coordenação.”</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band white" id="historia">
+  <div class="wrap story">
+    <figure class="photo story-photo" style="margin:0">
+      <img src="../fotos/historia.jpg" alt="Otávio Guidini conversando com a equipe" onerror="this.remove()">
+      <div class="ph"><span class="mono-og" style="font-size:clamp(4rem,10vw,6rem)">OG</span><span class="tag"><b>Foto 02</b> · com a equipe, em ação</span></div>
+    </figure>
+    <div class="story-copy">
+      <span class="tag" style="color:var(--indigo)">Minha história</span>
+      <h2 class="sec-title">Eu já fui o técnico que resolvia tudo e ninguém via.</h2>
+      <p>Comecei no <b>PCM</b>, planejando manutenção. Era o cara que sabia onde cada peça estava e por que cada máquina parava. Resolvia muita coisa. E percebi, do jeito difícil, que <b>resolver não era o mesmo que ser lembrado</b>.</p>
+      <p class="pull">“Seu sucesso não está em quantos problemas você resolve. Está em quantos a sua equipe resolve sem você.”</p>
+      <p>Aprendi a registrar, a medir, a me posicionar. Em menos de quatro anos fui de analista de PCM a <b>coordenador industrial</b>, sempre na mesma indústria. Hoje respondo por <b>mais de 100 colaboradores e 7 líderes</b> em produção, manutenção, sanitização, P&amp;D e projetos. O que eu ensino aqui é o que funcionou dentro da fábrica, não teoria de palestra.</p>
+      <ol class="career">
+        <li><div><b>2021 · Analista de PCM</b><span>Planejamento e controle de manutenção</span></div></li>
+        <li><div><b>2022 · Líder de manutenção mecânica e PCM</b><span>20 pessoas · preventivas de 25% para 55%</span></div></li>
+        <li><div><b>2023 · Coordenador de produção</b><span>85 pessoas · primeiro programa trainee da empresa</span></div></li>
+        <li><div><b>2025 · Coordenador industrial</b><span>+100 pessoas · −20% no custo industrial</span></div></li>
+      </ol>
+      <a class="btn btn-indigo" href="../#trajetoria" style="justify-self:start">Ver a trajetória completa</a>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="caminhos">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag">Por onde começar</span>
+      <h2 class="sec-title">Quatro caminhos, do primeiro passo à equipe inteira</h2>
+    </div>
+    <div class="paths">
+      <article class="path"><span class="price">GRÁTIS · 2 MIN</span><h3>Diagnóstico</h3><p>Sete perguntas para descobrir se o seu esforço está sendo visto, e o que está travando.</p><a href="https://diagnostico-gestaocomotavio.lovable.app" target="_blank" rel="noopener">Fazer agora</a></article>
+      <article class="path star"><span class="price">R$ 34,90</span><h3>Guia Do Operacional ao Estratégico</h3><p>O método das 4 camadas e um plano de ação de 14 dias para aplicar no seu turno.</p><a href="#guia">Ver o guia</a></article>
+      <article class="path"><span class="price">SESSÃO 1:1</span><h3>PDI com o Otávio</h3><p>Plano de Desenvolvimento Individual: lacunas, prioridades e um plano concreto para o próximo cargo.</p><a href="https://wa.me/5519996931122?text=Ol%C3%A1%20Ot%C3%A1vio%2C%20quero%20saber%20sobre%20a%20sess%C3%A3o%20de%20PDI." target="_blank" rel="noopener">Agendar pelo WhatsApp</a></article>
+      <article class="path"><span class="price">PARA EMPRESAS</span><h3>Formação de líderes</h3><p>Workshop e programa para líderes de turno, supervisores e coordenadores.</p><a href="#empresas">Ver formatos</a></article>
+    </div>
+  </div>
+</section>
+
+<section class="band white">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag">Quem já aplicou</span>
+      <h2 class="sec-title">Resultados de quem está na indústria</h2>
+    </div>
+    <div class="quotes">
+      <figure class="q pending" style="margin:0"><blockquote>Espaço para depoimento real de um profissional que aplicou o método.</blockquote><footer><span class="av">01</span><div><b>Nome do profissional</b><span>Cargo · setor industrial</span></div></footer></figure>
+      <figure class="q pending" style="margin:0"><blockquote>O ideal é citar um resultado concreto: uma reunião, um reconhecimento, uma promoção.</blockquote><footer><span class="av">02</span><div><b>Nome do profissional</b><span>Cargo · setor industrial</span></div></footer></figure>
+      <figure class="q pending" style="margin:0"><blockquote>Pode vir do destaque “Depoimentos” do Instagram, com autorização.</blockquote><footer><span class="av">03</span><div><b>Nome do profissional</b><span>Cargo · setor industrial</span></div></footer></figure>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="guia">
+  <div class="wrap offer">
+    <div class="cover" aria-hidden="true">
+      <span class="k">Guia prático</span>
+      <h3>Do Operacional ao <em>Estratégico</em></h3>
+      <span class="a"><span>Otávio Guidini</span><span>4 camadas · 14 dias</span></span>
+    </div>
+    <div class="box">
+      <span class="tag" style="color:var(--indigo)">O guia</span>
+      <h2 class="sec-title" style="font-size:clamp(1.8rem,1.3rem + 2vw,2.7rem)">Pare de ser o degrau para a promoção de outra pessoa.</h2>
+      <ul>
+        <li><span><b>O framework das 4 camadas</b> explicado com exemplos do chão de fábrica</span></li>
+        <li><span><b>Plano de ação de 14 dias</b>, uma tarefa curta por dia, aplicada no seu próprio trabalho</span></li>
+        <li><span><b>Antes e depois</b> de relatórios, e-mails e mensagens de resultado</span></li>
+        <li><span>PDF com acesso imediato pelo Hotmart, no celular ou no computador</span></li>
+      </ul>
+      <div class="price-row">
+        <span class="big"><sup>R$</sup>34,90</span>
+        <span class="inst">ou 3x de R$ 12,45 · Pix · boleto</span>
+      </div>
+      <a class="btn btn-indigo" href="https://pay.hotmart.com/H106727821U" target="_blank" rel="noopener" style="justify-self:start">Quero o guia agora</a>
+      <div class="guar"><span class="seal">7<small>DIAS</small></span><span>Leu e não serviu? Peça o reembolso pelo Hotmart em até 7 dias.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band dark" id="empresas">
+  <div class="wrap b2b">
+    <div class="head" style="margin-bottom:0">
+      <span class="tag">Para empresas</span>
+      <h2 class="sec-title" style="color:#fff">Leve o método para os seus líderes de turno.</h2>
+      <p class="lead">Treinamento feito por quem coordena hoje mais de 100 pessoas em uma operação industrial, e não por quem saiu da fábrica há dez anos. Linguagem de chão de fábrica, casos reais e plano de ação aplicado na rotina da sua planta.</p>
+      <a class="btn btn-caramel" href="https://wa.me/5519996931122?text=Ol%C3%A1%20Ot%C3%A1vio%2C%20quero%20falar%20sobre%20forma%C3%A7%C3%A3o%20de%20l%C3%ADderes%20para%20a%20minha%20empresa." target="_blank" rel="noopener" style="justify-self:start">Conversar sobre minha equipe</a>
+    </div>
+    <div class="formats">
+      <div class="format"><b>Workshop presencial</b><span class="d">4 horas</span><p>Uma manhã com a turma de líderes, na sua planta. Guia incluso para cada participante.</p></div>
+      <div class="format"><b>Turma online</b><span class="d">2 × 2 horas</span><p>Para plantas em cidades diferentes ou turnos que não se encontram.</p></div>
+      <div class="format"><b>Programa de desenvolvimento</b><span class="d">8 semanas</span><p>Encontros quinzenais, PDI individual e acompanhamento dos indicadores da equipe.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band white">
+  <div class="wrap">
+    <div class="head"><span class="tag">Dúvidas</span><h2 class="sec-title">Perguntas frequentes</h2></div>
+    <div class="faq">
+      <details><summary>O guia serve pra quem ainda não é líder?</summary><p>Serve principalmente pra você. Ele foi pensado para técnicos, analistas e operadores que entregam resultado e querem ser vistos antes da promoção, não depois.</p></details>
+      <details><summary>É livro físico?</summary><p>Não. É um guia em PDF que chega no seu e-mail logo depois do pagamento, pelo Hotmart. Dá para ler no celular.</p></details>
+      <details><summary>Quanto tempo leva?</summary><p>A leitura cabe em uma tarde. O plano de ação leva 14 dias, com cerca de 15 minutos por dia.</p></details>
+      <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia pelo Hotmart. É só pedir o reembolso na própria plataforma.</p></details>
+      <details><summary>Como funciona a sessão de PDI?</summary><p>É uma conversa individual para mapear suas lacunas, definir prioridades e montar um plano concreto para o próximo passo da carreira. O agendamento é pelo WhatsApp.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <span class="tag" style="color:var(--caramel)">Comece pelo diagnóstico</span>
+    <h2>Seu gestor sabe o valor <em>real</em> do que você entrega?</h2>
+    <p>Descubra em 2 minutos se o seu esforço está sendo visto, ou se você está prestes a ser o degrau para a promoção de outra pessoa.</p>
+    <div class="row">
+      <a class="btn btn-caramel" href="https://diagnostico-gestaocomotavio.lovable.app" target="_blank" rel="noopener">Fazer o diagnóstico grátis</a>
+      <a class="btn btn-ghost" href="#guia">Ir direto para o guia</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>© Otávio Guidini · Gestão com Otávio</span>
+    <nav aria-label="Redes">
+      <a href="https://www.instagram.com/gestaocomotavio/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/in/otavioguidini" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://wa.me/5519996931122" target="_blank" rel="noopener">WhatsApp</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="stick">
+  <div><b>Guia · R$ 34,90</b><span>ou comece pelo diagnóstico grátis</span></div>
+  <a class="btn btn-caramel" href="#guia">Ver o guia</a>
+</div>
+
+<script>
+(function(){
+  var player=document.getElementById('player');
+  var btn=player.querySelector('.play');
+  var msg=player.querySelector('.msg');
+  var src='../videos/apresentacao.mp4';
+  btn.addEventListener('click',function(){
+    fetch(src,{method:'HEAD'}).then(function(r){
+      if(!r.ok) throw 0;
+      var v=document.createElement('video');
+      v.src=src; v.controls=true; v.autoplay=true; v.playsInline=true;
+      player.appendChild(v);
+    }).catch(function(){ msg.hidden=false; });
+  });
+  msg.addEventListener('click',function(e){ if(e.target===msg) msg.hidden=true; });
+})();
+</script>
+</body>
+</html>

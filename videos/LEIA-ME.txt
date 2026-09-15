@@ -1,0 +1,2 @@
+Coloque aqui o vídeo principal com o nome: apresentacao.mp4 (horizontal, até ~90 MB).
+Enquanto não existir, o botão de play mostra "Vídeo em gravação".

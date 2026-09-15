@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kit de Gravação · Otávio Guidini</title>
+<meta name="description" content="Fotos, vídeo principal e roteiros de reels para o novo site e o Instagram do Otávio.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0F0C22">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23200E6A'/%3E%3Ctext x='32' y='43' font-family='Arial Black,Arial' font-weight='900' font-size='28' fill='%23E9A23B' text-anchor='middle'%3EOG%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Public+Sans:ital,wght@0,400..700;1,400&display=swap">
+<style>
+:root{
+  --night:#0F0C22;--indigo:#200E6A;--caramel:#E9A23B;--caramel-soft:#FBEBCD;
+  --paper:#F4F3F8;--sheet:#FFFFFF;--ink:#15122A;--ink-2:#4A4665;--ink-3:#7D7996;--line:#DDDAE9;
+  --on-dark:#EDEBF8;--on-dark-2:#B3ADD3;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --serif:"Instrument Serif",Georgia,serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+a{color:var(--indigo)}
+:focus-visible{outline:3px solid var(--caramel);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+.tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--indigo)}
+
+header.top{background:var(--night);color:var(--on-dark);padding:22px 0 56px}
+header.top .bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:44px}
+header.top .bar a{color:var(--on-dark-2);font-family:var(--mono);font-size:.76rem;text-decoration:none}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 112}
+.logo b{width:34px;height:34px;display:grid;place-items:center;background:var(--indigo);color:var(--caramel);font-weight:900;font-size:.85rem;border:1px solid rgba(233,162,59,.35)}
+header.top .tag{color:var(--caramel)}
+header.top h1{font-size:clamp(2.3rem,1.5rem + 4vw,3.9rem);font-weight:900;font-variation-settings:"wdth" 118;letter-spacing:-.025em;margin-top:12px}
+header.top h1 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--caramel)}
+header.top p{color:var(--on-dark-2);font-size:1.1rem;max-width:54ch;margin-top:18px}
+.deliver{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(237,235,248,.14);margin-top:36px;border:1px solid rgba(237,235,248,.14)}
+.deliver div{background:var(--night);padding:16px 14px;display:grid;gap:4px}
+.deliver b{font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 118;font-size:1.9rem;color:var(--caramel);line-height:1}
+.deliver span{font-size:.84rem;color:var(--on-dark-2);line-height:1.35}
+
+nav.jump{position:sticky;top:0;z-index:5;background:var(--sheet);border-bottom:1px solid var(--line);overflow-x:auto}
+nav.jump .wrap{display:flex;gap:22px;white-space:nowrap;padding-top:12px;padding-bottom:12px}
+nav.jump a{font-family:var(--mono);font-size:.76rem;text-decoration:none;color:var(--ink-2)}
+nav.jump a:hover{color:var(--indigo)}
+
+main{display:grid;gap:0}
+section{padding:60px 0;border-bottom:1px solid var(--line);scroll-margin-top:48px}
+section:nth-of-type(even){background:var(--sheet)}
+.head{display:grid;gap:12px;margin-bottom:28px}
+.head h2{font-size:clamp(1.7rem,1.25rem + 2vw,2.5rem);font-weight:900;font-variation-settings:"wdth" 114;letter-spacing:-.02em}
+.head p{color:var(--ink-2);max-width:62ch}
+
+.gear{display:grid;gap:12px}
+@media (min-width:700px){.gear{grid-template-columns:1fr 1fr}}
+.gear div{background:var(--sheet);border:1px solid var(--line);padding:18px 20px;display:grid;gap:6px;align-content:start}
+section:nth-of-type(even) .gear div{background:var(--paper)}
+.gear b{font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 108}
+.gear p{font-size:.94rem;color:var(--ink-2)}
+.warn{margin-top:18px;background:var(--caramel-soft);border-left:3px solid var(--caramel);padding:14px 18px;font-size:.95rem}
+
+.shots{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.shot{display:grid;grid-template-columns:74px 1fr;gap:16px;background:var(--sheet);border:1px solid var(--line);padding:14px}
+section:nth-of-type(even) .shot{background:var(--paper)}
+.frame{background:repeating-linear-gradient(135deg,#E4E1F0 0 8px,#EEECF6 8px 16px);border:1px solid var(--line);display:grid;place-items:center;font-family:var(--mono);font-size:.62rem;color:var(--ink-3);align-self:start}
+.frame.v{aspect-ratio:4/5}.frame.h{aspect-ratio:16/9;align-self:center}.frame.s{aspect-ratio:1/1}
+.shot h3{font-size:1.06rem;font-weight:800;font-variation-settings:"wdth" 108;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline}
+.shot h3 code{font-family:var(--mono);font-size:.7rem;font-weight:500;color:var(--indigo);background:var(--caramel-soft);padding:1px 6px}
+.shot p{font-size:.92rem;color:var(--ink-2);margin-top:4px}
+.shot .use{font-family:var(--mono);font-size:.7rem;color:var(--ink-3);margin-top:6px}
+.shot.site .use{color:var(--indigo);font-weight:600}
+
+.script{display:grid;gap:0;border-top:2px solid var(--indigo)}
+.beat{display:grid;grid-template-columns:62px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+.beat .t{font-family:var(--mono);font-size:.8rem;color:var(--indigo);font-weight:600;font-variant-numeric:tabular-nums}
+.beat .t small{display:block;font-weight:400;color:var(--ink-3);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
+.beat blockquote{margin:0;font-family:var(--serif);font-size:1.32rem;line-height:1.35;color:var(--ink)}
+.beat .dir{font-family:var(--mono);font-size:.74rem;color:var(--ink-3);margin-top:8px}
+
+.questions{list-style:none;margin:0;padding:0;counter-reset:q;display:grid;gap:10px}
+.questions li{counter-increment:q;display:grid;grid-template-columns:40px 1fr;gap:10px;background:var(--paper);border:1px solid var(--line);padding:14px 16px}
+.questions li::before{content:counter(q,decimal-leading-zero);font-family:var(--mono);font-size:.78rem;color:var(--indigo);font-weight:600;padding-top:2px}
+.questions b{font-family:var(--display);font-weight:700;line-height:1.35;display:block}
+.questions span{font-size:.88rem;color:var(--ink-2)}
+
+.reels{display:grid;gap:14px}
+.reel{background:var(--sheet);border:1px solid var(--line);display:grid}
+.reel header{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.reel header b{font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 108}
+.reel header span{font-family:var(--mono);font-size:.7rem;color:var(--ink-3)}
+.reel dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 16px;padding:16px 18px}
+.reel dt{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding-top:4px}
+.reel dd{margin:0;font-size:.95rem;color:var(--ink-2)}
+.reel dd.hook{font-family:var(--display);font-weight:700;color:var(--ink);font-size:1.05rem;line-height:1.35}
+
+.check{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.check li{display:grid;grid-template-columns:24px 1fr;gap:12px;font-size:.98rem;color:var(--ink-2)}
+.check li::before{content:"";width:16px;height:16px;border:2px solid var(--indigo);margin-top:4px}
+.send{display:grid;gap:12px;margin-top:22px}
+.send div{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;background:var(--night);color:var(--on-dark);padding:16px 18px}
+.send b{font-family:var(--mono);font-size:.8rem;color:var(--caramel)}
+.send p{color:var(--on-dark-2);font-size:.94rem}
+footer{padding:36px 0 48px;font-family:var(--mono);font-size:.74rem;color:var(--ink-3)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="bar"><span class="logo"><b>OG</b>Otávio Guidini</span><a href="index.html">← voltar ao site</a></div>
+    <span class="tag">Kit de gravação</span>
+    <h1>Um domingo de gravação <em>vira um mês</em> de conteúdo.</h1>
+    <p>Otávio, o site novo foi pensado para mostrar você: quem lidera, de onde veio, o que já resolveu. Para isso ele precisa do seu rosto e da sua voz. Aqui está exatamente o que gravar e fotografar, em ordem.</p>
+    <div class="deliver">
+      <div><b>8</b><span>fotos (3 entram direto no site)</span></div>
+      <div><b>90 s</b><span>vídeo principal de apresentação</span></div>
+      <div><b>30 min</b><span>de conversa com a câmera, que viram 8 a 10 reels</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="jump" aria-label="Seções">
+  <div class="wrap">
+    <a href="#equipamento">Equipamento</a>
+    <a href="#fotos">Fotos</a>
+    <a href="#video-principal">Vídeo principal</a>
+    <a href="#bloco">Bloco de 30 min</a>
+    <a href="#reels">Reels</a>
+    <a href="#envio">Como enviar</a>
+  </div>
+</nav>
+
+<main>
+  <section id="equipamento">
+    <div class="wrap">
+      <div class="head"><span class="tag">Antes de começar</span><h2>O celular que você já tem resolve</h2><p>Não precisa de câmera nem de estúdio. O que mais muda o resultado é a luz e o som.</p></div>
+      <div class="gear">
+        <div><b>Câmera</b><p>Câmera traseira do celular, em 1080p ou 4K a 30 quadros. Limpe a lente antes. O vídeo do site é na horizontal; os reels, na vertical.</p></div>
+        <div><b>Luz</b><p>De frente para uma janela, com luz natural batendo no rosto. Nunca com a janela atrás de você. À noite, uma luz de LED simples na altura dos olhos.</p></div>
+        <div><b>Som</b><p>Um microfone de lapela sem fio que conecta no celular (de R$ 80 a R$ 150) muda tudo. Grave em lugar sem eco e sem máquina ligada perto.</p></div>
+        <div><b>Apoio</b><p>Tripé ou celular apoiado na altura dos olhos, a mais ou menos um braço e meio de distância. Olhe para a lente, não para a tela.</p></div>
+      </div>
+      <p class="warn"><b>Sem identificar a empresa.</b> O site conta a sua trajetória sem citar onde você trabalha. Então nada de logo, crachá, uniforme com marca, fachada, placas ou produtos com rótulo aparecendo. Também nada de indicadores, nomes de clientes ou telas de sistema. Um galpão, uma oficina ou uma área industrial neutra funcionam muito bem. Se gravar na área de produção, use a paramentação completa: quem é da indústria de alimentos repara.</p>
+    </div>
+  </section>
+
+  <section id="fotos">
+    <div class="wrap">
+      <div class="head"><span class="tag">Fotos</span><h2>8 fotos, cada uma com um lugar certo</h2><p>Pode ser com o celular, com alguém fotografando. Mande o arquivo original. As 3 marcadas como <b>site</b> já têm espaço reservado na página e entram assim que chegarem.</p></div>
+      <ol class="shots">
+        <li class="shot site"><span class="frame v">4:5</span><div><h3>Foto 01 · Retrato principal <code>retrato.jpg</code></h3><p>Do peito para cima, olhando para a lente, sério mas acessível. Fundo industrial desfocado (tubulação, tanques, galpão), sem nada que identifique a empresa. Camisa ou polo lisa, sem logo.</p><p class="use">site · abertura da página</p></div></li>
+        <li class="shot site"><span class="frame v">4:5</span><div><h3>Foto 02 · Com a equipe <code>historia.jpg</code></h3><p>Você conversando com duas ou três pessoas, explicando algo, de preferência apontando para uma prancheta ou quadro. Não precisa olhar para a câmera.</p><p class="use">site · seção “Minha história”</p></div></li>
+        <li class="shot site"><span class="frame h">16:9</span><div><h3>Foto 03 · Capa do vídeo <code>video-capa.jpg</code></h3><p>Horizontal, você do lado direito da foto olhando para a lente, com espaço vazio à esquerda para o texto.</p><p class="use">site · capa do vídeo de apresentação</p></div></li>
+        <li class="shot"><span class="frame v">4:5</span><div><h3>Foto 04 · Quadro de indicadores</h3><p>Você em frente a um quadro branco ou gestão à vista, apontando ou escrevendo. Números fictícios ou desfocados.</p><p class="use">carrosséis do Manual do Líder Industrial</p></div></li>
+        <li class="shot"><span class="frame h">16:9</span><div><h3>Foto 05 · Relatório</h3><p>Sentado com notebook ou tablet, escrevendo. Mostra a ideia do guia: registrar e medir.</p><p class="use">anúncio e página do guia</p></div></li>
+        <li class="shot"><span class="frame v">4:5</span><div><h3>Foto 06 · Corpo inteiro</h3><p>Em pé, braços cruzados ou mãos no bolso, ambiente industrial ao fundo. Postura de quem lidera.</p><p class="use">LinkedIn (capa) e seção para empresas</p></div></li>
+        <li class="shot"><span class="frame h">16:9</span><div><h3>Foto 07 · Treinando um grupo</h3><p>Você falando para um grupo sentado, como em um DDS ou treinamento. Essa é a foto que vende o workshop para empresas.</p><p class="use">proposta para empresas</p></div></li>
+        <li class="shot"><span class="frame s">1:1</span><div><h3>Foto 08 · Perfil</h3><p>Rosto próximo, sorrindo, fundo liso. Para a foto de perfil do Instagram, LinkedIn e WhatsApp, todas iguais.</p><p class="use">perfis nas redes</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="video-principal">
+    <div class="wrap">
+      <div class="head"><span class="tag">Vídeo principal · horizontal · 90 s</span><h2>Quem sou eu, em 90 segundos</h2><p>É o vídeo de apresentação que abre o site. Não precisa decorar. Grave cada bloco separado, quantas vezes quiser, e fique com a melhor. Pode trocar as palavras pelas suas, desde que mantenha a ideia de cada bloco.</p></div>
+      <div class="script">
+        <div class="beat"><span class="t">0:00<small>quem sou</small></span><div><blockquote>“Oi, eu sou o Otávio Guidini. Sou engenheiro de alimentos e coordenador industrial. Hoje coordeno mais de 100 pessoas em produção, manutenção, P&amp;D e projetos em uma indústria de alimentos.”</blockquote><p class="dir">Olhando direto para a lente, tom de conversa. Nada de nome da empresa.</p></div></div>
+        <div class="beat"><span class="t">0:20<small>como começou</small></span><div><blockquote>“Entrei na indústria em 2021, como analista de PCM, planejando a manutenção. Foi ali que eu aprendi como cada máquina para e quanto custa cada hora de linha parada. Em menos de quatro anos vieram a liderança da manutenção, a coordenação de produção e a coordenação industrial.”</blockquote><p class="dir">Pode mudar o enquadramento aqui: mais aberto, ou caminhando pela área.</p></div></div>
+        <div class="beat"><span class="t">0:50<small>o que aprendi</small></span><div><blockquote>“A maior virada não foi técnica. Foi entender que o sucesso de um líder está em quantos problemas a equipe resolve sem ele. Hoje meu trabalho é esse: fazer a operação rodar e formar quem vai liderar amanhã.”</blockquote><p class="dir">Pausa curta antes de “a maior virada não foi técnica”.</p></div></div>
+        <div class="beat"><span class="t">1:15<small>convite</small></span><div><blockquote>“Fora do expediente eu compartilho o que aprendi: conteúdo, um guia prático e mentoria para quem está fazendo esse mesmo caminho. Se fizer sentido pra você, me chama aqui embaixo.”</blockquote><p class="dir">Sorriso no final. Dois segundos parado olhando para a lente antes de desligar.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="bloco">
+    <div class="wrap">
+      <div class="head"><span class="tag">Bloco de 30 min · vertical</span><h2>Oito perguntas, uma conversa</h2><p>Peça para alguém ler as perguntas, ou leia no papel, e responda olhando para a câmera, de 2 a 4 minutos cada. Nós cortamos depois: cada resposta vira um ou dois reels com legenda.</p></div>
+      <ol class="questions">
+        <li><div><b>Qual foi o problema mais tenso que você já resolveu na fábrica, e alguém ficou sabendo?</b><span>Conte a história com hora, lugar e o que estava em jogo.</span></div></li>
+        <li><div><b>Por que o melhor operador quase sempre sofre no primeiro ano como líder?</b><span>O que você viu acontecer, sem citar nomes.</span></div></li>
+        <li><div><b>Como você reescreveria um relatório de turno ruim?</b><span>Pode segurar um papel e mostrar o antes e o depois.</span></div></li>
+        <li><div><b>O que um líder deve perguntar na troca de turno?</b><span>Duas ou três perguntas práticas.</span></div></li>
+        <li><div><b>Como dar um feedback que muda comportamento, e não só gera mal-estar?</b><span>O que evitar dizer na primeira frase.</span></div></li>
+        <li><div><b>Como mostrar o valor de uma manutenção preventiva, se o problema nem chegou a acontecer?</b><span>Risco evitado em número.</span></div></li>
+        <li><div><b>Qual conversa mudou sua carreira?</b><span>A virada de PCM para liderança.</span></div></li>
+        <li><div><b>Se você pudesse dar um conselho para você mesmo no primeiro dia como líder, qual seria?</b><span>Resposta curta, de coração.</span></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="reels">
+    <div class="wrap">
+      <div class="head"><span class="tag">Reels roteirizados · vertical · 30–45 s</span><h2>Cinco reels prontos para gravar</h2><p>Todos com a mesma estrutura: gancho nos 2 primeiros segundos, uma ideia só e uma palavra para comentar. Cada palavra dispara uma mensagem automática com o link certo.</p></div>
+      <div class="reels">
+        <article class="reel"><header><b>O relatório que ninguém lê</b><span>antes/depois · segurar papel</span></header><dl><dt>Gancho</dt><dd class="hook">“Não comece seu relatório com ‘foi feito’. Comece com quanto isso valeu.”</dd><dt>Meio</dt><dd>Mostra o “antes” (a bomba 3 deu problema, troquei o selo) e reescreve na hora com horário, horas evitadas e R$.</dd><dt>CTA</dt><dd>“Comenta MODELO que eu te mando o guia com o método completo.”</dd></dl></article>
+        <article class="reel"><header><b>O melhor operador, o pior líder</b><span>fala direta · ambiente industrial</span></header><dl><dt>Gancho</dt><dd class="hook">“O melhor operador da fábrica quase sempre vira o pior líder no primeiro ano.”</dd><dt>Meio</dt><dd>Três motivos: continua fazendo em vez de delegar, não sabe cobrar ex-colega, vira o centro de todas as soluções.</dd><dt>CTA</dt><dd>“Comenta LÍDER que eu te mando o diagnóstico.”</dd></dl></article>
+        <article class="reel"><header><b>O que você evitou não aparece</b><span>manutenção · história</span></header><dl><dt>Gancho</dt><dd class="hook">“Preventiva não aparece no relatório porque o problema não aconteceu.”</dd><dt>Meio</dt><dd>Como transformar “nada aconteceu” em “evitamos X horas de parada” com uma conta simples.</dd><dt>CTA</dt><dd>“Comenta VISÍVEL e faz o diagnóstico de 2 minutos.”</dd></dl></article>
+        <article class="reel"><header><b>Duas perguntas na troca de turno</b><span>tática rápida · lista</span></header><dl><dt>Gancho</dt><dd class="hook">“Faça essas duas perguntas na troca de turno e metade dos seus problemas some.”</dd><dt>Meio</dt><dd>“O que ficou pendente e por quê?” e “O que quase deu problema?”. Explica o porquê de cada uma.</dd><dt>CTA</dt><dd>“Salva esse vídeo e manda pro líder do outro turno.”</dd></dl></article>
+        <article class="reel"><header><b>De PCM a coordenador</b><span>autoridade · sua história</span></header><dl><dt>Gancho</dt><dd class="hook">“Eu fui de analista de PCM a coordenador. A virada não foi técnica.”</dd><dt>Meio</dt><dd>O momento em que você percebeu que resolver não bastava, e a primeira coisa que mudou na forma de comunicar.</dd><dt>CTA</dt><dd>“Comenta HISTÓRIA que eu te conto o resto no direct.”</dd></dl></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="envio">
+    <div class="wrap">
+      <div class="head"><span class="tag">No dia e depois</span><h2>Checklist e como enviar</h2></div>
+      <ul class="check">
+        <li>Celular carregado e com pelo menos 20 GB livres</li>
+        <li>Lente limpa, modo avião ligado (ninguém liga no meio da gravação)</li>
+        <li>Luz de frente, microfone testado com uma frase</li>
+        <li>Nenhum logo, crachá, indicador, cliente ou tela de sistema aparecendo no quadro</li>
+        <li>Gravar 3 segundos parado antes e depois de cada fala</li>
+        <li>Errou? Pausa, respira e repete a frase inteira. Não precisa parar a gravação</li>
+      </ul>
+      <div class="send">
+        <div><b>Drive</b><p>Envie tudo por Google Drive ou WeTransfer. <b style="color:#fff;font-family:inherit;font-size:inherit">Não mande pelo WhatsApp</b>: ele comprime e a qualidade cai muito.</p></div>
+        <div><b>Nomes</b><p>Fotos com o nome da lista (retrato.jpg, historia.jpg, video-capa.jpg). Vídeos com o número do bloco: principal-bloco1.mp4, perguntas.mp4.</p></div>
+        <div><b>Depois</b><p>Os cortes, legendas e textos dos posts saem do nosso lado. Você recebe os reels prontos para aprovar.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">Kit de gravação · preparado para Otávio Guidini · <a href="index.html">voltar ao site</a></div></footer>
+</body>
+</html>

@@ -1,0 +1,5 @@
+Coloque aqui as fotos com estes nomes exatos (JPG, lado maior ~1600 px):
+  retrato.jpg      -> abertura do site (vertical 4:5)
+  historia.jpg     -> seção "Minha história" (vertical 4:5)
+  video-capa.jpg   -> capa do vídeo (horizontal 16:9)
+Enquanto não existirem, o site mostra o espaço reservado com "OG".

@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Central do Otávio</title>
+<meta name="description" content="Protótipo do supervisório de vendas: conteúdo, contatos e automações do Gestão com Otávio.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0C0A1A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23200E6A'/%3E%3Ctext x='32' y='43' font-family='Arial Black,Arial' font-weight='900' font-size='28' fill='%23E9A23B' text-anchor='middle'%3EOG%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400..700&display=swap">
+<style>
+:root{
+  --bg:#0C0A1A;
+  --panel:#141127;
+  --panel-2:#1B1734;
+  --panel-3:#231E42;
+  --line:#2A2549;
+  --line-2:#352F5A;
+  --text:#ECEAF7;
+  --text-2:#ABA5CA;
+  --text-3:#767096;
+  --caramel:#E9A23B;
+  --caramel-2:#F3BD66;
+  --caramel-ink:#1A1206;
+  --series:#8E80FF;
+  --run:#3ECF8E;
+  --run-bg:rgba(62,207,142,.12);
+  --wait:#FF8A5B;
+  --wait-bg:rgba(255,138,91,.13);
+  --alarm:#FF5C7A;
+  --alarm-bg:rgba(255,92,122,.13);
+  --off:#6C6690;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:15px;line-height:1.5}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--caramel);outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--text-3)}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.15;text-wrap:balance}
+
+/* ---------- estrutura ---------- */
+.proto{background:var(--caramel);color:var(--caramel-ink);font-family:var(--mono);font-size:.7rem;text-align:center;padding:6px 12px}
+.proto a{font-weight:600}
+.app{display:grid;grid-template-columns:1fr;min-height:100vh}
+@media (min-width:1000px){.app{grid-template-columns:236px minmax(0,1fr)}}
+.side{display:none}
+@media (min-width:1000px){
+  .side{display:flex;flex-direction:column;gap:26px;position:sticky;top:0;height:100vh;padding:22px 16px;border-right:1px solid var(--line);background:var(--panel)}
+}
+.brand{display:flex;gap:10px;align-items:center}
+.brand b{width:36px;height:36px;display:grid;place-items:center;background:#200E6A;color:var(--caramel);font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 125;font-size:.9rem;border:1px solid rgba(233,162,59,.35);flex:none}
+.brand span{font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 110;line-height:1.1}
+.brand small{display:block;font-family:var(--mono);font-weight:400;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
+.side nav{display:grid;gap:2px}
+.navbtn{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:none;border:0;padding:10px 12px;border-radius:6px;color:var(--text-2);cursor:pointer;font-weight:600;font-size:.92rem}
+.navbtn svg{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.navbtn:hover{background:var(--panel-2);color:var(--text)}
+.navbtn[aria-current="page"]{background:var(--panel-3);color:var(--text)}
+.navbtn .count{margin-left:auto;font-family:var(--mono);font-size:.68rem;background:var(--wait-bg);color:var(--wait);padding:1px 7px;border-radius:10px}
+.sys{margin-top:auto;display:grid;gap:8px;padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+.sys .row{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--text-2)}
+.led{width:8px;height:8px;border-radius:50%;background:var(--run);box-shadow:0 0 0 3px var(--run-bg);flex:none}
+.led.wait{background:var(--wait);box-shadow:0 0 0 3px var(--wait-bg)}
+.led.off{background:var(--off);box-shadow:none}
+.led.pulse{animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 6px rgba(62,207,142,.04)}}
+
+main{min-width:0;padding:0 16px calc(86px + env(safe-area-inset-bottom))}
+@media (min-width:1000px){main{padding:0 32px 48px}}
+.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:18px 0 16px;border-bottom:1px solid var(--line);margin-bottom:20px}
+.top .mob-brand{display:flex}
+@media (min-width:1000px){.top .mob-brand{display:none}}
+.top .title{display:none}
+@media (min-width:1000px){.top .title{display:block}}
+.top h1{font-size:1.5rem;font-weight:900;font-variation-settings:"wdth" 114}
+.top .sub{font-family:var(--mono);font-size:.74rem;color:var(--text-3);margin-top:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:6px;padding:10px 14px;font-weight:700;font-size:.88rem;cursor:pointer;text-decoration:none;transition:background .15s}
+.btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.btn-primary{background:var(--caramel);color:var(--caramel-ink)}
+.btn-primary:hover{background:var(--caramel-2)}
+.btn-quiet{background:var(--panel-2);color:var(--text);box-shadow:inset 0 0 0 1px var(--line-2)}
+.btn-quiet:hover{background:var(--panel-3)}
+.btn-sm{padding:7px 11px;font-size:.8rem}
+
+.view{display:none;gap:20px}
+.view.active{display:grid}
+.view-head{display:grid;gap:4px}
+.view-head h2{font-size:1.35rem;font-weight:900;font-variation-settings:"wdth" 112}
+@media (min-width:1000px){.view-head.mob,.mobonly{display:none}}
+.view-head p{color:var(--text-2);font-size:.9rem;max-width:70ch}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;min-width:0}
+.card-h{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.card-h h3{font-size:.98rem;font-weight:800;font-variation-settings:"wdth" 106}
+.card-b{padding:16px}
+.grid2{display:grid;gap:20px}
+@media (min-width:1100px){.grid2{grid-template-columns:1.15fr .85fr}}
+
+/* ---------- KPIs ---------- */
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (min-width:760px){.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 14px 12px;display:grid;gap:4px}
+.kpi .v{font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 112;font-size:clamp(1.45rem,1.1rem + 1.4vw,2rem);line-height:1.05;font-variant-numeric:tabular-nums}
+.kpi .d{font-family:var(--mono);font-size:.7rem;color:var(--text-3)}
+.kpi .d b{color:var(--run);font-weight:600}
+.kpi.accent .v{color:var(--caramel)}
+
+/* ---------- precisa de você ---------- */
+.todo{display:grid}
+.todo button{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:12px 16px;cursor:pointer}
+.todo button:last-child{border-bottom:0}
+.todo button:hover{background:var(--panel-2)}
+.todo b{font-weight:700;font-size:.92rem;display:block}
+.todo span.s{font-size:.8rem;color:var(--text-2)}
+.todo .go{font-family:var(--mono);font-size:.72rem;color:var(--caramel)}
+
+/* ---------- funil ---------- */
+.funnel{display:grid;gap:10px}
+.fstep{display:grid;grid-template-columns:minmax(110px,150px) 1fr auto;gap:12px;align-items:center}
+.fstep .l{font-size:.84rem;color:var(--text-2)}
+.fbar{height:26px;background:var(--panel-2);border-radius:4px;overflow:hidden;position:relative}
+.fbar i{position:absolute;inset:0 auto 0 0;background:linear-gradient(90deg,var(--series),#A99DFF);border-radius:4px}
+.fstep.money .fbar i{background:linear-gradient(90deg,var(--caramel),var(--caramel-2))}
+.fstep .n{font-family:var(--mono);font-size:.86rem;font-weight:600;min-width:44px;text-align:right}
+.fstep .r{grid-column:2/4;font-family:var(--mono);font-size:.66rem;color:var(--text-3);margin-top:-6px}
+
+/* ---------- chart ---------- */
+.chart{width:100%;height:auto;display:block}
+.chart .grid{stroke:var(--line);stroke-width:1}
+.chart .axis{font-family:var(--mono);font-size:10px;fill:var(--text-3)}
+.chart .val{font-family:var(--mono);font-size:10px;fill:var(--text)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-family:var(--mono);font-size:.7rem;color:var(--text-2)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+
+/* ---------- origem ---------- */
+.src{display:grid}
+.srow{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:11px 16px;border-bottom:1px solid var(--line)}
+.srow:last-child{border-bottom:0}
+.srow .t{font-size:.88rem;font-weight:600;min-width:0}
+.srow .t small{display:block;font-family:var(--mono);font-weight:400;font-size:.66rem;color:var(--text-3);letter-spacing:.06em;text-transform:uppercase}
+.srow .nums{font-family:var(--mono);font-size:.8rem;text-align:right;white-space:nowrap}
+.srow .nums em{font-style:normal;color:var(--caramel)}
+.srow .bar{grid-column:1/-1;height:4px;background:var(--panel-2);border-radius:2px;overflow:hidden}
+.srow .bar i{display:block;height:100%;background:var(--series)}
+
+/* ---------- feed ---------- */
+.feed{display:grid;max-height:420px;overflow:auto}
+.ev{display:grid;grid-template-columns:28px 1fr auto;gap:10px;padding:10px 16px;border-bottom:1px solid var(--line);align-items:start}
+.ev:last-child{border-bottom:0}
+.ev .ic{width:28px;height:28px;border-radius:6px;display:grid;place-items:center;font-family:var(--mono);font-size:.62rem;font-weight:600}
+.ev .ic.lead{background:rgba(142,128,255,.15);color:var(--series)}
+.ev .ic.sale{background:rgba(233,162,59,.15);color:var(--caramel)}
+.ev .ic.bot{background:var(--run-bg);color:var(--run)}
+.ev .ic.alert{background:var(--wait-bg);color:var(--wait)}
+.ev p{font-size:.86rem;line-height:1.4}
+.ev p small{display:block;color:var(--text-3);font-size:.76rem}
+.ev time{font-family:var(--mono);font-size:.68rem;color:var(--text-3);white-space:nowrap}
+.ev.new{animation:flash 1.6s ease-out}
+@keyframes flash{from{background:rgba(233,162,59,.14)}to{background:transparent}}
+
+/* ---------- pills ---------- */
+.pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:20px;white-space:nowrap}
+.pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.pill.run{color:var(--run);background:var(--run-bg)}
+.pill.wait{color:var(--wait);background:var(--wait-bg)}
+.pill.done{color:var(--text-2);background:var(--panel-3)}
+.pill.draft{color:var(--text-3);background:transparent;box-shadow:inset 0 0 0 1px var(--line-2)}
+.pill.hot{color:var(--alarm);background:var(--alarm-bg)}
+.chip{display:inline-block;font-family:var(--mono);font-size:.64rem;padding:2px 7px;border-radius:4px;background:var(--panel-3);color:var(--text-2);white-space:nowrap}
+
+/* ---------- conteúdo ---------- */
+.pipe-card{display:grid;gap:14px}
+@media (min-width:760px){.pipe-card{grid-template-columns:1fr auto;align-items:center}}
+.pipe-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.pstep{display:grid;gap:6px}
+.pstep .bar{height:4px;border-radius:2px;background:var(--panel-3);overflow:hidden}
+.pstep .bar i{display:block;height:100%;width:0;background:var(--run);transition:width .5s}
+.pstep.done .bar i{width:100%}
+.pstep span{font-family:var(--mono);font-size:.64rem;color:var(--text-3);line-height:1.3}
+.pstep.done span{color:var(--text-2)}
+.queue{display:grid;gap:12px}
+@media (min-width:760px){.queue{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1300px){.queue{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.post{background:var(--panel);border:1px solid var(--line);border-radius:10px;display:grid;grid-template-columns:96px 1fr;overflow:hidden;min-width:0}
+.thumb{aspect-ratio:9/16;position:relative;display:flex;align-items:flex-end;padding:8px;background:linear-gradient(180deg,rgba(12,10,26,0) 30%,rgba(12,10,26,.9)),radial-gradient(120% 80% at 30% 20%,#3B2A9A,#1A1245 60%,#0F0C22)}
+.thumb.car{aspect-ratio:4/5;align-self:start;background:radial-gradient(120% 80% at 70% 10%,#7A4E12,#3A2410 55%,#1A1206)}
+.thumb.txt{aspect-ratio:auto;align-self:stretch;background:linear-gradient(160deg,#1F2A44,#121A2C)}
+.thumb b{font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 116;font-size:.72rem;line-height:1.1;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.thumb .k{position:absolute;top:8px;left:8px;font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75);background:rgba(0,0,0,.35);padding:1px 5px;border-radius:3px}
+.post .info{padding:12px 14px;display:grid;gap:8px;align-content:start;min-width:0}
+.post .when{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}
+.post .when span{font-family:var(--mono);font-size:.72rem;color:var(--text-2)}
+.post h4{margin:0;font-family:var(--display);font-weight:800;font-size:.95rem;line-height:1.25}
+.post .cap{font-size:.8rem;color:var(--text-2);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.post .nets{display:flex;gap:4px;flex-wrap:wrap}
+.post .kw{font-family:var(--mono);font-size:.7rem;color:var(--caramel)}
+.post .acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px}
+
+/* ---------- contatos ---------- */
+.filters{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px}
+.fbtn{border:0;background:var(--panel-2);color:var(--text-2);padding:7px 12px;border-radius:20px;font-size:.8rem;font-weight:600;cursor:pointer;white-space:nowrap;box-shadow:inset 0 0 0 1px var(--line)}
+.fbtn[aria-pressed="true"]{background:var(--text);color:var(--bg);box-shadow:none}
+.leads{display:grid}
+.lead{display:grid;grid-template-columns:38px 1fr auto;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);background:none;border-left:0;border-right:0;border-top:0;text-align:left;cursor:pointer;width:100%}
+.lead:hover{background:var(--panel-2)}
+.lead:last-child{border-bottom:0}
+.av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:.82rem;background:var(--panel-3);color:var(--text-2)}
+.lead .nm{font-weight:700;font-size:.92rem;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.lead .meta{font-size:.78rem;color:var(--text-2)}
+.lead .meta i{font-style:normal;color:var(--text-3)}
+.lead .right{display:grid;gap:4px;justify-items:end}
+.score{font-family:var(--mono);font-size:.7rem;color:var(--text-3)}
+.score b{color:var(--text)}
+.lead .stage{display:none}
+@media (min-width:760px){.lead{grid-template-columns:38px 1.3fr 1fr auto}.lead .stage{display:block;font-size:.8rem;color:var(--text-2)}}
+
+/* ---------- linhas (automações) ---------- */
+.lines{display:grid;gap:12px}
+.line{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.line.off{opacity:.62}
+.line-h{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:14px 16px}
+.line-h .code{font-family:var(--mono);font-size:.7rem;color:var(--text-3);border:1px solid var(--line-2);padding:4px 7px;border-radius:4px}
+.line-h h3{font-size:1rem;font-weight:800;font-variation-settings:"wdth" 106}
+.line-h p{font-size:.8rem;color:var(--text-2)}
+.switch{position:relative;width:46px;height:26px;border-radius:13px;background:var(--off);border:0;cursor:pointer;flex:none;transition:background .15s}
+.switch::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .15s}
+.switch[aria-checked="true"]{background:var(--run)}
+.switch[aria-checked="true"]::after{transform:translateX(20px)}
+.flow{display:flex;align-items:stretch;gap:0;overflow-x:auto;padding:0 16px 14px}
+.node{flex:none;min-width:150px;max-width:210px;background:var(--panel-2);border:1px solid var(--line-2);border-radius:8px;padding:10px 12px;display:grid;gap:4px;align-content:start}
+.node .tag{font-size:.58rem}
+.node b{font-size:.84rem;line-height:1.3}
+.node small{font-size:.74rem;color:var(--text-2);line-height:1.35}
+.node.trig{border-color:rgba(233,162,59,.5)}
+.node.trig .tag{color:var(--caramel)}
+.conn{flex:none;width:28px;align-self:center;height:2px;background:repeating-linear-gradient(90deg,var(--run) 0 5px,transparent 5px 9px);position:relative}
+.line.off .conn{background:repeating-linear-gradient(90deg,var(--off) 0 5px,transparent 5px 9px)}
+.conn::after{content:"";position:absolute;right:-1px;top:-4px;border-left:6px solid var(--run);border-top:5px solid transparent;border-bottom:5px solid transparent}
+.line.off .conn::after{border-left-color:var(--off)}
+.line-f{display:flex;gap:18px;flex-wrap:wrap;padding:10px 16px;border-top:1px solid var(--line);background:var(--bg)}
+.line-f span{font-family:var(--mono);font-size:.72rem;color:var(--text-2)}
+.line-f b{color:var(--text)}
+
+/* ---------- empresas ---------- */
+.kanban{display:grid;grid-template-columns:repeat(4,minmax(200px,1fr));gap:10px;overflow-x:auto;padding-bottom:4px}
+.col{background:var(--panel);border:1px solid var(--line);border-radius:10px;display:grid;align-content:start;gap:8px;padding:10px}
+.col-h{display:flex;justify-content:space-between;align-items:center;padding:2px 4px 6px}
+.col-h b{font-size:.84rem}
+.col-h span{font-family:var(--mono);font-size:.7rem;color:var(--text-3)}
+.deal{background:var(--panel-2);border:1px solid var(--line-2);border-radius:8px;padding:10px;display:grid;gap:4px}
+.deal b{font-size:.84rem;line-height:1.3}
+.deal small{font-size:.74rem;color:var(--text-2)}
+.deal .val{font-family:var(--mono);font-size:.76rem;color:var(--caramel)}
+.prospects{display:grid}
+.prosp{display:grid;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.prosp:last-child{border-bottom:0}
+.prosp .who{display:grid;grid-template-columns:38px 1fr auto;gap:12px;align-items:center}
+.prosp .why{font-family:var(--mono);font-size:.7rem;color:var(--run)}
+.prosp .draft{font-size:.84rem;color:var(--text-2);background:var(--bg);border:1px dashed var(--line-2);border-radius:6px;padding:10px 12px}
+.prosp .acts{display:flex;gap:6px;flex-wrap:wrap}
+.prosp.sent{opacity:.55}
+
+/* ---------- gaveta ---------- */
+.scrim{position:fixed;inset:0;background:rgba(5,4,12,.6);z-index:40;opacity:0;pointer-events:none;transition:opacity .2s}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;z-index:41;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--panel);border-left:1px solid var(--line);transform:translateX(100%);transition:transform .25s ease;display:flex;flex-direction:column}
+.drawer.open{transform:none}
+.drawer-h{display:flex;justify-content:space-between;align-items:start;gap:12px;padding:18px;border-bottom:1px solid var(--line)}
+.drawer-b{padding:18px;overflow:auto;display:grid;gap:18px;align-content:start}
+.x{background:var(--panel-2);border:0;width:34px;height:34px;border-radius:6px;cursor:pointer;font-size:1.1rem;flex:none}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font-size:.86rem}
+.kv dt{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);padding-top:2px}
+.kv dd{margin:0}
+.tl{display:grid;gap:0}
+.tl div{display:grid;grid-template-columns:16px 1fr;gap:10px;position:relative;padding-bottom:14px}
+.tl div::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--run);margin-top:5px;position:relative;z-index:1}
+.tl div.next::before{background:var(--panel);box-shadow:inset 0 0 0 2px var(--wait)}
+.tl div::after{content:"";position:absolute;left:4px;top:15px;bottom:0;width:2px;background:var(--line)}
+.tl div:last-child::after{display:none}
+.tl b{font-size:.84rem;display:block}
+.tl small{font-size:.78rem;color:var(--text-2)}
+.bubble{background:#1F3A2E;color:#DDF5E8;border-radius:10px 10px 10px 2px;padding:10px 12px;font-size:.84rem;line-height:1.45}
+
+/* ---------- modal upload ---------- */
+.modal{position:fixed;z-index:41;left:50%;top:50%;transform:translate(-50%,-46%);width:min(520px,calc(100% - 28px));background:var(--panel);border:1px solid var(--line-2);border-radius:12px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
+.modal.open{opacity:1;pointer-events:auto;transform:translate(-50%,-50%)}
+.modal-b{padding:20px;display:grid;gap:16px}
+.drop{border:2px dashed var(--line-2);border-radius:10px;padding:26px 16px;text-align:center;display:grid;gap:6px;justify-items:center}
+.drop b{font-family:var(--display);font-size:1.05rem}
+.drop small{color:var(--text-3);font-family:var(--mono);font-size:.72rem}
+.steps{display:grid;gap:10px}
+.step{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:center;font-size:.88rem;color:var(--text-3)}
+.step .dot{width:18px;height:18px;border-radius:50%;box-shadow:inset 0 0 0 2px var(--line-2)}
+.step.doing{color:var(--text)}
+.step.doing .dot{box-shadow:inset 0 0 0 2px var(--caramel);animation:spin 1s linear infinite;border-top:2px solid transparent}
+.step.done{color:var(--text-2)}
+.step.done .dot{background:var(--run);box-shadow:none}
+.step time{font-family:var(--mono);font-size:.7rem}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- tab bar mobile ---------- */
+.tabbar{position:fixed;z-index:30;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(5,1fr);background:var(--panel);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+@media (min-width:1000px){.tabbar{display:none}}
+.tabbar button{background:none;border:0;padding:9px 2px 8px;display:grid;justify-items:center;gap:3px;color:var(--text-3);font-size:.64rem;font-weight:600;cursor:pointer;position:relative}
+.tabbar svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tabbar button[aria-current="page"]{color:var(--caramel)}
+.tabbar .dotc{position:absolute;top:6px;left:calc(50% + 7px);width:7px;height:7px;border-radius:50%;background:var(--wait)}
+
+.toast{position:fixed;z-index:60;left:50%;bottom:calc(92px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:var(--text);color:var(--bg);font-weight:600;font-size:.86rem;padding:10px 16px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:calc(100% - 32px);text-align:center}
+@media (min-width:1000px){.toast{bottom:28px}}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.muted{color:var(--text-3)}
+</style>
+</head>
+<body>
+
+<div class="proto">Protótipo · nomes e números são de exemplo · <a href="index.html">ver o site</a></div>
+
+<div class="app">
+  <aside class="side">
+    <div class="brand"><b>OG</b><span>Central do Otávio<small>Supervisório de vendas</small></span></div>
+    <nav id="sidenav" aria-label="Seções"></nav>
+    <div class="sys">
+      <span class="tag">Status do sistema</span>
+      <div class="row"><span class="led pulse" id="sysled"></span><span id="systxt">6 de 6 linhas rodando</span></div>
+      <div class="row"><span class="led"></span>Instagram · WhatsApp · Hotmart</div>
+      <div class="row"><span class="led"></span>LinkedIn · TikTok · YouTube</div>
+    </div>
+  </aside>
+
+  <main>
+    <div class="top">
+      <div class="mob-brand brand"><b>OG</b><span>Central do Otávio<small>Semana 08–14 set</small></span></div>
+      <div class="title"><h1 id="vtitle">Painel</h1><div class="sub">Semana de 08 a 14 de setembro · atualizado agora</div></div>
+      <button class="btn btn-primary" type="button" data-open-upload><svg viewBox="0 0 24 24"><path d="M12 16V4M6 10l6-6 6 6M4 20h16"/></svg>Enviar gravação</button>
+    </div>
+
+    <!-- PAINEL -->
+    <section class="view active" id="v-painel" aria-label="Painel">
+      <div class="kpis">
+        <div class="kpi"><span class="tag">Contatos novos</span><span class="v">142</span><span class="d"><b>▲ 38%</b> vs. semana anterior</span></div>
+        <div class="kpi"><span class="tag">Guias vendidos</span><span class="v">11</span><span class="d">+ 4 kits · 2 PDIs</span></div>
+        <div class="kpi accent"><span class="tag">Receita bruta</span><span class="v">R$ 945,90</span><span class="d">guia R$ 383,90 · PDI R$ 494</span></div>
+        <div class="kpi"><span class="tag">Custo por contato</span><span class="v">R$ 1,23</span><span class="d">anúncio R$ 175 na semana</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><h3>Precisa de você</h3><span class="pill wait" id="todo-count">5 itens</span></div>
+        <div class="todo">
+          <button type="button" data-go="conteudo"><span class="led wait"></span><span><b>2 posts aguardando aprovação</b><span class="s">Carrossel de quarta e reel de quinta</span></span><span class="go">Revisar →</span></button>
+          <button type="button" data-go="empresas"><span class="led wait"></span><span><b>2 decisores de empresa fizeram o diagnóstico</b><span class="s">Gerente industrial e gerente de RH. Vale falar pessoalmente.</span></span><span class="go">Ver →</span></button>
+          <button type="button" data-go="empresas"><span class="led wait"></span><span><b>Lista do LinkedIn de hoje pronta</b><span class="s">5 pessoas com mensagem escrita. Leva uns 5 minutos.</span></span><span class="go">Abrir →</span></button>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <div class="card-h"><h3>Linha de vendas da semana</h3><span class="pill run">rodando</span></div>
+          <div class="card-b funnel" id="funnel"></div>
+        </div>
+        <div class="card">
+          <div class="card-h"><h3>Contatos por dia</h3><span class="tag">14 dias</span></div>
+          <div class="card-b"><svg class="chart" id="chart" viewBox="0 0 360 170" role="img" aria-label="Contatos por dia nos últimos 14 dias"></svg>
+            <div class="legend"><span><i style="background:var(--line-2)"></i>semana anterior · 71</span><span><i style="background:var(--series)"></i>esta semana · 142</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <div class="card-h"><h3>De onde vieram os contatos</h3><span class="tag">contatos · <span style="color:var(--caramel)">vendas</span></span></div>
+          <div class="src" id="sources"></div>
+        </div>
+        <div class="card">
+          <div class="card-h"><h3>Agora</h3><span class="pill run">ao vivo</span></div>
+          <div class="feed" id="feed" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTEÚDO -->
+    <section class="view" id="v-conteudo" aria-label="Conteúdo">
+      <div class="view-head mob"><h2>Conteúdo</h2></div>
+      <div class="card card-b pipe-card">
+        <div style="display:grid;gap:10px">
+          <div><h3 style="font-size:1rem">Fábrica de conteúdo</h3><p class="muted" style="font-size:.84rem">A gravação de domingo passa pelo Recorte e vira a semana inteira de posts. Você só aprova.</p></div>
+          <div class="pipe-steps" id="pipe-steps">
+            <div class="pstep done"><div class="bar"><i></i></div><span>Transcrição</span></div>
+            <div class="pstep done"><div class="bar"><i></i></div><span>9 cortes</span></div>
+            <div class="pstep done"><div class="bar"><i></i></div><span>Legendas</span></div>
+            <div class="pstep done"><div class="bar"><i></i></div><span>Textos</span></div>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="button" data-open-upload><svg viewBox="0 0 24 24"><path d="M12 16V4M6 10l6-6 6 6M4 20h16"/></svg>Enviar gravação da semana</button>
+      </div>
+      <div class="filters" id="qfilters"></div>
+      <div class="queue" id="queue"></div>
+    </section>
+
+    <!-- CONTATOS -->
+    <section class="view" id="v-contatos" aria-label="Contatos">
+      <div class="view-head mob"><h2>Contatos</h2></div>
+      <div class="filters" id="lfilters"></div>
+      <div class="card"><div class="leads" id="leads"></div></div>
+    </section>
+
+    <!-- LINHAS -->
+    <section class="view" id="v-linhas" aria-label="Automações">
+      <div class="view-head"><h2 class="mobonly">Linhas automáticas</h2><p>Cada linha roda sozinha, 24 horas por dia. Desligue uma para ver o que acontece.</p></div>
+      <div class="lines" id="lines"></div>
+    </section>
+
+    <!-- EMPRESAS -->
+    <section class="view" id="v-empresas" aria-label="Empresas">
+      <div class="view-head"><h2 class="mobonly">Empresas</h2><p>Aqui a máquina prepara e você fecha. O LinkedIn bane contas que usam robô, então cada mensagem sai com um toque seu.</p></div>
+      <div class="card">
+        <div class="card-h"><h3>Negociações de treinamento</h3><span class="tag">valores de exemplo</span></div>
+        <div class="card-b"><div class="kanban" id="kanban"></div></div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>Lista do LinkedIn de hoje</h3><span class="pill wait" id="pcount">5 para enviar</span></div>
+        <div class="prospects" id="prospects"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<nav class="tabbar" id="tabbar" aria-label="Seções"></nav>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Detalhes do contato" aria-hidden="true">
+  <div class="drawer-h"><div id="dh"></div><button class="x" type="button" data-close aria-label="Fechar">×</button></div>
+  <div class="drawer-b" id="db"></div>
+</aside>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Enviar gravação" aria-hidden="true">
+  <div class="drawer-h"><div><span class="tag">Fábrica de conteúdo</span><h3 style="font-size:1.1rem;margin-top:4px">Gravação da semana</h3></div><button class="x" type="button" data-close aria-label="Fechar">×</button></div>
+  <div class="modal-b" id="mb"></div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ============ ícones ============ */
+const I={
+  painel:'<svg viewBox="0 0 24 24"><path d="M4 13h6V4H4zM14 20h6v-9h-6zM4 20h6v-4H4zM14 4v4h6V4z"/></svg>',
+  conteudo:'<svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M10 9l5 3-5 3z"/></svg>',
+  contatos:'<svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5M16 4.5a3.5 3.5 0 010 7M18.5 14.8c1.6.8 2.7 2.6 3 5.2"/></svg>',
+  linhas:'<svg viewBox="0 0 24 24"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M7 6h10M6 8l5 8M18 8l-5 8"/></svg>',
+  empresas:'<svg viewBox="0 0 24 24"><path d="M3 21V10l6 3V10l6 3V6l6-3v18z"/><path d="M7 17h2M12 17h2M17 17h2"/></svg>'
+};
+const VIEWS=[
+  {id:'painel',label:'Painel',title:'Painel'},
+  {id:'conteudo',label:'Conteúdo',title:'Conteúdo da semana'},
+  {id:'contatos',label:'Contatos',title:'Contatos'},
+  {id:'linhas',label:'Linhas',title:'Linhas automáticas'},
+  {id:'empresas',label:'Empresas',title:'Empresas'}
+];
+
+/* ============ dados de exemplo ============ */
+const FUNNEL=[
+  {l:'Visitas no diagnóstico',n:412},
+  {l:'Diagnósticos concluídos',n:181},
+  {l:'Contatos com WhatsApp',n:142},
+  {l:'Compraram o guia',n:11,money:1},
+  {l:'Agendaram PDI',n:2,money:1}
+];
+const DAYS=['01','02','03','04','05','06','07','08','09','10','11','12','13','14'];
+const PER_DAY=[9,12,8,14,11,10,7,15,22,19,24,26,18,18];
+const SOURCES=[
+  {t:'A linha parou às 3h. Ninguém sabia.',k:'Reel · Instagram',c:48,v:3},
+  {t:'Diagnóstico em 2 minutos',k:'Anúncio · Meta',c:39,v:4},
+  {t:'O melhor operador vira o pior líder',k:'Reel · Instagram + TikTok',c:27,v:2},
+  {t:'Manual do Líder Industrial · cap. 3',k:'Carrossel · Instagram',c:14,v:1},
+  {t:'De PCM a coordenador',k:'Post · LinkedIn',c:9,v:1},
+  {t:'@manutencaoindustrial',k:'Afiliado · Hotmart',c:5,v:0}
+];
+let POSTS=[
+  {id:1,day:'Seg 15',time:'07:10',type:'reel',hook:'Não comece seu relatório com “foi feito”',cap:'Seu gestor não lê “foi feito”. Ele lê quanto valeu. Veja como eu reescrevo um relatório de turno em 30 segundos…',kw:'MODELO',nets:['Instagram','TikTok','Shorts'],st:'done'},
+  {id:2,day:'Ter 16',time:'12:10',type:'txt',hook:'A madrugada em que a bomba 3 parou',cap:'Eram 23h40 quando o selo começou a vazar. Resolvi em 50 minutos. Na segunda, ninguém sabia. Foi aí que eu entendi…',kw:'link no 1º comentário',nets:['LinkedIn'],st:'run'},
+  {id:3,day:'Qua 17',time:'18:30',type:'car',hook:'Manual cap. 4: delegar sem perder o controle',cap:'5 sinais de que você ainda é o centro de todas as soluções da sua área, e o que fazer com cada um.',kw:'LÍDER',nets:['Instagram','LinkedIn'],st:'wait'},
+  {id:4,day:'Qui 18',time:'18:30',type:'reel',hook:'Preventiva não aparece no relatório',cap:'Porque o problema não aconteceu. Aprenda a mostrar o que você evitou, em horas e em reais.',kw:'VISÍVEL',nets:['Instagram','TikTok','Shorts'],st:'wait'},
+  {id:5,day:'Sex 19',time:'12:00',type:'reel',hook:'2 perguntas na troca de turno',cap:'“O que ficou pendente e por quê?” e “O que quase deu problema?”. Metade dos seus problemas some.',kw:'salvar e enviar',nets:['Instagram','Shorts'],st:'run'},
+  {id:6,day:'Sáb 20',time:'09:00',type:'car',hook:'O e-mail de 3 linhas para a diretoria',cap:'Versão em PDF do carrossel de quarta, para o LinkedIn.',kw:'conversa (empresas)',nets:['LinkedIn'],st:'draft'}
+];
+const STLABEL={done:'Publicado',run:'Agendado',wait:'Aprovar',draft:'Rascunho'};
+const PROFILES={exec:'Executor Invisível',com:'Comunicador em Construção',quase:'Quase Estratégico'};
+let LEADS=[
+  {id:1,n:'Rafael Monteiro',c:'Técnico de manutenção',s:'Bebidas · Jundiaí, SP',p:'exec',o:'Reel “A linha parou às 3h”',st:'Comprou o guia',stc:'done',sc:82,t:'buyer',when:'há 12 min'},
+  {id:2,n:'Juliana Prado',c:'Gerente industrial',s:'Alimentos · Ribeirão Preto, SP',p:'quase',o:'Post LinkedIn “De PCM a coordenador”',st:'Falar pessoalmente',stc:'hot',sc:95,t:'hot',when:'há 34 min'},
+  {id:3,n:'Anderson Lima',c:'Líder de turno',s:'Papel e celulose · Mogi Guaçu, SP',p:'exec',o:'Anúncio “Diagnóstico em 2 min”',st:'Mensagem 3 de 5 · oferta',stc:'run',sc:74,t:'seq',when:'há 1 h'},
+  {id:4,n:'Patrícia Nunes',c:'Analista de PCM',s:'Sucroenergético · Piracicaba, SP',p:'com',o:'Reel “O melhor operador…”',st:'Mensagem 1 de 5 · resultado',stc:'run',sc:61,t:'seq',when:'há 1 h'},
+  {id:5,n:'Marcos Tavares',c:'Gerente de RH',s:'Metalúrgica · Sorocaba, SP',p:'com',o:'Anúncio “Diagnóstico em 2 min”',st:'Falar pessoalmente',stc:'hot',sc:91,t:'hot',when:'há 2 h'},
+  {id:6,n:'Bruno Saraiva',c:'Supervisor de produção',s:'Alimentos · Araras, SP',p:'quase',o:'Carrossel Manual cap. 3',st:'PDI agendado · qui 19h',stc:'done',sc:88,t:'buyer',when:'há 3 h'},
+  {id:7,n:'Camila Rocha',c:'Técnica de qualidade',s:'Farmacêutica · Campinas, SP',p:'exec',o:'Reel “A linha parou às 3h”',st:'Deixou o carrinho · lembrete enviado',stc:'wait',sc:70,t:'seq',when:'há 4 h'},
+  {id:8,n:'Diego Fernandes',c:'Operador de processo',s:'Química · Paulínia, SP',p:'exec',o:'Afiliado @manutencaoindustrial',st:'Mensagem 2 de 5 · história',stc:'run',sc:52,t:'seq',when:'há 5 h'},
+  {id:9,n:'Letícia Barros',c:'Coordenadora de logística',s:'Bebidas · Limeira, SP',p:'quase',o:'Post LinkedIn “De PCM a coordenador”',st:'Comprou guia + kit',stc:'done',sc:86,t:'buyer',when:'ontem'},
+  {id:10,n:'Thiago Mendes',c:'Eletricista industrial',s:'Autopeças · Indaiatuba, SP',p:'com',o:'Reel “O melhor operador…”',st:'Mensagem 4 de 5 · depoimento',stc:'run',sc:58,t:'seq',when:'ontem'}
+];
+const LFILTERS=[{id:'all',l:'Todos'},{id:'hot',l:'Decisores'},{id:'seq',l:'Em sequência'},{id:'buyer',l:'Clientes'}];
+const QFILTERS=[{id:'all',l:'Todos'},{id:'wait',l:'Aprovar'},{id:'run',l:'Agendados'},{id:'done',l:'Publicados'}];
+let LINES=[
+  {code:'L1',t:'Comentário → Direct',d:'Quem comenta a palavra-chave recebe o link na hora.',on:true,
+   nodes:[['gatilho','Comentário no post','VISÍVEL, LÍDER, MODELO ou HISTÓRIA'],['ação','Direct automático','“Aqui está o seu diagnóstico de 2 min 👇”'],['ação','Segue a conta?','Se não, pede para seguir antes do link']],
+   stats:[['214','disparos na semana'],['61%','clicaram no link']]},
+  {code:'L2',t:'Diagnóstico → sequência no WhatsApp',d:'Cinco mensagens em sete dias. Para quando a pessoa compra.',on:true,
+   nodes:[['gatilho','Diagnóstico concluído','com WhatsApp e consentimento'],['dia 0','Resultado completo','perfil + 3 erros + 1 ação'],['dia 1','História do Otávio','a madrugada da bomba 3'],['dia 3','Oferta do guia','R$ 34,90 com link'],['dia 5','Depoimento','quem aplicou e foi visto'],['dia 7','Última chamada','e convite para o PDI']],
+   stats:[['142','pessoas na sequência'],['31%','respondem'],['7,7%','compram']]},
+  {code:'L3',t:'Carrinho abandonado → lembrete',d:'Hotmart avisa quem parou no checkout.',on:true,
+   nodes:[['gatilho','Abandono no Hotmart','preencheu e não pagou'],['1 hora','WhatsApp','“Ficou alguma dúvida sobre o guia?”'],['24 horas','E-mail','com a garantia de 7 dias em destaque']],
+   stats:[['9','carrinhos na semana'],['3','recuperados']]},
+  {code:'L4',t:'Compra → boas-vindas e PDI',d:'Depois da compra, a próxima oferta chega sozinha.',on:true,
+   nodes:[['gatilho','Compra aprovada','guia ou guia + kit'],['na hora','Boas-vindas','como aproveitar os 14 dias'],['dia 3','Convite PDI','sessão 1:1 com o Otávio'],['dia 14','Pedido de depoimento','alimenta o site e os anúncios']],
+   stats:[['11','compras'],['2','PDIs agendados']]},
+  {code:'L5',t:'Decisor detectado → alerta',d:'Cargo de gerente, diretor ou RH vira oportunidade de empresa.',on:true,
+   nodes:[['gatilho','Diagnóstico ou comentário','cargo contém gerente, diretor, RH, T&D'],['ação','Tira da sequência','ninguém recebe mensagem de robô'],['alerta','Avisa o Otávio','com mensagem pessoal sugerida']],
+   stats:[['2','decisores na semana'],['1','conversa marcada']]},
+  {code:'L6',t:'Publicação automática',d:'Posts aprovados saem sozinhos no melhor horário de cada rede.',on:true,
+   nodes:[['gatilho','Post aprovado','na aba Conteúdo'],['ação','Instagram e TikTok','18h30, troca de turno'],['ação','LinkedIn','12h10, horário de almoço'],['ação','YouTube Shorts','mesmo corte, sem retrabalho']],
+   stats:[['6','posts na fila'],['4','redes']]}
+];
+const DEALS={
+  'Primeira conversa':[{b:'Metalúrgica · Sorocaba',s:'Marcos T., gerente de RH',v:'18 líderes'},{b:'Alimentos · Ribeirão Preto',s:'Juliana P., gerente industrial',v:'12 líderes'}],
+  'Proposta enviada':[{b:'Bebidas · Jundiaí',s:'Workshop presencial 4h',v:'R$ 4.800'},{b:'Embalagens · Americana',s:'Turma online 2×2h',v:'R$ 3.200'}],
+  'Negociando':[{b:'Sucroenergético · Piracicaba',s:'Programa 8 semanas',v:'R$ 14.500'}],
+  'Fechado':[{b:'Química · Paulínia',s:'Workshop presencial 4h',v:'R$ 4.800'}]
+};
+let PROSPECTS=[
+  {n:'Ricardo Almeida',c:'Gerente industrial · Alimentos, Marília',why:'Curtiu 3 posts seus esta semana',m:'Oi, Ricardo! Vi que você acompanhou os posts sobre liderança de turno. Sou coordenador industrial e formo líderes de turno há alguns anos. Faz sentido uma conversa de 20 minutos?'},
+  {n:'Fernanda Castro',c:'Gerente de RH · Bebidas, Jaguariúna',why:'Comentou no post “De PCM a coordenador”',m:'Fernanda, obrigado pelo comentário! Você comentou sobre a dificuldade de formar líderes vindos da operação. É exatamente o que eu trabalho. Posso te mandar como funciona o workshop?'},
+  {n:'Paulo Siqueira',c:'Diretor de operações · Papel, Mogi Guaçu',why:'Visitou seu perfil 2 vezes',m:'Paulo, tudo bem? Sou coordenador industrial e desenvolvo líderes na indústria. Queria te mostrar um diagnóstico rápido que tenho aplicado com líderes de turno. Topa?'},
+  {n:'Aline Moura',c:'Coordenadora de T&D · Autopeças, Indaiatuba',why:'Fez o diagnóstico: Comunicador em Construção',m:'Aline, vi que você fez o diagnóstico. Como você trabalha com T&D, imagino que o resultado se aplique à sua equipe de líderes também. Quer ver o formato para empresas?'},
+  {n:'Gustavo Reis',c:'Gerente de manutenção · Química, Cubatão',why:'Segue 2 pessoas que já compraram o guia',m:'Gustavo, sou coordenador industrial e escrevo sobre liderança no chão de fábrica. Acho que o conteúdo pode ser útil para os seus líderes de manutenção. Posso te enviar?'}
+];
+const FEED_START=[
+  {k:'sale',ic:'R$',t:'Rafael M. comprou o guia',s:'Técnico de manutenção · veio do reel “A linha parou às 3h”',w:'12 min'},
+  {k:'bot',ic:'L1',t:'Direct enviado para @eng.patricia',s:'Comentou VISÍVEL no reel de quinta',w:'18 min'},
+  {k:'alert',ic:'!',t:'Decisor detectado: Juliana P., gerente industrial',s:'Tirada da sequência automática. Falar pessoalmente.',w:'34 min'},
+  {k:'lead',ic:'DG',t:'Anderson L. fez o diagnóstico',s:'Executor Invisível · líder de turno',w:'1 h'},
+  {k:'bot',ic:'L3',t:'Lembrete de carrinho enviado para Camila R.',s:'Parou no checkout há 1 hora',w:'4 h'},
+  {k:'sale',ic:'R$',t:'Bruno S. agendou PDI',s:'Quinta, 19h · R$ 247',w:'3 h'}
+];
+const FEED_LIVE=[
+  {k:'lead',ic:'DG',t:'Vanessa T. fez o diagnóstico',s:'Comunicador em Construção · analista de qualidade'},
+  {k:'bot',ic:'L1',t:'Direct enviado para @lider.turnoB',s:'Comentou LÍDER no carrossel'},
+  {k:'bot',ic:'L2',t:'Mensagem 3 enviada para Anderson L.',s:'Oferta do guia · WhatsApp'},
+  {k:'sale',ic:'R$',t:'Carlos A. comprou guia + kit',s:'R$ 51,90 · veio do anúncio'},
+  {k:'lead',ic:'DG',t:'Eduardo P. fez o diagnóstico',s:'Executor Invisível · técnico de manutenção'}
+];
+
+/* ============ util ============ */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const initials=n=>n.split(' ').map(p=>p[0]).slice(0,2).join('');
+let toastT;
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2400)}
+
+/* ============ navegação ============ */
+function navHTML(cls){
+  return VIEWS.map(v=>{
+    const badge = v.id==='conteudo'?pendingPosts():v.id==='empresas'?PROSPECTS.filter(p=>!p.sent).length:0;
+    if(cls==='tab') return `<button type="button" data-view="${v.id}">${I[v.id]}${v.label}${badge?'<span class="dotc"></span>':''}</button>`;
+    return `<button class="navbtn" type="button" data-view="${v.id}">${I[v.id]}${v.label}${badge?`<span class="count">${badge}</span>`:''}</button>`;
+  }).join('');
+}
+function pendingPosts(){return POSTS.filter(p=>p.st==='wait').length}
+function renderNav(){
+  $('#sidenav').innerHTML=navHTML('side');
+  $('#tabbar').innerHTML=navHTML('tab');
+  markNav();
+}
+let current='painel';
+function markNav(){document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-current',b.dataset.view===current?'page':'false'))}
+function go(id){
+  current=id;
+  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='v-'+id));
+  $('#vtitle').textContent=VIEWS.find(v=>v.id===id).title;
+  markNav();
+  try{history.replaceState(null,'','#'+id)}catch(e){}
+  window.scrollTo(0,0);
+}
+document.addEventListener('click',e=>{
+  const v=e.target.closest('[data-view]'); if(v){go(v.dataset.view);return}
+  const g=e.target.closest('[data-go]'); if(g){go(g.dataset.go);return}
+  if(e.target.closest('[data-open-upload]')){openUpload();return}
+  if(e.target.closest('[data-close]')||e.target===$('#scrim')){closeAll();return}
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
+
+/* ============ painel ============ */
+function renderFunnel(){
+  const max=FUNNEL[0].n;
+  $('#funnel').innerHTML=FUNNEL.map((f,i)=>{
+    const w=Math.max(f.n/max*100,1.5);
+    const rate=i?`${(f.n/FUNNEL[i-1].n*100).toFixed(f.n/FUNNEL[i-1].n<.1?1:0).replace('.',',')}% da etapa anterior`:'';
+    return `<div class="fstep${f.money?' money':''}"><span class="l">${f.l}</span><div class="fbar"><i style="width:${w}%"></i></div><span class="n">${f.n}</span>${rate?`<span class="r">${rate}</span>`:''}</div>`;
+  }).join('');
+}
+function renderChart(){
+  const W=360,H=170,L=26,R=6,T=16,B=22,max=30;
+  const bw=(W-L-R)/PER_DAY.length;
+  const y=v=>T+(H-T-B)*(1-v/max);
+  let s='';
+  [0,10,20,30].forEach(v=>{s+=`<line class="grid" x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}"/><text class="axis" x="${L-6}" y="${y(v)+3}" text-anchor="end">${v}</text>`});
+  PER_DAY.forEach((v,i)=>{
+    const x=L+i*bw+2.5, w=bw-5, cur=i>=7;
+    s+=`<rect x="${x}" y="${y(v)}" width="${w}" height="${y(0)-y(v)}" rx="2" fill="${cur?'var(--series)':'var(--line-2)'}"><title>${DAYS[i]}/09: ${v} contatos</title></rect>`;
+    if(i%2===1||i===13) s+=`<text class="axis" x="${x+w/2}" y="${H-6}" text-anchor="middle">${DAYS[i]}</text>`;
+  });
+  const peak=PER_DAY.indexOf(Math.max(...PER_DAY));
+  s+=`<text class="val" x="${L+peak*bw+bw/2}" y="${y(PER_DAY[peak])-5}" text-anchor="middle">${PER_DAY[peak]}</text>`;
+  $('#chart').innerHTML=s;
+}
+function renderSources(){
+  const max=SOURCES[0].c;
+  $('#sources').innerHTML=SOURCES.map(r=>`<div class="srow"><span class="t">${esc(r.t)}<small>${r.k}</small></span><span class="nums">${r.c} · <em>${r.v}</em></span><span class="bar"><i style="width:${r.c/max*100}%"></i></span></div>`).join('');
+}
+function evHTML(e,isNew){return `<div class="ev${isNew?' new':''}"><span class="ic ${e.k}">${e.ic}</span><p>${esc(e.t)}<small>${esc(e.s)}</small></p><time>${e.w}</time></div>`}
+function renderFeed(){$('#feed').innerHTML=FEED_START.map(e=>evHTML(e)).join('')}
+let liveI=0;
+function liveTick(){
+  if(liveI>=FEED_LIVE.length) return;
+  const e=Object.assign({w:'agora'},FEED_LIVE[liveI++]);
+  document.querySelectorAll('#feed time').forEach(t=>{if(t.textContent==='agora')t.textContent='1 min'});
+  $('#feed').insertAdjacentHTML('afterbegin',evHTML(e,true));
+  setTimeout(liveTick,9000);
+}
+
+/* ============ conteúdo ============ */
+let qf='all';
+function renderQFilters(){$('#qfilters').innerHTML=QFILTERS.map(f=>`<button class="fbtn" type="button" data-qf="${f.id}" aria-pressed="${qf===f.id}">${f.l}${f.id==='wait'&&pendingPosts()?` · ${pendingPosts()}`:''}</button>`).join('')}
+function thumbClass(t){return t==='car'?'thumb car':t==='txt'?'thumb txt':'thumb'}
+function thumbKind(t){return t==='car'?'Carrossel':t==='txt'?'Texto':'Reel'}
+function renderQueue(){
+  const list=POSTS.filter(p=>qf==='all'||p.st===qf);
+  $('#queue').innerHTML=list.map(p=>`
+    <article class="post">
+      <div class="${thumbClass(p.type)}"><span class="k">${thumbKind(p.type)}</span><b>${esc(p.hook)}</b></div>
+      <div class="info">
+        <div class="when"><span>${p.day} · ${p.time}</span><span class="pill ${p.st}">${STLABEL[p.st]}</span></div>
+        <h4>${esc(p.hook)}</h4>
+        <p class="cap">${esc(p.cap)}</p>
+        <div class="nets">${p.nets.map(n=>`<span class="chip">${n}</span>`).join('')}</div>
+        <span class="kw">Palavra-chave: ${esc(p.kw)}</span>
+        ${p.st==='wait'||p.st==='draft'?`<div class="acts"><button class="btn btn-primary btn-sm" type="button" data-approve="${p.id}">Aprovar e agendar</button><button class="btn btn-quiet btn-sm" type="button" data-edit="${p.id}">Editar</button></div>`:''}
+      </div>
+    </article>`).join('')||'<p class="muted">Nada aqui.</p>';
+}
+document.addEventListener('click',e=>{
+  const f=e.target.closest('[data-qf]'); if(f){qf=f.dataset.qf;renderQFilters();renderQueue();return}
+  const a=e.target.closest('[data-approve]');
+  if(a){const p=POSTS.find(x=>x.id==a.dataset.approve);p.st='run';renderQFilters();renderQueue();renderNav();updateTodo();toast(`Agendado para ${p.day.toLowerCase()}, ${p.time}, em ${p.nets.length} ${p.nets.length>1?'redes':'rede'}`);return}
+  const ed=e.target.closest('[data-edit]'); if(ed){toast('Na versão real, abre o editor de legenda e corte');return}
+});
+
+/* ============ contatos ============ */
+let lf='all';
+function renderLFilters(){$('#lfilters').innerHTML=LFILTERS.map(f=>`<button class="fbtn" type="button" data-lf="${f.id}" aria-pressed="${lf===f.id}">${f.l} · ${f.id==='all'?LEADS.length:LEADS.filter(l=>l.t===f.id).length}</button>`).join('')}
+function renderLeads(){
+  const list=LEADS.filter(l=>lf==='all'||l.t===lf);
+  $('#leads').innerHTML=list.map(l=>`
+    <button class="lead" type="button" data-lead="${l.id}">
+      <span class="av" ${l.t==='hot'?'style="background:var(--alarm-bg);color:var(--alarm)"':l.t==='buyer'?'style="background:rgba(233,162,59,.15);color:var(--caramel)"':''}>${initials(l.n)}</span>
+      <span><span class="nm">${esc(l.n)}</span><span class="meta">${esc(l.c)} <i>· ${esc(l.s)}</i></span></span>
+      <span class="stage">${PROFILES[l.p]}<br><span class="muted" style="font-size:.74rem">${esc(l.o)}</span></span>
+      <span class="right"><span class="pill ${l.stc}">${esc(l.st.split(' · ')[0])}</span><span class="score">nota <b>${l.sc}</b></span></span>
+    </button>`).join('');
+}
+function openLead(id){
+  const l=LEADS.find(x=>x.id==id);
+  $('#dh').innerHTML=`<div style="display:flex;gap:12px;align-items:center"><span class="av">${initials(l.n)}</span><div><h3 style="font-size:1.1rem">${esc(l.n)}</h3><span class="muted" style="font-size:.84rem">${esc(l.c)} · ${esc(l.s)}</span></div></div>`;
+  const steps = l.t==='hot'
+    ? [['Diagnóstico concluído',l.when],['Linha L5 detectou cargo de decisão','tirado da sequência automática'],['Falar pessoalmente','mensagem sugerida abaixo',1]]
+    : l.t==='buyer'
+    ? [['Diagnóstico concluído','há 6 dias'],['Mensagens 1 a 3 no WhatsApp','resultado, história, oferta'],['Compra aprovada no Hotmart',l.when],['Convite para o PDI','dia 3 após a compra',1]]
+    : [['Diagnóstico concluído',l.when],['Mensagem 1 · resultado completo','entregue e lida'],['Próxima mensagem',l.st,1]];
+  const msg = l.t==='hot'
+    ? `Oi, ${l.n.split(' ')[0]}! Vi que você fez o diagnóstico. Como você é ${l.c.toLowerCase()}, imagino que o tema também valha para os seus líderes. Posso te mostrar como funciona o trabalho com equipes?`
+    : `${l.n.split(' ')[0]}, seu resultado: ${PROFILES[l.p]}. Seu trabalho existe, mas não chega até quem decide. Amanhã te conto a madrugada em que isso aconteceu comigo.`;
+  $('#db').innerHTML=`
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="pill ${l.stc}">${esc(l.st)}</span><span class="chip">nota ${l.sc}</span></div>
+    <dl class="kv"><dt>Perfil</dt><dd>${PROFILES[l.p]}</dd><dt>Origem</dt><dd>${esc(l.o)}</dd><dt>Setor</dt><dd>${esc(l.s)}</dd><dt>Consentimento</dt><dd>WhatsApp autorizado no diagnóstico</dd></dl>
+    <div><span class="tag">Linha do tempo</span><div class="tl" style="margin-top:10px">${steps.map(s=>`<div class="${s[2]?'next':''}"><span><b>${esc(s[0])}</b><small>${esc(s[1])}</small></span></div>`).join('')}</div></div>
+    <div style="display:grid;gap:8px"><span class="tag">${l.t==='hot'?'Mensagem sugerida para você enviar':'Última mensagem automática'}</span><div class="bubble">${esc(msg)}</div></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">${l.t==='hot'?'<button class="btn btn-primary" type="button" data-copy>Copiar e abrir WhatsApp</button>':'<button class="btn btn-quiet" type="button" data-pause>Pausar sequência</button>'}</div>`;
+  $('#db').dataset.msg=msg;
+  $('#drawer').classList.add('open');$('#drawer').setAttribute('aria-hidden','false');$('#scrim').classList.add('open');
+}
+document.addEventListener('click',e=>{
+  const f=e.target.closest('[data-lf]'); if(f){lf=f.dataset.lf;renderLFilters();renderLeads();return}
+  const l=e.target.closest('[data-lead]'); if(l){openLead(l.dataset.lead);return}
+  if(e.target.closest('[data-copy]')){copy($('#db').dataset.msg);toast('Mensagem copiada. Na versão real, abre o WhatsApp do contato.');return}
+  if(e.target.closest('[data-pause]')){toast('Sequência pausada para este contato');return}
+});
+
+/* ============ linhas ============ */
+function renderLines(){
+  $('#lines').innerHTML=LINES.map((l,i)=>`
+    <article class="line${l.on?'':' off'}">
+      <div class="line-h"><span class="code">${l.code}</span><div><h3>${l.t}</h3><p>${l.d}</p></div><button class="switch" type="button" role="switch" aria-checked="${l.on}" aria-label="Ligar ou desligar ${l.t}" data-line="${i}"></button></div>
+      <div class="flow">${l.nodes.map((n,j)=>`${j?'<span class="conn"></span>':''}<div class="node${j===0?' trig':''}"><span class="tag">${n[0]}</span><b>${n[1]}</b><small>${n[2]}</small></div>`).join('')}</div>
+      <div class="line-f"><span><span class="led ${l.on?'':'off'}" style="display:inline-block;margin-right:6px"></span>${l.on?'rodando':'parada'}</span>${l.stats.map(s=>`<span><b>${s[0]}</b> ${s[1]}</span>`).join('')}</div>
+    </article>`).join('');
+  const on=LINES.filter(l=>l.on).length;
+  $('#systxt').textContent=`${on} de ${LINES.length} linhas rodando`;
+  $('#sysled').className='led pulse'+(on<LINES.length?' wait':'');
+}
+document.addEventListener('click',e=>{
+  const s=e.target.closest('[data-line]'); if(!s) return;
+  const l=LINES[s.dataset.line]; l.on=!l.on; renderLines();
+  toast(l.on?`${l.code} ligada: volta a rodar sozinha`:`${l.code} parada: ${l.code==='L2'?'142 contatos deixam de receber mensagens':'nada acontece até você ligar de novo'}`);
+});
+
+/* ============ empresas ============ */
+function renderKanban(){
+  $('#kanban').innerHTML=Object.entries(DEALS).map(([k,v])=>`<div class="col"><div class="col-h"><b>${k}</b><span>${v.length}</span></div>${v.map(d=>`<div class="deal"><b>${d.b}</b><small>${d.s}</small><span class="val">${d.v}</span></div>`).join('')}</div>`).join('');
+}
+function renderProspects(){
+  $('#prospects').innerHTML=PROSPECTS.map((p,i)=>`
+    <div class="prosp${p.sent?' sent':''}">
+      <div class="who"><span class="av">${initials(p.n)}</span><span><b style="font-size:.92rem">${esc(p.n)}</b><br><span class="muted" style="font-size:.8rem">${esc(p.c)}</span></span>${p.sent?'<span class="pill done">enviada</span>':''}</div>
+      <span class="why">↳ ${esc(p.why)}</span>
+      <div class="draft">${esc(p.m)}</div>
+      ${p.sent?'':`<div class="acts"><button class="btn btn-primary btn-sm" type="button" data-send="${i}">Copiar e abrir LinkedIn</button><button class="btn btn-quiet btn-sm" type="button" data-skip="${i}">Pular</button></div>`}
+    </div>`).join('');
+  const left=PROSPECTS.filter(p=>!p.sent).length;
+  $('#pcount').textContent=left?`${left} para enviar`:'lista concluída';
+  $('#pcount').className='pill '+(left?'wait':'run');
+}
+document.addEventListener('click',e=>{
+  const s=e.target.closest('[data-send]');
+  if(s){const p=PROSPECTS[s.dataset.send];copy(p.m);p.sent=true;renderProspects();renderNav();updateTodo();toast('Mensagem copiada. Na versão real, abre o perfil no LinkedIn.');return}
+  const k=e.target.closest('[data-skip]');
+  if(k){PROSPECTS[k.dataset.skip].sent=true;renderProspects();renderNav();updateTodo();toast('Pulado. Amanhã entra outra pessoa na lista.');}
+});
+
+/* ============ upload simulado ============ */
+function openUpload(){
+  $('#mb').innerHTML=`
+    <div class="drop"><b>gravacao-domingo-14-09.mp4</b><small>32 min · 1080p · 2,1 GB · exemplo</small></div>
+    <div class="steps" id="usteps">
+      ${['Transcrevendo 32 min de fala','Achando os melhores momentos','Cortando em 9:16 e legendando','Escrevendo legendas, carrossel e LinkedIn'].map(s=>`<div class="step"><span class="dot"></span><span>${s}</span><time></time></div>`).join('')}
+    </div>
+    <button class="btn btn-primary" type="button" id="ustart">Processar gravação</button>`;
+  $('#modal').classList.add('open');$('#modal').setAttribute('aria-hidden','false');$('#scrim').classList.add('open');
+  $('#ustart').addEventListener('click',runUpload,{once:true});
+}
+function runUpload(){
+  const btn=$('#ustart');btn.disabled=true;btn.textContent='Processando…';
+  const steps=[...document.querySelectorAll('#usteps .step')];
+  const res=['concluído','9 cortes','9 vídeos','14 textos'];
+  let i=0;
+  (function next(){
+    if(i>0){steps[i-1].className='step done';steps[i-1].querySelector('time').textContent=res[i-1]}
+    if(i<steps.length){steps[i].className='step doing';i++;setTimeout(next,1100);return}
+    const hooks=['Seu gestor não estava lá às 3 da manhã','O que perguntar na troca de turno','Feedback sem “preciso te falar uma coisa”'];
+    let id=100;
+    hooks.forEach((h,j)=>POSTS.push({id:id+j,day:['Seg 22','Ter 23','Qua 24'][j],time:['18:30','12:10','18:30'][j],type:j===1?'car':'reel',hook:h,cap:'Legenda escrita a partir da gravação de domingo. Revise e aprove.',kw:['VISÍVEL','LÍDER','MODELO'][j],nets:j===1?['Instagram','LinkedIn']:['Instagram','TikTok','Shorts'],st:'wait'}));
+    btn.textContent='Ver na fila de aprovação';btn.disabled=false;
+    btn.addEventListener('click',()=>{closeAll();qf='wait';renderQFilters();renderQueue();go('conteudo')},{once:true});
+    renderNav();renderQFilters();renderQueue();updateTodo();
+    toast('9 reels, 2 carrosséis e 3 posts de LinkedIn prontos para aprovar');
+  })();
+}
+
+/* ============ geral ============ */
+function closeAll(){
+  ['#drawer','#modal'].forEach(s=>{$(s).classList.remove('open');$(s).setAttribute('aria-hidden','true')});
+  $('#scrim').classList.remove('open');
+}
+function copy(t){try{navigator.clipboard.writeText(t)}catch(e){}}
+function updateTodo(){
+  const items=document.querySelectorAll('.todo button');
+  items[0].querySelector('b').textContent=pendingPosts()?`${pendingPosts()} posts aguardando aprovação`:'Nenhum post para aprovar';
+  items[0].querySelector('.led').className='led'+(pendingPosts()?' wait':'');
+  const left=PROSPECTS.filter(p=>!p.sent).length;
+  items[2].querySelector('b').textContent=left?`Lista do LinkedIn de hoje: ${left} pessoas`:'Lista do LinkedIn concluída';
+  items[2].querySelector('.led').className='led'+(left?' wait':'');
+  const total=(pendingPosts()?1:0)+1+(left?1:0);
+  $('#todo-count').textContent=`${total} ${total>1?'itens':'item'}`;
+}
+renderNav();renderFunnel();renderChart();renderSources();renderFeed();
+renderQFilters();renderQueue();renderLFilters();renderLeads();renderLines();renderKanban();renderProspects();updateTodo();
+const start=(location.hash||'').slice(1); if(VIEWS.some(v=>v.id===start)) go(start);
+setTimeout(liveTick,6000);
+</script>
+</body>
+</html>
