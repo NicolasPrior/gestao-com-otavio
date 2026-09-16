@@ -43,8 +43,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
-@media (min-width:900px){body{padding-bottom:0}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
 img{max-width:100%;display:block}
 a{color:inherit}
 h1,h2,h3{font-family:var(--display);line-height:1.06;margin:0;text-wrap:balance}
@@ -97,11 +96,11 @@ section[id]{scroll-margin-top:12px}
 @keyframes flow{to{stroke-dashoffset:-48}}
 .hero-grid{position:relative;display:grid;gap:40px;padding-top:34px}
 @media (min-width:900px){.hero-grid{grid-template-columns:1.1fr .9fr;gap:56px;align-items:end;padding-top:64px}}
-.hero-copy{display:grid;gap:22px;padding-bottom:8px}
+.hero-copy{display:grid;gap:26px;padding-bottom:8px}
 @media (min-width:900px){.hero-copy{padding-bottom:84px}}
 .hero .kicker{display:flex;align-items:center;gap:10px;color:var(--indigo)}
 .hero .kicker::before{content:"";width:26px;height:2px;background:var(--caramel);border-radius:2px}
-.hero h1{font-size:clamp(2.6rem,1.4rem + 5.2vw,5.4rem);font-weight:900;font-variation-settings:"wdth" 118;letter-spacing:-.03em;line-height:.98}
+.hero h1{font-size:clamp(2.4rem,1.5rem + 3.4vw,4.3rem);font-weight:900;font-variation-settings:"wdth" 118;letter-spacing:-.03em;line-height:.98}
 .hero h1 em{font-family:var(--serif);font-style:italic;font-weight:400;font-variation-settings:normal;color:var(--indigo);letter-spacing:-.01em}
 .hero .intro{font-size:1.12rem;color:var(--on-dark-2);max-width:48ch}
 .hero .intro b{color:var(--on-dark);font-weight:600}
@@ -139,13 +138,13 @@ section[id]{scroll-margin-top:12px}
 
 /* ---------- seções base ---------- */
 .band{padding:76px 0}
-@media (min-width:900px){.band{padding:104px 0}}
+@media (min-width:900px){.band{padding:124px 0}}
 .band.white{background:var(--sheet)}
 .band.dark{background:var(--sheet);color:var(--ink)}
 .band.deep{background:var(--deep);color:var(--on-deep);--on-dark:var(--on-deep);--on-dark-2:var(--on-deep-2);--on-dark-3:#7C8DA8;--rule-dark:rgba(233,239,249,.16)}
 .band.deep .lead{color:var(--on-deep-2)}
 .band.dark .lead{color:var(--on-dark-2)}
-.head{display:grid;gap:16px;margin-bottom:40px;max-width:760px}
+.head{display:grid;gap:18px;margin-bottom:52px;max-width:720px}
 .head .tag{color:var(--indigo)}
 .band.dark .head .tag{color:var(--indigo)}
 .band.deep .head .tag{color:var(--caramel)}
@@ -236,7 +235,7 @@ section[id]{scroll-margin-top:12px}
 .pubs span{font-family:var(--mono);font-size:.7rem;color:var(--ink-3)}
 
 /* ---------- projetos ---------- */
-.projects{display:grid;gap:16px}
+.projects{display:grid;gap:20px}
 @media (min-width:700px){.projects{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (min-width:1080px){.projects{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .proj{background:var(--sheet);border:1px solid var(--line);padding:22px 22px 20px;display:grid;grid-template-rows:auto auto auto 1fr;gap:10px}
@@ -258,7 +257,7 @@ section[id]{scroll-margin-top:12px}
 .pr p{color:var(--on-deep-2);font-size:.96rem;max-width:54ch}
 
 /* ---------- além da fábrica ---------- */
-.side-work{display:grid;gap:16px}
+.side-work{display:grid;gap:20px}
 @media (min-width:760px){.side-work{grid-template-columns:1fr 1fr}}
 .work{background:var(--sheet);border:1px solid var(--line);padding:24px 22px;display:grid;grid-template-rows:auto auto 1fr auto;gap:12px}
 .work .kind{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
@@ -307,14 +306,9 @@ section[id]{scroll-margin-top:12px}
 .foot a{color:var(--on-deep-2);text-decoration:none}
 .foot a:hover{color:#FFC24D}
 
-.stick{position:fixed;z-index:20;left:0;right:0;bottom:0;background:var(--deep);color:var(--on-deep);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid rgba(255,176,32,.35)}
-.stick b{font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 110;font-size:.98rem;line-height:1.2;display:block;color:var(--on-deep)}
-.stick span{font-family:var(--mono);font-size:.66rem;color:#8FA2BC}
-.stick .btn{padding:12px 16px;font-size:.92rem;white-space:nowrap}
-@media (min-width:900px){.stick{display:none}}
 
 /* ---------- revelação por rolagem ---------- */
-html.js .rv{opacity:0;transform:translateY(16px);transition:opacity .55s cubic-bezier(.2,.7,.3,1) var(--d,0ms),transform .55s cubic-bezier(.2,.7,.3,1) var(--d,0ms)}
+html.js .rv{opacity:0;transform:translateY(7px);transition:opacity .5s ease-out var(--d,0ms),transform .5s cubic-bezier(.2,.7,.3,1) var(--d,0ms)}
 html.js .rv.in{opacity:1;transform:none}
 html.js .rv.now{transition:none}
 @media (prefers-reduced-motion:reduce){html.js .rv{opacity:1;transform:none;transition:none}}
@@ -322,8 +316,8 @@ html.js .rv.now{transition:none}
 /* varredura de medição nos títulos */
 html.js .sec-title{position:relative;clip-path:inset(-14% -3% -24% -3%)}
 html.js .sec-title.rv::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transform:translateX(-115%);
-  background:linear-gradient(90deg,transparent 0%,rgba(255,176,32,.5) 42%,rgba(46,107,230,.28) 62%,transparent 100%)}
-html.js .sec-title.rv.in::after{animation:scan 1.05s cubic-bezier(.3,.7,.2,1) .06s forwards}
+  background:linear-gradient(90deg,transparent 0%,rgba(255,176,32,.3) 45%,transparent 100%)}
+html.js .sec-title.rv.in::after{animation:scan .85s cubic-bezier(.3,.7,.2,1) .04s forwards}
 @keyframes scan{0%{transform:translateX(-115%);opacity:.95}100%{transform:translateX(115%);opacity:0}}
 @media (prefers-reduced-motion:reduce){html.js .sec-title.rv.in::after{animation:none}}
 
@@ -338,12 +332,13 @@ html.js .proj.in .num{background-size:100% 3px}
 /* linha de processo lateral */
 .pgrail{position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:15;display:none;width:20px;height:min(56vh,400px)}
 @media (min-width:1240px){.pgrail{display:block}}
+@media (max-width:1439px){.pgrail .st b{display:none}}
 .pgrail .tube{position:absolute;left:8px;top:0;bottom:0;width:3px;background:var(--line);border-radius:3px;overflow:hidden}
 .pgrail .fluid{position:absolute;left:0;right:0;top:0;height:0;background:linear-gradient(180deg,var(--caramel),#FFD37A)}
 .pgrail .st{position:absolute;left:2px;width:15px;height:15px;border-radius:50%;border:2px solid var(--line);background:var(--sheet);transform:translateY(-50%);padding:0;cursor:pointer;transition:border-color .2s,background .2s,transform .2s}
 .pgrail .st:hover{transform:translateY(-50%) scale(1.15)}
 .pgrail .st.on{border-color:var(--caramel);background:var(--caramel)}
-.pgrail .st b{position:absolute;left:24px;top:50%;transform:translateY(-50%);white-space:nowrap;font-family:var(--mono);font-weight:400;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);opacity:0;transition:opacity .2s}
+.pgrail .st b{position:absolute;left:26px;top:50%;transform:translateY(-50%);white-space:nowrap;font-family:var(--mono);font-weight:400;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);opacity:0;transition:opacity .2s}
 .pgrail .st.on b,.pgrail .st:hover b,.pgrail .st:focus-visible b{opacity:1;color:var(--ink-2)}
 
 /* medidor no topo, no celular */
@@ -391,7 +386,6 @@ html.js .proj.in .num{background-size:100% 3px}
       <span class="tag kicker">Otávio Guidini · gestão industrial e mentoria de carreira</span>
       <h1>Da manutenção à <em>coordenação industrial.</em></h1>
       <p class="intro">Eu sou <b>Otávio Guidini</b>. Entrei na indústria em 2021 como analista de PCM e, em menos de quatro anos, cheguei à coordenação de <b>mais de 100 pessoas</b> em produção, PCP, manutenção, sanitização, P&amp;D e projetos.</p>
-      <div class="badges"><span>Black Belt Lean Six Sigma</span><span>MBA USP/Esalq</span><span>Inglês fluente</span></div>
       <div class="hero-actions">
         <a class="btn btn-caramel" href="#trajetoria">Conhecer minha trajetória</a>
         <a class="btn btn-ghost" href="#contato">Falar comigo</a>
@@ -410,7 +404,7 @@ html.js .proj.in .num{background-size:100% 3px}
     <div class="cred"><b>+100</b><span>colaboradores e 7 líderes sob a minha coordenação</span></div>
     <div class="cred"><b>−20%</b><span>no custo industrial em 2025</span></div>
     <div class="cred"><b>&lt; 4 anos</b><span>de analista de PCM a coordenador industrial</span></div>
-    <div class="cred"><b>3 MBAs</b><span>Produção, Projetos (USP/Esalq) e Six Sigma</span></div>
+    <div class="cred"><b>Black Belt</b><span>Lean Six Sigma · 3 MBAs, um deles na USP/Esalq</span></div>
   </div>
 </section>
 
@@ -633,8 +627,6 @@ html.js .proj.in .num{background-size:100% 3px}
   </div>
 </footer>
 
-<div class="stick">
-  <div><b>Otávio Guidini</b><span>Gestão industrial · mentoria de carreira</span></div>
   <a class="btn btn-caramel" href="#contato">Falar comigo</a>
 </div>
 
@@ -668,7 +660,7 @@ html.js .proj.in .num{background-size:100% 3px}
     el.classList.add('rv');
     var k=el.parentNode;
     if(!k.__i){k.__i=0}
-    el.style.setProperty('--d',Math.min(k.__i*70,350)+'ms');
+    el.style.setProperty('--d',Math.min(k.__i*45,180)+'ms');
     k.__i++;
   });
 
@@ -700,7 +692,7 @@ html.js .proj.in .num{background-size:100% 3px}
     var h=window.innerHeight, rest=[];
     for(var i=0;i<pending.length;i++){
       var el=pending[i], t=el.getBoundingClientRect().top;
-      if(t<h*0.9){ if(instant)el.classList.add('now'); show(el); }
+      if(t<h*1.02){ if(instant)el.classList.add('now'); show(el); }
       else rest.push(el);
     }
     pending=rest;
