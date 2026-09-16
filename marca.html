@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Marca e cores · Otávio Guidini</title>
+<meta name="description" content="Opções de logotipo e paletas para escolher a identidade visual do Otávio Guidini.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F7F7FB">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%233B2AA8'/%3E%3Ctext x='32' y='43' font-family='Arial Black,Arial' font-weight='900' font-size='28' fill='%23F2A93B' text-anchor='middle'%3EOG%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400..700&display=swap">
+<style>
+:root{
+  --bg:#F2F2F7;--sheet:#FFFFFF;--ink:#191733;--ink-2:#565273;--ink-3:#8B87A3;--line:#E1DFEC;
+  --pick:#3B2AA8;--pick-soft:#EFECFC;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;padding-bottom:74px}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.1;text-wrap:balance}
+p{margin:0}
+a{color:var(--pick)}
+:focus-visible{outline:3px solid var(--pick);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+@media (min-width:900px){.wrap{padding:0 32px}}
+.tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+
+header.top{background:var(--sheet);border-bottom:1px solid var(--line);padding:22px 0 28px}
+header.top h1{font-size:clamp(1.8rem,1.4rem + 2.2vw,2.8rem);font-weight:900;font-variation-settings:"wdth" 116;letter-spacing:-.02em;margin-top:10px}
+header.top p{color:var(--ink-2);max-width:62ch;margin-top:12px;font-size:.96rem}
+.back{font-family:var(--mono);font-size:.76rem;text-decoration:none;color:var(--ink-2)}
+
+section{padding:40px 0}
+.sec-h{display:grid;gap:8px;margin-bottom:20px}
+.sec-h h2{font-size:1.45rem;font-weight:900;font-variation-settings:"wdth" 112}
+.sec-h p{color:var(--ink-2);max-width:66ch;font-size:.94rem}
+
+.preview-wrap{position:sticky;top:0;z-index:5;background:var(--bg);padding:12px 0 10px;border-bottom:1px solid var(--line)}
+.mock{--m-bg:#F7F7FB;--m-surface:#fff;--m-ink:#1A1830;--m-ink2:#5A5675;--m-brand:#3B2AA8;--m-accent:#F2A93B;--m-line:#E2E0EE;--m-onbrand:#fff;
+  background:var(--m-bg);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:background .25s}
+.mock-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;background:var(--m-surface);border-bottom:1px solid var(--m-line)}
+.mock-logo{display:flex;align-items:center;gap:10px;color:var(--m-ink);--lg-ink:var(--m-ink);--lg-accent:var(--m-accent);--lg-brand:var(--m-brand)}
+.mock-logo svg{display:block}
+.mock-nav .links{display:none;gap:16px;font-size:.76rem;color:var(--m-ink2)}
+@media (min-width:820px){.mock-nav .links{display:flex}}
+.mock-btn{background:var(--m-brand);color:var(--m-onbrand);font-family:var(--display);font-weight:800;font-size:.78rem;padding:8px 14px;border-radius:4px;border:0;cursor:default}
+.mock-btn.alt{background:var(--m-accent);color:#1A1206}
+.mock-hero{padding:22px 14px 20px;display:grid;gap:14px}
+@media (min-width:820px){.mock-hero{grid-template-columns:1.25fr .75fr;align-items:center;gap:26px;padding:30px 22px}}
+.mock-hero h3{font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 118;font-size:clamp(1.4rem,1.1rem + 1.8vw,2.3rem);letter-spacing:-.02em;color:var(--m-ink);line-height:1.02}
+.mock-hero h3 em{font-style:italic;font-family:Georgia,serif;font-weight:400;color:var(--m-brand)}
+.mock-hero p{color:var(--m-ink2);font-size:.88rem;margin-top:10px;max-width:46ch}
+.mock-actions{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.mock-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.mock-card{background:var(--m-surface);border:1px solid var(--m-line);border-radius:8px;padding:12px}
+.mock-card b{font-family:var(--display);font-weight:900;font-size:1.25rem;color:var(--m-brand);display:block;line-height:1}
+.mock-card span{font-size:.7rem;color:var(--m-ink2)}
+.mock-strip{display:flex;gap:8px;flex-wrap:wrap;padding:12px 14px;border-top:1px solid var(--m-line);background:var(--m-surface)}
+.mock-strip span{font-family:var(--mono);font-size:.64rem;color:var(--m-ink2);border:1px solid var(--m-line);padding:3px 8px;border-radius:20px}
+.pv-label{display:flex;justify-content:space-between;gap:10px;align-items:baseline;margin-bottom:8px;flex-wrap:wrap}
+.pv-label b{font-family:var(--mono);font-size:.68rem;font-weight:500;color:var(--ink-3);letter-spacing:.1em;text-transform:uppercase}
+.pv-label i{font-style:normal;font-family:var(--mono);font-size:.72rem;color:var(--ink-2)}
+
+.logos{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:14px}
+.opt{background:var(--sheet);border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:pointer;text-align:left;padding:0;font:inherit;color:inherit;transition:border-color .15s,transform .15s,box-shadow .15s;display:grid}
+.opt:hover{transform:translateY(-2px);box-shadow:0 10px 24px -18px rgba(25,23,51,.6)}
+.opt[aria-pressed="true"]{border-color:var(--pick);box-shadow:0 0 0 2px var(--pick)}
+.opt .row{display:grid;grid-template-columns:1fr 1fr}
+.opt .stage{height:124px;display:grid;place-items:center;padding:10px;background:var(--sheet);--lg-ink:#191733;--lg-accent:#F2A93B;--lg-brand:#3B2AA8}
+.opt .stage.dark{background:#141230;--lg-ink:#F3F1FF;--lg-accent:#F2A93B;--lg-brand:#8E7BFF;border-left:1px solid var(--line)}
+.opt .stage svg{max-width:100%;height:auto}
+.mini{display:flex;align-items:center;justify-content:center;gap:12px;padding:9px;border-top:1px solid var(--line);background:#FAFAFE;--lg-ink:#191733;--lg-accent:#F2A93B;--lg-brand:#3B2AA8}
+.mini .box{display:grid;place-items:center}
+.mini .box svg{display:block}
+.mini span{font-family:var(--mono);font-size:.58rem;color:var(--ink-3)}
+.opt .meta{padding:10px 12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.opt .meta b{font-family:var(--display);font-weight:800;font-size:.9rem}
+.opt .meta span{font-family:var(--mono);font-size:.6rem;color:var(--ink-3);text-transform:uppercase;letter-spacing:.08em}
+
+.palettes{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.pal{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:0;cursor:pointer;text-align:left;font:inherit;color:inherit;overflow:hidden;transition:border-color .15s,transform .15s;display:grid}
+.pal:hover{transform:translateY(-2px)}
+.pal[aria-pressed="true"]{border-color:var(--pick);box-shadow:0 0 0 2px var(--pick)}
+.swatches{display:grid;grid-template-columns:repeat(5,1fr);height:58px}
+.swatches i{display:block}
+.pal .body{padding:12px 14px;display:grid;gap:4px}
+.pal b{font-family:var(--display);font-weight:800;font-size:1rem}
+.pal .desc{font-size:.84rem;color:var(--ink-2)}
+.pal .hexes{font-family:var(--mono);font-size:.62rem;color:var(--ink-3);margin-top:2px}
+
+.note{background:var(--pick-soft);border:1px solid #D8D1F7;border-radius:10px;padding:16px 18px;display:grid;gap:8px;margin-top:18px}
+.note b{font-family:var(--display);font-weight:800}
+.note p{font-size:.92rem;color:var(--ink-2)}
+footer{padding:26px 0 40px;font-family:var(--mono);font-size:.72rem;color:var(--ink-3)}
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:#fff;padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:9}
+.bar span{font-family:var(--mono);font-size:.7rem;color:#C9C5E0;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bar b{color:#fff;font-family:var(--display);font-weight:800}
+.bar button{background:#F2A93B;color:#1A1206;border:0;border-radius:5px;padding:9px 14px;font-family:var(--display);font-weight:800;font-size:.84rem;cursor:pointer;white-space:nowrap}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="back" href="index.html">← voltar ao site</a>
+    <span class="tag" style="display:block;margin-top:14px">Identidade visual</span>
+    <h1>Escolha a marca e as cores</h1>
+    <p>Clique em um logotipo e depois em uma paleta. A prévia aqui embaixo mostra na hora como o site fica. Quando vocês decidirem, eu aplico no site, na página do guia e na Central.</p>
+  </div>
+</header>
+
+<div class="preview-wrap">
+  <div class="wrap">
+    <div class="pv-label"><b>Prévia ao vivo</b><i id="choice">Placa OG · Claro e Âmbar</i></div>
+    <div class="mock" id="mock">
+      <div class="mock-nav">
+        <span class="mock-logo" id="mockLogo"></span>
+        <span class="links"><span>Sobre</span><span>Trajetória</span><span>Formação</span><span>Projetos</span></span>
+        <button class="mock-btn" type="button" tabindex="-1">Contato</button>
+      </div>
+      <div class="mock-hero">
+        <div>
+          <h3>Da manutenção à <em>coordenação industrial.</em></h3>
+          <p>Engenheiro de alimentos e coordenador industrial. De analista de PCM à coordenação de mais de 100 pessoas em menos de quatro anos.</p>
+          <div class="mock-actions"><button class="mock-btn" type="button" tabindex="-1">Minha trajetória</button><button class="mock-btn alt" type="button" tabindex="-1">Falar comigo</button></div>
+        </div>
+        <div class="mock-cards">
+          <div class="mock-card"><b>+100</b><span>pessoas coordenadas</span></div>
+          <div class="mock-card"><b>−20%</b><span>custo industrial</span></div>
+          <div class="mock-card"><b>3</b><span>MBAs</span></div>
+          <div class="mock-card"><b>Black Belt</b><span>Lean Six Sigma</span></div>
+        </div>
+      </div>
+      <div class="mock-strip"><span>Produção</span><span>PCP</span><span>Manutenção</span><span>Sanitização</span><span>P&amp;D</span><span>Projetos</span></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-h"><span class="tag">Passo 1</span><h2>Dez opções de logotipo</h2><p>Cada opção aparece no fundo claro e no escuro, e também pequena, que é como ela vai viver na aba do navegador e na foto de perfil.</p></div>
+    <div class="logos" id="logos"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-h"><span class="tag">Passo 2</span><h2>Quatro caminhos de cor</h2><p>O site de hoje é o último da lista, o escuro. Os três primeiros deixam a página clara e guardam a cor forte para os botões e os números.</p></div>
+    <div class="palettes" id="palettes"></div>
+    <div class="note">
+      <b>O que eu recomendo</b>
+      <p>Logotipo <b>Medidor</b> ou <b>Placa OG</b>, com a paleta <b>Aço e Azul</b>. O medidor conta a história dele em um símbolo só: quem mede é quem melhora. E o fundo claro com azul deixa o site mais leve e confiável sem perder a cara industrial. O âmbar continua, só que nos detalhes.</p>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">Página de escolha · me diga o número do logotipo e o nome da paleta, ou mande os prints que você separou</div></footer>
+
+<div class="bar">
+  <span>Escolha: <b id="barChoice">Placa OG · Claro e Âmbar</b></span>
+  <button type="button" id="copyBtn">Copiar escolha</button>
+</div>
+
+<script>
+const LOGOS=[
+ {id:'placa',name:'Placa OG',kind:'monograma',w:130,h:130,svg:'<svg viewBox="0 0 200 200" role="img" aria-label="Logotipo placa OG"><rect x="14" y="14" width="172" height="172" rx="6" fill="none" stroke="var(--lg-ink)" stroke-width="7"/><rect x="30" y="30" width="140" height="140" rx="2" fill="none" stroke="var(--lg-accent)" stroke-width="3"/><circle cx="41" cy="41" r="4.5" fill="var(--lg-accent)"/><circle cx="159" cy="41" r="4.5" fill="var(--lg-accent)"/><circle cx="41" cy="159" r="4.5" fill="var(--lg-accent)"/><circle cx="159" cy="159" r="4.5" fill="var(--lg-accent)"/><text x="100" y="126" text-anchor="middle" font-family="Archivo,Arial" font-weight="900" font-size="76" fill="var(--lg-ink)">OG</text></svg>'},
+ {id:'medidor',name:'Medidor',kind:'símbolo',w:130,h:130,svg:'<svg viewBox="0 0 200 200" role="img" aria-label="Logotipo medidor"><circle cx="100" cy="100" r="76" fill="none" stroke="var(--lg-ink)" stroke-width="9"/><g stroke="var(--lg-ink)" stroke-width="5" stroke-linecap="round" opacity=".5"><path d="M100 32v13"/><path d="M147 53l-9 9"/><path d="M168 100h-13"/><path d="M53 53l9 9"/><path d="M32 100h13"/></g><path d="M100 100 L139 63" stroke="var(--lg-accent)" stroke-width="12" stroke-linecap="round"/><circle cx="100" cy="100" r="13" fill="var(--lg-ink)"/><text x="100" y="152" text-anchor="middle" font-family="Archivo,Arial" font-weight="900" font-size="30" fill="var(--lg-ink)">OG</text></svg>'},
+ {id:'flange',name:'Flange',kind:'símbolo',w:130,h:130,svg:'<svg viewBox="0 0 200 200" role="img" aria-label="Logotipo flange"><circle cx="100" cy="100" r="76" fill="none" stroke="var(--lg-ink)" stroke-width="10"/><circle cx="100" cy="100" r="38" fill="none" stroke="var(--lg-accent)" stroke-width="8"/><g fill="var(--lg-ink)"><circle cx="100" cy="42" r="8"/><circle cx="150" cy="71" r="8"/><circle cx="150" cy="129" r="8"/><circle cx="100" cy="158" r="8"/><circle cx="50" cy="129" r="8"/><circle cx="50" cy="71" r="8"/></g></svg>'},
+ {id:'degraus',name:'Degraus',kind:'símbolo',w:130,h:130,svg:'<svg viewBox="0 0 200 200" role="img" aria-label="Logotipo degraus"><rect x="18" y="18" width="164" height="164" rx="18" fill="none" stroke="var(--lg-ink)" stroke-width="9"/><rect x="50" y="122" width="28" height="32" fill="var(--lg-ink)"/><rect x="86" y="96" width="28" height="58" fill="var(--lg-ink)"/><rect x="122" y="62" width="28" height="92" fill="var(--lg-accent)"/><path d="M50 66h40" stroke="var(--lg-accent)" stroke-width="8" stroke-linecap="round"/><path d="M76 52l16 14-16 14" fill="none" stroke="var(--lg-accent)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg>'},
+ {id:'hex',name:'Hexágono',kind:'monograma',w:130,h:130,svg:'<svg viewBox="0 0 200 200" role="img" aria-label="Logotipo hexagonal OG"><path d="M100 16l73 42v84l-73 42-73-42V58z" fill="none" stroke="var(--lg-ink)" stroke-width="9" stroke-linejoin="round"/><path d="M100 40l52 30v60l-52 30-52-30V70z" fill="none" stroke="var(--lg-accent)" stroke-width="3"/><text x="100" y="124" text-anchor="middle" font-family="Archivo,Arial" font-weight="900" font-size="58" fill="var(--lg-ink)">OG</text></svg>'},
+ {id:'selo',name:'Selo',kind:'símbolo',w:130,h:130,svg:'<svg viewBox="0 0 200 200" role="img" aria-label="Logotipo em selo"><defs><path id="arcTop" d="M100 100 m-64 0 a64 64 0 1 1 128 0"/><path id="arcBot" d="M100 100 m64 0 a64 64 0 1 1 -128 0"/></defs><circle cx="100" cy="100" r="82" fill="none" stroke="var(--lg-ink)" stroke-width="5"/><circle cx="100" cy="100" r="50" fill="none" stroke="var(--lg-accent)" stroke-width="3"/><text font-family="IBM Plex Mono,monospace" font-size="14" letter-spacing="3" fill="var(--lg-ink)"><textPath href="#arcTop" startOffset="50%" text-anchor="middle">OTÁVIO GUIDINI</textPath></text><text font-family="IBM Plex Mono,monospace" font-size="12" letter-spacing="2.6" fill="var(--lg-ink)" opacity=".7"><textPath href="#arcBot" startOffset="50%" text-anchor="middle">GESTÃO INDUSTRIAL</textPath></text><text x="100" y="116" text-anchor="middle" font-family="Archivo,Arial" font-weight="900" font-size="44" fill="var(--lg-ink)">OG</text></svg>'},
+ {id:'tubo',name:'Tubulação',kind:'símbolo',w:130,h:130,svg:'<svg viewBox="0 0 200 200" role="img" aria-label="Logotipo de tubulação"><circle cx="72" cy="100" r="46" fill="none" stroke="var(--lg-ink)" stroke-width="14"/><path d="M126 52h36v96h-36" fill="none" stroke="var(--lg-ink)" stroke-width="14" stroke-linecap="round"/><path d="M126 100h36" stroke="var(--lg-accent)" stroke-width="14" stroke-linecap="round"/><circle cx="72" cy="100" r="12" fill="var(--lg-accent)"/></svg>'},
+ {id:'seta',name:'G ascendente',kind:'símbolo',w:130,h:130,svg:'<svg viewBox="0 0 200 200" role="img" aria-label="Logotipo G ascendente"><path d="M140 72a52 52 0 10 0 62v-28h-32" fill="none" stroke="var(--lg-ink)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/><path d="M120 80l42-42" stroke="var(--lg-accent)" stroke-width="14" stroke-linecap="round"/><path d="M134 34h30v30" fill="none" stroke="var(--lg-accent)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></svg>'},
+ {id:'assinatura',name:'Assinatura',kind:'tipográfico',w:230,h:90,svg:'<svg viewBox="0 0 360 140" role="img" aria-label="Assinatura Otávio Guidini"><text x="6" y="52" font-family="Archivo,Arial" font-weight="500" font-size="33" letter-spacing="7" fill="var(--lg-ink)">OTÁVIO</text><text x="6" y="98" font-family="Archivo,Arial" font-weight="900" font-size="46" fill="var(--lg-ink)">GUIDINI</text><rect x="8" y="112" width="64" height="5" fill="var(--lg-accent)"/><text x="84" y="119" font-family="IBM Plex Mono,monospace" font-size="13" letter-spacing="2.2" fill="var(--lg-ink)" opacity=".7">GESTÃO INDUSTRIAL</text></svg>'},
+ {id:'oag',name:'OAG, da consultoria',kind:'monograma',w:150,h:136,svg:'<svg viewBox="0 0 230 200" role="img" aria-label="Logotipo OAG"><circle cx="58" cy="100" r="42" fill="none" stroke="var(--lg-ink)" stroke-width="14"/><path d="M94 142l24-84 24 84" fill="none" stroke="var(--lg-accent)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><path d="M104 116h28" stroke="var(--lg-accent)" stroke-width="12" stroke-linecap="round"/><path d="M208 78a42 42 0 10 0 52v-24h-26" fill="none" stroke="var(--lg-ink)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></svg>'}
+];
+const PALETTES=[
+ {id:'ambar',name:'Claro e Âmbar',desc:'O mesmo indigo de hoje, mas em fundo claro, com âmbar nos detalhes. A mudança mais suave.',t:{bg:'#F7F7FB',surface:'#FFFFFF',ink:'#1A1830',ink2:'#5A5675',brand:'#3B2AA8',accent:'#F2A93B',line:'#E2E0EE',onbrand:'#FFFFFF'}},
+ {id:'aco',name:'Aço e Azul',desc:'Azul de engenharia com amarelo de sinalização. Mais leve, moderno e confiável.',t:{bg:'#F5F8FC',surface:'#FFFFFF',ink:'#0F1F38',ink2:'#4B5B73',brand:'#2E6BE6',accent:'#FFB020',line:'#DCE5F1',onbrand:'#FFFFFF'}},
+ {id:'verde',name:'Operação Verde',desc:'Verde de segurança com amarelo de faixa de chão de fábrica. O mais alegre dos três.',t:{bg:'#F4FAF7',surface:'#FFFFFF',ink:'#0F2A20',ink2:'#456056',brand:'#0E9F6E',accent:'#FFC53D',line:'#D9EAE1',onbrand:'#FFFFFF'}},
+ {id:'noite',name:'Noite, o site de hoje',desc:'O que está no ar agora: fundo escuro com âmbar. Aqui só para comparar.',t:{bg:'#0F0C22',surface:'#171333',ink:'#EDEBF8',ink2:'#B3ADD3',brand:'#E9A23B',accent:'#E9A23B',line:'#2A2547',onbrand:'#0F0C22'}}
+];
+let logo=LOGOS[0], pal=PALETTES[0];
+const $=s=>document.querySelector(s);
+function sized(l,w,h){return l.svg.replace('<svg ','<svg width="'+w+'" height="'+h+'" ')}
+function renderLogos(){
+  $('#logos').innerHTML=LOGOS.map(function(l,i){
+    return '<button class="opt" type="button" data-logo="'+l.id+'" aria-pressed="'+(l.id===logo.id)+'">'+
+      '<div class="row"><div class="stage">'+sized(l,l.w,l.h)+'</div><div class="stage dark">'+sized(l,l.w,l.h)+'</div></div>'+
+      '<div class="mini"><span class="box">'+sized(l,l.id==='assinatura'?82:32,32)+'</span><span>aba</span><span class="box">'+sized(l,l.id==='assinatura'?52:20,20)+'</span><span>ícone</span></div>'+
+      '<div class="meta"><b>'+(i+1)+'. '+l.name+'</b><span>'+l.kind+'</span></div></button>';
+  }).join('');
+}
+function renderPalettes(){
+  $('#palettes').innerHTML=PALETTES.map(function(p){
+    return '<button class="pal" type="button" data-pal="'+p.id+'" aria-pressed="'+(p.id===pal.id)+'">'+
+      '<span class="swatches"><i style="background:'+p.t.bg+'"></i><i style="background:'+p.t.surface+'"></i><i style="background:'+p.t.brand+'"></i><i style="background:'+p.t.accent+'"></i><i style="background:'+p.t.ink+'"></i></span>'+
+      '<span class="body"><b>'+p.name+'</b><span class="desc">'+p.desc+'</span><span class="hexes">'+p.t.brand+'  '+p.t.accent+'</span></span></button>';
+  }).join('');
+}
+function apply(){
+  const m=$('#mock');
+  Object.keys(pal.t).forEach(function(k){m.style.setProperty('--m-'+k,pal.t[k])});
+  $('#mockLogo').innerHTML=sized(logo,logo.id==='assinatura'?118:(logo.id==='oag'?53:46),46);
+  const txt=logo.name+' · '+pal.name;
+  $('#choice').textContent=txt; $('#barChoice').textContent=txt;
+  document.querySelectorAll('[data-logo]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.logo===logo.id)});
+  document.querySelectorAll('[data-pal]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.pal===pal.id)});
+}
+document.addEventListener('click',function(e){
+  const l=e.target.closest('[data-logo]'); if(l){logo=LOGOS.find(function(x){return x.id===l.dataset.logo});apply();window.scrollTo({top:0,behavior:'smooth'});return}
+  const p=e.target.closest('[data-pal]'); if(p){pal=PALETTES.find(function(x){return x.id===p.dataset.pal});apply();window.scrollTo({top:0,behavior:'smooth'});return}
+  if(e.target.id==='copyBtn'){
+    const t='Escolhi: logotipo '+logo.name+' com a paleta '+pal.name+'.';
+    try{navigator.clipboard.writeText(t)}catch(err){}
+    e.target.textContent='Copiado!'; setTimeout(function(){e.target.textContent='Copiar escolha'},1800);
+  }
+});
+renderLogos();renderPalettes();apply();
+</script>
+</body>
+</html>
