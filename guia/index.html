@@ -403,6 +403,8 @@ html.js .proj.in .num{background-size:100% 3px}
 :root[data-theme="dark"] .msg-card.before .who,:root[data-theme="dark"] .msg-card .verdict{color:#FF9DBB}
 :root[data-theme="dark"] .frame{background:repeating-linear-gradient(135deg,#17304D 0 8px,#12263E 8px 16px)}
 
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .channel.primary small{color:#EAF2FF}}
+:root[data-theme="dark"] .channel.primary small{color:#EAF2FF}
 /* botão de tema */
 .tema{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:6px;border:1px solid var(--line);background:transparent;color:var(--ink-2);cursor:pointer;flex:none;transition:color .15s,border-color .15s,background .15s}
 .tema:hover{color:var(--ink);border-color:var(--ink-3)}
