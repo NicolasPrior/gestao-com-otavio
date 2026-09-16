@@ -347,16 +347,18 @@ html.js .proj.in .num{background-size:100% 3px}
 @media print{html.js .rv{opacity:1!important;transform:none!important}}
 
 /* trajetória enxuta: cargo, resultado e o resto sob demanda */
+.proj .more{margin-top:4px}
+.proj .more > p{margin-top:8px}
 .step .win{color:var(--ink);font-size:1.02rem;max-width:58ch}
 .step .win b{font-weight:700}
-.step .more{margin-top:2px}
-.step .more summary{display:inline-flex;align-items:center;gap:7px;cursor:pointer;list-style:none;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);padding:4px 0}
-.step .more summary::-webkit-details-marker{display:none}
-.step .more summary::after{content:"+";font-size:1rem;line-height:1;color:var(--caramel)}
-.step .more[open] summary::after{content:"–"}
-.step .more summary:hover{color:var(--indigo-2)}
-.step .more > p,.step .more > ul{margin-top:10px}
-.step .more > p{color:var(--ink-2);max-width:62ch}
+.more{margin-top:2px}
+.more summary{display:inline-flex;align-items:center;gap:7px;cursor:pointer;list-style:none;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);padding:4px 0}
+.more summary::-webkit-details-marker{display:none}
+.more summary::after{content:"+";font-size:1rem;line-height:1;color:var(--caramel)}
+.more[open] summary::after{content:"–"}
+.more summary:hover{color:var(--indigo-2)}
+.more > p,.more > ul{margin-top:10px}
+.more > p{color:var(--ink-2);max-width:62ch}
 </style>
 </head>
 <body>
@@ -568,12 +570,12 @@ html.js .proj.in .num{background-size:100% 3px}
       <p class="lead">Seis entregas que marcaram a carreira, do custo da operação à formação de pessoas.</p>
     </div>
     <div class="projects">
-      <article class="proj"><div class="meta"><span>Custos</span><i>2025</i></div><span class="num">−20%</span><h3>Custo industrial</h3><p>Otimização da dosagem dos principais insumos da produção, com a equipe engajada em eficiência de custos.</p></article>
-      <article class="proj"><div class="meta"><span>Lean Six Sigma</span><i>DMAIC</i></div><span class="num">−30%</span><h3>Consumo de insumos químicos</h3><p>Projeto de melhoria que reduziu em 30%, 20% e 15% o consumo dos três principais insumos químicos do processo.</p></article>
-      <article class="proj"><div class="meta"><span>Pessoas</span><i>2024</i></div><span class="num">8<small>projetos</small></span><h3>Primeiro programa trainee</h3><p>Estruturou o primeiro programa trainee da empresa e foi mentor dos participantes, da formação técnica aos projetos de melhoria.</p></article>
-      <article class="proj"><div class="meta"><span>Manutenção</span><i>2021 → 2023</i></div><span class="num">25→55%</span><h3>Manutenção preventiva</h3><p>Planos preventivos e rotas de manutenção estruturados do zero, trocando correção por prevenção.</p></article>
-      <article class="proj"><div class="meta"><span>Projetos</span><i>Expedição</i></div><span class="num">+100%</span><h3>Produtividade no carregamento</h3><p>Projeto estrutural de ampliação da linha de carregamento de caminhões a granel, que dobrou a capacidade.</p></article>
-      <article class="proj"><div class="meta"><span>Projetos</span><i>Engenharia</i></div><span class="num">3×100<small>m³</small></span><h3>Ampliação da tancagem</h3><p>Aquisição e negociação dos tanques, desenvolvimento de fornecedores de içamento e acompanhamento das obras civis.</p></article>
+      <article class="proj"><div class="meta"><span>Custos</span><i>2025</i></div><span class="num">−20%</span><h3>Custo industrial</h3><details class="more"><summary>Ver detalhes</summary><p>Otimização da dosagem dos principais insumos da produção, com a equipe engajada em eficiência de custos.</p></details></article>
+      <article class="proj"><div class="meta"><span>Lean Six Sigma</span><i>DMAIC</i></div><span class="num">−30%</span><h3>Consumo de insumos químicos</h3><details class="more"><summary>Ver detalhes</summary><p>Projeto de melhoria que reduziu em 30%, 20% e 15% o consumo dos três principais insumos químicos do processo.</p></details></article>
+      <article class="proj"><div class="meta"><span>Pessoas</span><i>2024</i></div><span class="num">8<small>projetos</small></span><h3>Primeiro programa trainee</h3><details class="more"><summary>Ver detalhes</summary><p>Estruturou o primeiro programa trainee da empresa e foi mentor dos participantes, da formação técnica aos projetos de melhoria.</p></details></article>
+      <article class="proj"><div class="meta"><span>Manutenção</span><i>2021 → 2023</i></div><span class="num">25→55%</span><h3>Manutenção preventiva</h3><details class="more"><summary>Ver detalhes</summary><p>Planos preventivos e rotas de manutenção estruturados do zero, trocando correção por prevenção.</p></details></article>
+      <article class="proj"><div class="meta"><span>Projetos</span><i>Expedição</i></div><span class="num">+100%</span><h3>Produtividade no carregamento</h3><details class="more"><summary>Ver detalhes</summary><p>Projeto estrutural de ampliação da linha de carregamento de caminhões a granel, que dobrou a capacidade.</p></details></article>
+      <article class="proj"><div class="meta"><span>Projetos</span><i>Engenharia</i></div><span class="num">3×100<small>m³</small></span><h3>Ampliação da tancagem</h3><details class="more"><summary>Ver detalhes</summary><p>Aquisição e negociação dos tanques, desenvolvimento de fornecedores de içamento e acompanhamento das obras civis.</p></details></article>
     </div>
   </div>
 </section>
