@@ -345,6 +345,18 @@ html.js .proj.in .num{background-size:100% 3px}
 .pgtop{position:fixed;left:0;top:0;height:3px;width:0;background:linear-gradient(90deg,var(--caramel),#FFD37A);z-index:40}
 @media (min-width:1240px){.pgtop{display:none}}
 @media print{html.js .rv{opacity:1!important;transform:none!important}}
+
+/* trajetória enxuta: cargo, resultado e o resto sob demanda */
+.step .win{color:var(--ink);font-size:1.02rem;max-width:58ch}
+.step .win b{font-weight:700}
+.step .more{margin-top:2px}
+.step .more summary{display:inline-flex;align-items:center;gap:7px;cursor:pointer;list-style:none;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);padding:4px 0}
+.step .more summary::-webkit-details-marker{display:none}
+.step .more summary::after{content:"+";font-size:1rem;line-height:1;color:var(--caramel)}
+.step .more[open] summary::after{content:"–"}
+.step .more summary:hover{color:var(--indigo-2)}
+.step .more > p,.step .more > ul{margin-top:10px}
+.step .more > p{color:var(--ink-2);max-width:62ch}
 </style>
 </head>
 <body>
@@ -452,36 +464,61 @@ html.js .proj.in .num{background-size:100% 3px}
       <li class="era">Antes da indústria</li>
       <li class="step pre">
         <span class="yr">2015<small>primeiro emprego</small></span><span class="rail"></span>
-        <div class="body"><span class="where">Santa Cruz das Palmeiras · SP</span><h3>Estagiário administrativo</h3><p>Primeira experiência de trabalho, no cartório da 113ª Zona Eleitoral: rotina, processo e atendimento ao público.</p></div>
+        <div class="body"><span class="where">Santa Cruz das Palmeiras · SP</span><h3>Estagiário administrativo</h3>
+          <p class="win">Primeira experiência de trabalho, no cartório da 113ª Zona Eleitoral.</p></div>
       </li>
       <li class="step pre">
         <span class="yr">2017<small>graduação</small></span><span class="rail"></span>
-        <div class="body"><span class="where">IFSULDEMINAS · Inconfidentes, MG</span><h3>Engenharia de Alimentos</h3><p>Cinco anos de formação com pesquisa desde o início.</p>
-          <ul><li><span>Iniciação científica em matemática aplicada ao ensino</span></li><li><span>Representante dos alunos no colegiado do curso</span></li><li><span>Primeiro projeto <b>Lean Six Sigma (DMAIC)</b>, no envase de leite pasteurizado</span></li></ul></div>
+        <div class="body"><span class="where">IFSULDEMINAS · Inconfidentes, MG</span><h3>Engenharia de Alimentos</h3>
+          <p class="win">Primeiro projeto <b>Lean Six Sigma (DMAIC)</b>, no envase de leite pasteurizado.</p>
+          <details class="more"><summary>Ver detalhes</summary>
+            <p>Cinco anos de formação com pesquisa desde o início.</p>
+            <ul><li><span>Iniciação científica em matemática aplicada ao ensino</span></li><li><span>Representante dos alunos no colegiado do curso</span></li></ul>
+          </details></div>
       </li>
       <li class="step pre">
         <span class="yr">2020<small>primeira liderança</small></span><span class="rail"></span>
-        <div class="body"><span class="where">Conalim Jr. · empresa júnior de engenharia de alimentos</span><h3>Diretor de Gestão de Pessoas</h3><p>Entrou como assessor e virou diretor da área. Na pandemia, desenvolveu um treinamento de <b>Gestão de Equipes Virtuais</b> que foi vendido a empresas e microempreendedores. Também organizou o processo seletivo de 2021.</p></div>
+        <div class="body"><span class="where">Conalim Jr. · empresa júnior de engenharia de alimentos</span><h3>Diretor de Gestão de Pessoas</h3>
+          <p class="win">Criou um treinamento de <b>Gestão de Equipes Virtuais</b> que foi vendido a empresas na pandemia.</p>
+          <details class="more"><summary>Ver detalhes</summary>
+            <p>Entrou como assessor e virou diretor da área. Também planejou e organizou o processo seletivo de 2021 da empresa júnior.</p>
+          </details></div>
       </li>
       <li class="era mt">Na indústria</li>
       <li class="step">
         <span class="yr">2021<small>jun · entrada</small></span><span class="rail"></span>
-        <div class="body"><h3>Analista de PCM</h3><p>Planejamento e controle da manutenção: ordens de serviço, planos preventivos e histórico dos equipamentos. A base de tudo que veio depois.</p></div>
+        <div class="body"><h3>Analista de PCM</h3>
+          <p class="win">Planejamento e controle da manutenção. A base de tudo que veio depois.</p>
+          <details class="more"><summary>Ver detalhes</summary>
+            <p>Ordens de serviço, planos preventivos, peças e histórico dos equipamentos: aprender como cada máquina para e quanto custa cada hora de linha parada.</p>
+          </details></div>
       </li>
       <li class="step">
         <span class="yr">2022<small>set · 20 pessoas</small></span><span class="rail"></span>
-        <div class="body"><h3>Líder de Manutenção Mecânica e PCM Industrial</h3><p>A primeira equipe na indústria: 20 colaboradores na manutenção mecânica e no PCM.</p>
-          <ul><li><span>Preventivas de <b>25% para 55%</b> do total de manutenções</span></li><li><span>Ampliação da linha de carregamento a granel: <b>capacidade dobrada</b></span></li><li><span>Projeto de ampliação da tancagem: <b>3 tanques de 100 m³</b></span></li></ul></div>
+        <div class="body"><h3>Líder de Manutenção Mecânica e PCM Industrial</h3>
+          <p class="win">Preventivas de <b>25% para 55%</b> do total de manutenções.</p>
+          <details class="more"><summary>Ver detalhes</summary>
+            <p>A primeira equipe na indústria: 20 colaboradores na manutenção mecânica e no PCM.</p>
+            <ul><li><span>Ampliação da linha de carregamento a granel: <b>capacidade dobrada</b></span></li><li><span>Projeto de ampliação da tancagem: <b>3 tanques de 100 m³</b></span></li></ul>
+          </details></div>
       </li>
       <li class="step">
         <span class="yr">2023<small>out · 85 pessoas</small></span><span class="rail"></span>
-        <div class="body"><h3>Coordenador de Produção</h3><p>Coordenação de 85 colaboradores e consolidação da cultura de excelência operacional.</p>
-          <ul><li><span>Projeto Lean Six Sigma: <b>−30%, −20% e −15%</b> no consumo dos três principais insumos químicos</span></li><li><span>Criou e foi mentor do <b>primeiro programa trainee</b> da empresa (2024)</span></li></ul></div>
+        <div class="body"><h3>Coordenador de Produção</h3>
+          <p class="win">Projeto Lean Six Sigma: <b>−30%, −20% e −15%</b> no consumo dos três principais insumos químicos.</p>
+          <details class="more"><summary>Ver detalhes</summary>
+            <p>Coordenação de 85 colaboradores e consolidação da cultura de excelência operacional.</p>
+            <ul><li><span>Criou e foi mentor do <b>primeiro programa trainee</b> da empresa (2024), com 8 projetos de melhoria</span></li></ul>
+          </details></div>
       </li>
       <li class="step now">
         <span class="yr">2025<small>mar · +100 pessoas</small></span><span class="rail"></span>
-        <div class="body"><h3>Coordenador Industrial</h3><p>Mais de 100 colaboradores e 7 líderes diretos em produção, manutenção (mecânica, elétrica e civil), carregamento e sanitização, P&amp;D e projetos.</p>
-          <ul><li><span>Implantou a cultura de <b>Business Intelligence</b> na operação, com dashboards de produção, paradas e custos</span></li><li><span>Otimização da dosagem dos principais insumos: <b>−20% no custo industrial</b> em 2025</span></li></ul></div>
+        <div class="body"><h3>Coordenador Industrial</h3>
+          <p class="win">Otimização da dosagem dos insumos: <b>−20% no custo industrial</b> em 2025.</p>
+          <details class="more"><summary>Ver detalhes</summary>
+            <p>Mais de 100 colaboradores e 7 líderes diretos em produção, manutenção (mecânica, elétrica e civil), carregamento e sanitização, P&amp;D e projetos.</p>
+            <ul><li><span>Implantou a cultura de <b>Business Intelligence</b> na operação, com dashboards de produção, paradas e custos</span></li></ul>
+          </details></div>
       </li>
     </ol>
   </div>
