@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Otávio Guidini · Coordenador Industrial</title>
-<meta name="description" content="Otávio Guidini, engenheiro de alimentos e coordenador industrial. De analista de PCM a coordenador de mais de 100 pessoas em menos de quatro anos. Black Belt Lean Six Sigma, MBA USP/Esalq.">
+<title>Otávio Guidini · Gestor Industrial</title>
+<meta name="description" content="Otávio Guidini, coordenador e gestor industrial, engenheiro de alimentos. De analista de PCM a coordenador de mais de 100 pessoas em menos de quatro anos. Black Belt Lean Six Sigma, MBA USP/Esalq.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#F5F8FC">
-<meta property="og:title" content="Otávio Guidini · Coordenador Industrial">
+<meta property="og:title" content="Otávio Guidini · Coordenador e Gestor Industrial">
 <meta property="og:description" content="Engenheiro de alimentos, coordenador industrial e mentor de carreira na indústria.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%232E6BE6'/%3E%3Ctext x='32' y='40' font-family='Arial Black,Arial' font-weight='900' font-size='26' fill='%23FFFFFF' text-anchor='middle'%3EOG%3C/text%3E%3Crect x='20' y='47' width='24' height='5' fill='%23FFB020'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,6 +67,8 @@ section[id]{scroll-margin-top:12px}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:18px;padding-bottom:18px}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none;--lg-ink:var(--ink);--lg-accent:var(--caramel)}
 .logo svg{display:block}
+.logo .role{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);line-height:1.35;border-left:1px solid var(--line);padding-left:12px;display:none}
+@media (min-width:560px){.logo .role{display:block}}
 .logo span{font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 112;font-size:.98rem;letter-spacing:.01em;line-height:1.1}
 .logo small{display:block;font-family:var(--mono);font-weight:400;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--on-dark-3)}
 .nav ul{display:none;list-style:none;margin:0;padding:0;gap:26px;font-size:.92rem}
@@ -115,7 +117,8 @@ section[id]{scroll-margin-top:12px}
   radial-gradient(120% 90% at 30% 20%,#1D3F73 0%,#122C51 55%,#0B1B33 100%)}
 .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
 .photo .ph{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:10px;text-align:center;padding:24px}
-.photo .ph .mono-og{font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 125;font-size:clamp(5rem,14vw,9rem);line-height:.85;color:transparent;-webkit-text-stroke:1.5px rgba(255,176,32,.6)}
+.photo .ph .sigph{width:min(62%,230px);height:auto;display:block}
+.photo .ph .sigph.sm{width:min(58%,180px)}
 .photo .ph .tag{color:#8FA2BC}
 .photo .ph .tag b{color:#FFC24D;font-weight:500}
 .hero-photo{aspect-ratio:4/5;width:100%;max-width:460px;justify-self:center;border:1px solid var(--line);border-bottom:0;margin:0}
@@ -317,7 +320,7 @@ section[id]{scroll-margin-top:12px}
 
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="#topo" aria-label="Otávio Guidini, início"><svg class="sig" viewBox="0 0 218 126" width="92" height="53" role="img" aria-label="Otávio Guidini"><text x="4" y="50" font-family="Archivo,Arial" font-weight="500" font-size="32" letter-spacing="6.5" fill="var(--lg-ink)">OTÁVIO</text><text x="4" y="98" font-family="Archivo,Arial" font-weight="900" font-size="47" fill="var(--lg-ink)">GUIDINI</text><rect x="6" y="112" width="60" height="6" fill="var(--lg-accent)"/></svg></a>
+    <a class="logo" href="#topo" aria-label="Otávio Guidini, gestor industrial, início"><svg class="sig" viewBox="0 0 218 126" width="92" height="53" role="img" aria-label="Otávio Guidini"><text x="4" y="50" font-family="Archivo,Arial" font-weight="500" font-size="32" letter-spacing="6.5" fill="var(--lg-ink)">OTÁVIO</text><text x="4" y="98" font-family="Archivo,Arial" font-weight="900" font-size="47" fill="var(--lg-ink)">GUIDINI</text><rect x="6" y="112" width="60" height="6" fill="var(--lg-accent)"/></svg><span class="role">Coordenador e<br>gestor industrial</span></a>
     <ul>
       <li><a href="#sobre">Sobre</a></li>
       <li><a href="#trajetoria">Trajetória</a></li>
@@ -347,7 +350,7 @@ section[id]{scroll-margin-top:12px}
   </svg>
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <span class="tag kicker">Engenheiro de alimentos · coordenador industrial</span>
+      <span class="tag kicker">Otávio Guidini · coordenador e gestor industrial</span>
       <h1>Da manutenção à <em>coordenação industrial.</em></h1>
       <p class="intro">Eu sou <b>Otávio Guidini</b>. Entrei na indústria em 2021 como analista de PCM e, em menos de quatro anos, cheguei à coordenação de <b>mais de 100 pessoas</b> em produção, PCP, manutenção, sanitização, P&amp;D e projetos.</p>
       <div class="badges"><span>Black Belt Lean Six Sigma</span><span>MBA USP/Esalq</span><span>Inglês fluente</span></div>
@@ -358,8 +361,8 @@ section[id]{scroll-margin-top:12px}
     </div>
     <figure class="photo hero-photo">
       <img src="fotos/retrato.jpg" alt="Otávio Guidini em ambiente industrial" onerror="this.remove()">
-      <div class="ph"><span class="mono-og">OG</span><span class="tag"><b>Foto 01</b> · retrato no chão de fábrica</span></div>
-      <figcaption class="nameplate"><span><b>Otávio Guidini</b><span>Coordenador industrial</span></span><i>Campinas · SP</i></figcaption>
+      <div class="ph"><svg class="sigph" viewBox="0 0 218 126" role="img" aria-label="Otávio Guidini"><text x="4" y="50" font-family="Archivo,Arial" font-weight="500" font-size="32" letter-spacing="6.5" fill="none" stroke="rgba(233,239,249,.75)" stroke-width="1">OTÁVIO</text><text x="4" y="98" font-family="Archivo,Arial" font-weight="900" font-size="47" fill="none" stroke="rgba(233,239,249,.85)" stroke-width="1.4">GUIDINI</text><rect x="6" y="112" width="60" height="6" fill="#FFB020"/></svg><span class="tag"><b>Foto 01</b> · retrato no chão de fábrica</span></div>
+      <figcaption class="nameplate"><span><b>Otávio Guidini</b><span>Coordenador e gestor industrial</span></span><i>Campinas · SP</i></figcaption>
     </figure>
   </div>
 </section>
@@ -378,7 +381,7 @@ section[id]{scroll-margin-top:12px}
     <div class="about-copy">
       <span class="tag" style="color:var(--indigo)">Sobre</span>
       <h2 class="sec-title">Um engenheiro formado no chão de fábrica.</h2>
-      <p>Sou <b>engenheiro de alimentos</b> formado pelo IFSULDEMINAS e atuo como <b>coordenador industrial</b> em uma indústria de alimentos. Minha rotina é resolver gargalos produtivos, estruturar rotinas industriais e manter a operação estável, com foco em eficiência, qualidade e segurança de alimentos.</p>
+      <p>Sou <b>engenheiro de alimentos</b> formado pelo IFSULDEMINAS e atuo como <b>coordenador e gestor industrial</b> em uma indústria de alimentos. Minha rotina é resolver gargalos produtivos, estruturar rotinas industriais e manter a operação estável, com foco em eficiência, qualidade e segurança de alimentos.</p>
       <p>Coordeno mais de 100 colaboradores e lidero diretamente 7 líderes. Cheguei até aqui passando por cada etapa: planejamento da manutenção, liderança da manutenção mecânica e coordenação de produção. Hoje também uso esse caminho para <b>mentorar profissionais da indústria</b> que querem crescer e ser vistos.</p>
       <div class="scope">
         <div><b>Produção</b><span>Duas linhas de produção</span></div>
@@ -593,7 +596,7 @@ section[id]{scroll-margin-top:12px}
 </footer>
 
 <div class="stick">
-  <div><b>Otávio Guidini</b><span>Coordenador industrial · mentoria</span></div>
+  <div><b>Otávio Guidini</b><span>Gestor industrial · mentoria</span></div>
   <a class="btn btn-caramel" href="#contato">Falar comigo</a>
 </div>
 
