@@ -1,6 +1,12 @@
-Logotipos das instituicoes (aparecem sozinhos quando o arquivo existe):
-  ifsuldeminas.svg  -> graduacao
-  metropolitana.png -> MBA Engenharia de Producao
-  usp.svg           -> MBA Gestao de Projetos (USP/ESALQ)
-  voitto.png        -> MBA Excelencia Operacional e Six Sigma
-Enquanto nao existirem, o site mostra o nome da instituicao no lugar.
+Logotipos das instituicoes de ensino do Otavio (usados so para indicar a formacao):
+
+usp.svg           Universidade de Sao Paulo - Wikimedia Commons, dominio publico no Brasil
+                  https://commons.wikimedia.org/wiki/File:Webysther_20160310_-_Logo_USP.svg
+ifsuldeminas.svg  Instituto Federal do Sul de Minas Gerais - Wikimedia Commons, dominio publico
+                  https://commons.wikimedia.org/wiki/File:Instituto_Federal_do_Sul_de_Minas_Gerais_-_Marca_Horizontal_2015.svg
+metropolitana.png Faculdade Metropolitana (FAMEESP) - site oficial da instituicao
+                  https://www.faculdademetropolitana.edu.br/assets/img/logo-menu-color.png
+voitto.png        Grupo Voitto - site oficial (versao escura), fundo cinza removido para ficar transparente
+                  https://files.voitto.com.br/assets/voitto-black-full.png
+
+Baixados em 16/09/2026. Se o arquivo sumir, o site mostra o nome da instituicao no lugar.
