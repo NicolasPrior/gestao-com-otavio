@@ -6,33 +6,33 @@
 <title>Central do Otávio</title>
 <meta name="description" content="Protótipo do supervisório de vendas: conteúdo, contatos e automações do Gestão com Otávio.">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#0C0A1A">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23200E6A'/%3E%3Ctext x='32' y='43' font-family='Arial Black,Arial' font-weight='900' font-size='28' fill='%23E9A23B' text-anchor='middle'%3EOG%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#081426">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%232E6BE6'/%3E%3Ctext x='32' y='40' font-family='Arial Black,Arial' font-weight='900' font-size='26' fill='%23FFFFFF' text-anchor='middle'%3EOG%3C/text%3E%3Crect x='20' y='47' width='24' height='5' fill='%23FFB020'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400..700&display=swap">
 <style>
 :root{
-  --bg:#0C0A1A;
-  --panel:#141127;
-  --panel-2:#1B1734;
-  --panel-3:#231E42;
-  --line:#2A2549;
-  --line-2:#352F5A;
-  --text:#ECEAF7;
-  --text-2:#ABA5CA;
-  --text-3:#767096;
-  --caramel:#E9A23B;
-  --caramel-2:#F3BD66;
+  --bg:#081426;
+  --panel:#0E2138;
+  --panel-2:#142B46;
+  --panel-3:#1C3A5C;
+  --line:#1E3A59;
+  --line-2:#2B4C70;
+  --text:#E9EFF9;
+  --text-2:#A9BBD2;
+  --text-3:#7C8DA8;
+  --caramel:#FFB020;
+  --caramel-2:#FFC24D;
   --caramel-ink:#1A1206;
-  --series:#8E80FF;
+  --series:#4D8DFF;
   --run:#3ECF8E;
   --run-bg:rgba(62,207,142,.12);
   --wait:#FF8A5B;
   --wait-bg:rgba(255,138,91,.13);
   --alarm:#FF5C7A;
   --alarm-bg:rgba(255,92,122,.13);
-  --off:#6C6690;
+  --off:#5A7391;
   --display:"Archivo","Arial Narrow",Arial,sans-serif;
   --body:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
@@ -58,8 +58,8 @@ h1,h2,h3{font-family:var(--display);margin:0;line-height:1.15;text-wrap:balance}
 @media (min-width:1000px){
   .side{display:flex;flex-direction:column;gap:26px;position:sticky;top:0;height:100vh;padding:22px 16px;border-right:1px solid var(--line);background:var(--panel)}
 }
-.brand{display:flex;gap:10px;align-items:center}
-.brand b{width:36px;height:36px;display:grid;place-items:center;background:#200E6A;color:var(--caramel);font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 125;font-size:.9rem;border:1px solid rgba(233,162,59,.35);flex:none}
+.brand{display:flex;gap:10px;align-items:center;--lg-ink:var(--text);--lg-accent:var(--caramel)}
+.brand svg{display:block;flex:none}
 .brand span{font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 110;line-height:1.1}
 .brand small{display:block;font-family:var(--mono);font-weight:400;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
 .side nav{display:grid;gap:2px}
@@ -130,7 +130,7 @@ main{min-width:0;padding:0 16px calc(86px + env(safe-area-inset-bottom))}
 .fstep{display:grid;grid-template-columns:minmax(110px,150px) 1fr auto;gap:12px;align-items:center}
 .fstep .l{font-size:.84rem;color:var(--text-2)}
 .fbar{height:26px;background:var(--panel-2);border-radius:4px;overflow:hidden;position:relative}
-.fbar i{position:absolute;inset:0 auto 0 0;background:linear-gradient(90deg,var(--series),#A99DFF);border-radius:4px}
+.fbar i{position:absolute;inset:0 auto 0 0;background:linear-gradient(90deg,var(--series),#7FB0FF);border-radius:4px}
 .fstep.money .fbar i{background:linear-gradient(90deg,var(--caramel),var(--caramel-2))}
 .fstep .n{font-family:var(--mono);font-size:.86rem;font-weight:600;min-width:44px;text-align:right}
 .fstep .r{grid-column:2/4;font-family:var(--mono);font-size:.66rem;color:var(--text-3);margin-top:-6px}
@@ -159,8 +159,8 @@ main{min-width:0;padding:0 16px calc(86px + env(safe-area-inset-bottom))}
 .ev{display:grid;grid-template-columns:28px 1fr auto;gap:10px;padding:10px 16px;border-bottom:1px solid var(--line);align-items:start}
 .ev:last-child{border-bottom:0}
 .ev .ic{width:28px;height:28px;border-radius:6px;display:grid;place-items:center;font-family:var(--mono);font-size:.62rem;font-weight:600}
-.ev .ic.lead{background:rgba(142,128,255,.15);color:var(--series)}
-.ev .ic.sale{background:rgba(233,162,59,.15);color:var(--caramel)}
+.ev .ic.lead{background:rgba(77,141,255,.16);color:var(--series)}
+.ev .ic.sale{background:rgba(255,176,32,.16);color:var(--caramel)}
 .ev .ic.bot{background:var(--run-bg);color:var(--run)}
 .ev .ic.alert{background:var(--wait-bg);color:var(--wait)}
 .ev p{font-size:.86rem;line-height:1.4}
@@ -193,8 +193,8 @@ main{min-width:0;padding:0 16px calc(86px + env(safe-area-inset-bottom))}
 @media (min-width:760px){.queue{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (min-width:1300px){.queue{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .post{background:var(--panel);border:1px solid var(--line);border-radius:10px;display:grid;grid-template-columns:96px 1fr;overflow:hidden;min-width:0}
-.thumb{aspect-ratio:9/16;position:relative;display:flex;align-items:flex-end;padding:8px;background:linear-gradient(180deg,rgba(12,10,26,0) 30%,rgba(12,10,26,.9)),radial-gradient(120% 80% at 30% 20%,#3B2A9A,#1A1245 60%,#0F0C22)}
-.thumb.car{aspect-ratio:4/5;align-self:start;background:radial-gradient(120% 80% at 70% 10%,#7A4E12,#3A2410 55%,#1A1206)}
+.thumb{aspect-ratio:9/16;position:relative;display:flex;align-items:flex-end;padding:8px;background:linear-gradient(180deg,rgba(8,20,38,0) 30%,rgba(8,20,38,.9)),radial-gradient(120% 80% at 30% 20%,#2B5EA8,#14304F 60%,#081426)}
+.thumb.car{aspect-ratio:4/5;align-self:start;background:radial-gradient(120% 80% at 70% 10%,#8A5A12,#3F2A0C 55%,#1A1206)}
 .thumb.txt{aspect-ratio:auto;align-self:stretch;background:linear-gradient(160deg,#1F2A44,#121A2C)}
 .thumb b{font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 116;font-size:.72rem;line-height:1.1;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5)}
 .thumb .k{position:absolute;top:8px;left:8px;font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75);background:rgba(0,0,0,.35);padding:1px 5px;border-radius:3px}
@@ -329,7 +329,7 @@ main{min-width:0;padding:0 16px calc(86px + env(safe-area-inset-bottom))}
 
 <div class="app">
   <aside class="side">
-    <div class="brand"><b>OG</b><span>Central do Otávio<small>Supervisório de vendas</small></span></div>
+    <div class="brand"><svg class="sig" viewBox="0 0 218 126" width="84" height="48" role="img" aria-label="Otávio Guidini"><text x="4" y="50" font-family="Archivo,Arial" font-weight="500" font-size="32" letter-spacing="6.5" fill="var(--text)">OTÁVIO</text><text x="4" y="98" font-family="Archivo,Arial" font-weight="900" font-size="47" fill="var(--text)">GUIDINI</text><rect x="6" y="112" width="60" height="6" fill="var(--caramel)"/></svg></div>
     <nav id="sidenav" aria-label="Seções"></nav>
     <div class="sys">
       <span class="tag">Status do sistema</span>
@@ -341,7 +341,7 @@ main{min-width:0;padding:0 16px calc(86px + env(safe-area-inset-bottom))}
 
   <main>
     <div class="top">
-      <div class="mob-brand brand"><b>OG</b><span>Central do Otávio<small>Semana 08–14 set</small></span></div>
+      <div class="mob-brand brand"><svg class="sig" viewBox="0 0 218 126" width="78" height="45" role="img" aria-label="Otávio Guidini"><text x="4" y="50" font-family="Archivo,Arial" font-weight="500" font-size="32" letter-spacing="6.5" fill="var(--text)">OTÁVIO</text><text x="4" y="98" font-family="Archivo,Arial" font-weight="900" font-size="47" fill="var(--text)">GUIDINI</text><rect x="6" y="112" width="60" height="6" fill="var(--caramel)"/></svg></div>
       <div class="title"><h1 id="vtitle">Painel</h1><div class="sub">Semana de 08 a 14 de setembro · atualizado agora</div></div>
       <button class="btn btn-primary" type="button" data-open-upload><svg viewBox="0 0 24 24"><path d="M12 16V4M6 10l6-6 6 6M4 20h16"/></svg>Enviar gravação</button>
     </div>
@@ -671,7 +671,7 @@ function renderLeads(){
   const list=LEADS.filter(l=>lf==='all'||l.t===lf);
   $('#leads').innerHTML=list.map(l=>`
     <button class="lead" type="button" data-lead="${l.id}">
-      <span class="av" ${l.t==='hot'?'style="background:var(--alarm-bg);color:var(--alarm)"':l.t==='buyer'?'style="background:rgba(233,162,59,.15);color:var(--caramel)"':''}>${initials(l.n)}</span>
+      <span class="av" ${l.t==='hot'?'style="background:var(--alarm-bg);color:var(--alarm)"':l.t==='buyer'?'style="background:rgba(255,176,32,.16);color:var(--caramel)"':''}>${initials(l.n)}</span>
       <span><span class="nm">${esc(l.n)}</span><span class="meta">${esc(l.c)} <i>· ${esc(l.s)}</i></span></span>
       <span class="stage">${PROFILES[l.p]}<br><span class="muted" style="font-size:.74rem">${esc(l.o)}</span></span>
       <span class="right"><span class="pill ${l.stc}">${esc(l.st.split(' · ')[0])}</span><span class="score">nota <b>${l.sc}</b></span></span>
