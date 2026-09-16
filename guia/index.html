@@ -315,6 +315,44 @@ p{margin:0}
 .stick span{font-family:var(--mono);font-size:.66rem;color:#8FA2BC}
 .stick .btn{padding:12px 16px;font-size:.92rem;white-space:nowrap}
 @media (min-width:900px){.stick{display:none}}
+
+/* ---------- revelação por rolagem ---------- */
+html.js .rv{opacity:0;transform:translateY(16px);transition:opacity .55s cubic-bezier(.2,.7,.3,1) var(--d,0ms),transform .55s cubic-bezier(.2,.7,.3,1) var(--d,0ms)}
+html.js .rv.in{opacity:1;transform:none}
+html.js .rv.now{transition:none}
+@media (prefers-reduced-motion:reduce){html.js .rv{opacity:1;transform:none;transition:none}}
+
+/* varredura de medição nos títulos */
+html.js .sec-title{position:relative;clip-path:inset(-14% -3% -24% -3%)}
+html.js .sec-title.rv::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transform:translateX(-115%);
+  background:linear-gradient(90deg,transparent 0%,rgba(255,176,32,.5) 42%,rgba(46,107,230,.28) 62%,transparent 100%)}
+html.js .sec-title.rv.in::after{animation:scan 1.05s cubic-bezier(.3,.7,.2,1) .06s forwards}
+@keyframes scan{0%{transform:translateX(-115%);opacity:.95}100%{transform:translateX(115%);opacity:0}}
+@media (prefers-reduced-motion:reduce){html.js .sec-title.rv.in::after{animation:none}}
+
+/* o trilho da trajetória desenha conforme você desce */
+html.js .step .rail::after{transform:scaleY(0);transform-origin:top;transition:transform .8s ease .12s}
+html.js .step.in .rail::after{transform:scaleY(1)}
+
+/* a régua embaixo do número dos projetos se preenche */
+html.js .proj .num{border-bottom:0;background-image:linear-gradient(var(--caramel),var(--caramel));background-repeat:no-repeat;background-position:0 100%;background-size:0 3px;transition:background-size .7s cubic-bezier(.2,.7,.3,1) .2s}
+html.js .proj.in .num{background-size:100% 3px}
+
+/* linha de processo lateral */
+.pgrail{position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:15;display:none;width:20px;height:min(56vh,400px)}
+@media (min-width:1240px){.pgrail{display:block}}
+.pgrail .tube{position:absolute;left:8px;top:0;bottom:0;width:3px;background:var(--line);border-radius:3px;overflow:hidden}
+.pgrail .fluid{position:absolute;left:0;right:0;top:0;height:0;background:linear-gradient(180deg,var(--caramel),#FFD37A)}
+.pgrail .st{position:absolute;left:2px;width:15px;height:15px;border-radius:50%;border:2px solid var(--line);background:var(--sheet);transform:translateY(-50%);padding:0;cursor:pointer;transition:border-color .2s,background .2s,transform .2s}
+.pgrail .st:hover{transform:translateY(-50%) scale(1.15)}
+.pgrail .st.on{border-color:var(--caramel);background:var(--caramel)}
+.pgrail .st b{position:absolute;left:24px;top:50%;transform:translateY(-50%);white-space:nowrap;font-family:var(--mono);font-weight:400;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);opacity:0;transition:opacity .2s}
+.pgrail .st.on b,.pgrail .st:hover b,.pgrail .st:focus-visible b{opacity:1;color:var(--ink-2)}
+
+/* medidor no topo, no celular */
+.pgtop{position:fixed;left:0;top:0;height:3px;width:0;background:linear-gradient(90deg,var(--caramel),#FFD37A);z-index:40}
+@media (min-width:1240px){.pgtop{display:none}}
+@media print{html.js .rv{opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body>
@@ -594,6 +632,112 @@ p{margin:0}
     }).catch(function(){ msg.hidden=false; });
   });
   msg.addEventListener('click',function(e){ if(e.target===msg) msg.hidden=true; });
+})();
+</script>
+
+<script>
+/* revelação por rolagem: linha de processo, varredura nos títulos e números que sobem */
+(function(){
+  var root=document.documentElement;
+  root.classList.add('js');
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var SEL='.head > *,.cred,.scope div,.langs,.player,.video-cap,.about-copy > p,.step,.deg,.panel,.proj,.pr,.work,.channel,.offer-list div,.badges,.hero-actions,.msg-card,.path,.format,.q,.faq details,.recog li,.stage,.chapters li,.cover,.box,.diag,.days,.weeks-legend';
+  var pending=[].slice.call(document.querySelectorAll(SEL));
+  pending.forEach(function(el){
+    el.classList.add('rv');
+    var k=el.parentNode;
+    if(!k.__i){k.__i=0}
+    el.style.setProperty('--d',Math.min(k.__i*70,350)+'ms');
+    k.__i++;
+  });
+
+  /* números que sobem como um medidor */
+  function countUp(el){
+    if(reduce||el.__done)return; el.__done=1;
+    var raw=el.textContent, nums=raw.match(/\d+([.,]\d+)?/g);
+    if(!nums||nums.length!==1)return;
+    var n=nums[0], dec=(n.split(/[.,]/)[1]||'').length, sep=n.indexOf(',')>-1?',':'.';
+    var target=parseFloat(n.replace(',','.')), t0=null, dur=900;
+    function frame(t){
+      if(!t0)t0=t;
+      var p=Math.min((t-t0)/dur,1), e=1-Math.pow(1-p,3), v=(target*e).toFixed(dec);
+      if(sep===',')v=v.replace('.',',');
+      el.textContent=raw.replace(n,v);
+      if(p<1)requestAnimationFrame(frame); else el.textContent=raw;
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function show(el){
+    el.classList.add('in');
+    var num=el.matches('.cred')?el.querySelector('b'):(el.matches('.proj')?el.querySelector('.num'):null);
+    if(num)countUp(num);
+  }
+
+  /* varre tudo que já passou ou está na tela: nada fica invisível */
+  function sweep(instant){
+    var h=window.innerHeight, rest=[];
+    for(var i=0;i<pending.length;i++){
+      var el=pending[i], t=el.getBoundingClientRect().top;
+      if(t<h*0.9){ if(instant)el.classList.add('now'); show(el); }
+      else rest.push(el);
+    }
+    pending=rest;
+  }
+
+  sweep(true);
+  /* segurança: viewport estranho (impressão, prévia, leitor) não pode esconder conteúdo */
+  setTimeout(function(){ if(window.innerHeight<2||pending.length===document.querySelectorAll('.rv').length){ pending.forEach(show); pending=[]; } },1500);
+  requestAnimationFrame(function(){requestAnimationFrame(function(){
+    [].slice.call(document.querySelectorAll('.rv.now')).forEach(function(el){el.classList.remove('now')});
+  })});
+
+  /* linha de processo: estações + fluido que avança com a rolagem */
+  var secs=[].slice.call(document.querySelectorAll('section[id]'));
+  var rail=null, fluid=null, top=null, sts=[];
+  if(secs.length>2){
+    rail=document.createElement('div'); rail.className='pgrail'; rail.setAttribute('aria-hidden','true');
+    rail.innerHTML='<div class="tube"><div class="fluid"></div></div>';
+    top=document.createElement('div'); top.className='pgtop'; top.setAttribute('aria-hidden','true');
+    sts=secs.map(function(s){
+      var t=s.querySelector('.tag'), label=(t?t.textContent:s.id).trim();
+      if(label.length>16)label=label.split(' ')[0];
+      var b=document.createElement('button');
+      b.type='button'; b.className='st'; b.innerHTML='<b>'+label+'</b>';
+      b.addEventListener('click',function(){s.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})});
+      rail.appendChild(b);
+      return {sec:s,btn:b};
+    });
+    document.body.appendChild(rail); document.body.appendChild(top);
+    fluid=rail.querySelector('.fluid');
+  }
+
+  function place(){
+    if(!rail)return;
+    var docH=document.body.scrollHeight||1;
+    sts.forEach(function(o){
+      o.btn.style.top=(Math.min(Math.max(o.sec.offsetTop/docH,0),1)*100)+'%';
+    });
+  }
+  function paint(){
+    if(rail){
+      var docH=document.body.scrollHeight-window.innerHeight;
+      var p=docH>0?Math.min(Math.max(window.scrollY/docH,0),1):0;
+      fluid.style.height=(p*100)+'%';
+      top.style.width=(p*100)+'%';
+      var y=window.scrollY+window.innerHeight*0.35, cur=0;
+      sts.forEach(function(o,i){if(o.sec.offsetTop<=y)cur=i});
+      sts.forEach(function(o,i){o.btn.classList.toggle('on',i===cur)});
+    }
+  }
+  var ticking=false;
+  addEventListener('scroll',function(){
+    if(ticking)return; ticking=true;
+    requestAnimationFrame(function(){sweep(false);paint();ticking=false});
+  },{passive:true});
+  addEventListener('resize',function(){place();sweep(false);paint()},{passive:true});
+  addEventListener('load',function(){place();sweep(false);paint()});
+  place();paint();
 })();
 </script>
 </body>
