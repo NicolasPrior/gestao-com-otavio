@@ -425,6 +425,29 @@ html.js .proj.in .num{background-size:100% 3px}
 :root[data-theme="light"] .tema .sol{display:none}
 :root[data-theme="light"] .tema .lua{display:block}
 .nav-acoes{display:flex;align-items:center;gap:10px}
+
+/* ---------- imagens: ilustrações técnicas e logotipos ---------- */
+.ill{margin:-22px -22px 8px;height:124px;display:grid;place-items:center;color:var(--indigo-2);border-bottom:1px solid var(--line);
+  background-color:var(--night-2);
+  background-image:linear-gradient(color-mix(in srgb,var(--line) 70%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--line) 70%,transparent) 1px,transparent 1px);
+  background-size:22px 22px;background-position:-1px -1px}
+.ill svg{width:82%;max-width:250px;height:auto;overflow:visible}
+.wico{width:52px;height:52px;color:var(--indigo-2);display:block}
+.work.oag .wico{color:#EAF0F9}
+.inst{display:flex;align-items:center;justify-content:center;height:68px;padding:10px 14px;border-radius:8px;background:#FFFFFF;border:1px solid var(--line);margin-bottom:6px}
+.deg.main .inst{border-color:transparent}
+.inst img{max-height:46px;max-width:100%;object-fit:contain;display:block}
+.inst .mono{display:none;font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 108;font-size:1rem;letter-spacing:.03em;color:#1C51BE;white-space:nowrap}
+.inst.sem img{display:none}
+.inst.sem .mono{display:block}
+.deg{grid-template-rows:auto auto auto 1fr auto}
+
+/* topo no celular: sem tubulação atrás do texto e botões do mesmo tamanho */
+@media (max-width:640px){
+  .hero .pid{display:none}
+  .hero-actions{display:grid;grid-template-columns:1fr;gap:10px}
+  .hero-actions .btn{width:100%}
+}
 </style>
 </head>
 <body>
@@ -600,10 +623,10 @@ html.js .proj.in .num{background-size:100% 3px}
       <p class="lead">Uma graduação, três MBAs e duas certificações Lean Six Sigma, todos aplicados na operação.</p>
     </div>
     <div class="degrees">
-      <article class="deg"><span class="lvl">Graduação</span><h3>Engenharia de Alimentos</h3><p>Instituto Federal do Sul de Minas (IFSULDEMINAS)</p><span class="yrs">2017 – 2021</span></article>
-      <article class="deg"><span class="lvl">MBA</span><h3>Engenharia de Produção</h3><p>Faculdade Metropolitana</p><span class="yrs">2021 – 2022</span></article>
-      <article class="deg main"><span class="lvl">MBA</span><h3>Gestão de Projetos</h3><p>USP / Esalq</p><span class="yrs">2023 – 2024</span></article>
-      <article class="deg"><span class="lvl">MBA</span><h3>Excelência Operacional e Six Sigma</h3><p>Grupo Voitto</p><span class="yrs">2025 – 2026</span></article>
+      <article class="deg"><div class="inst"><img src="img/inst/ifsuldeminas.svg" alt="IFSULDEMINAS" loading="lazy" onerror="this.parentNode.classList.add('sem')"><span class="mono">IFSULDEMINAS</span></div><span class="lvl">Graduação</span><h3>Engenharia de Alimentos</h3><p>Instituto Federal do Sul de Minas (IFSULDEMINAS)</p><span class="yrs">2017 – 2021</span></article>
+      <article class="deg"><div class="inst"><img src="img/inst/metropolitana.png" alt="Faculdade Metropolitana" loading="lazy" onerror="this.parentNode.classList.add('sem')"><span class="mono">FAMEESP</span></div><span class="lvl">MBA</span><h3>Engenharia de Produção</h3><p>Faculdade Metropolitana</p><span class="yrs">2021 – 2022</span></article>
+      <article class="deg main"><div class="inst"><img src="img/inst/usp.svg" alt="Universidade de São Paulo" loading="lazy" onerror="this.parentNode.classList.add('sem')"><span class="mono">USP/ESALQ</span></div><span class="lvl">MBA</span><h3>Gestão de Projetos</h3><p>USP / Esalq</p><span class="yrs">2023 – 2024</span></article>
+      <article class="deg"><div class="inst"><img src="img/inst/voitto.png" alt="Grupo Voitto" loading="lazy" onerror="this.parentNode.classList.add('sem')"><span class="mono">VOITTO</span></div><span class="lvl">MBA</span><h3>Excelência Operacional e Six Sigma</h3><p>Grupo Voitto</p><span class="yrs">2025 – 2026</span></article>
     </div>
     <div class="edu-more">
       <div class="panel">
@@ -636,12 +659,12 @@ html.js .proj.in .num{background-size:100% 3px}
       <p class="lead">Seis entregas que marcaram a carreira, do custo da operação à formação de pessoas.</p>
     </div>
     <div class="projects">
-      <article class="proj"><div class="meta"><span>Custos</span><i>2025</i></div><span class="num">−20%</span><h3>Custo industrial</h3><details class="more"><summary>Ver detalhes</summary><p>Otimização da dosagem dos principais insumos da produção, com a equipe engajada em eficiência de custos.</p></details></article>
-      <article class="proj"><div class="meta"><span>Lean Six Sigma</span><i>DMAIC</i></div><span class="num">−30%</span><h3>Consumo de insumos químicos</h3><details class="more"><summary>Ver detalhes</summary><p>Projeto de melhoria que reduziu em 30%, 20% e 15% o consumo dos três principais insumos químicos do processo.</p></details></article>
-      <article class="proj"><div class="meta"><span>Pessoas</span><i>2024</i></div><span class="num">8<small>projetos</small></span><h3>Primeiro programa trainee</h3><details class="more"><summary>Ver detalhes</summary><p>Estruturou o primeiro programa trainee da empresa e foi mentor dos participantes, da formação técnica aos projetos de melhoria.</p></details></article>
-      <article class="proj"><div class="meta"><span>Manutenção</span><i>2021 → 2023</i></div><span class="num">25→55%</span><h3>Manutenção preventiva</h3><details class="more"><summary>Ver detalhes</summary><p>Planos preventivos e rotas de manutenção estruturados do zero, trocando correção por prevenção.</p></details></article>
-      <article class="proj"><div class="meta"><span>Projetos</span><i>Expedição</i></div><span class="num">+100%</span><h3>Produtividade no carregamento</h3><details class="more"><summary>Ver detalhes</summary><p>Projeto estrutural de ampliação da linha de carregamento de caminhões a granel, que dobrou a capacidade.</p></details></article>
-      <article class="proj"><div class="meta"><span>Projetos</span><i>Engenharia</i></div><span class="num">3×100<small>m³</small></span><h3>Ampliação da tancagem</h3><details class="more"><summary>Ver detalhes</summary><p>Aquisição e negociação dos tanques, desenvolvimento de fornecedores de içamento e acompanhamento das obras civis.</p></details></article>
+      <article class="proj"><div class="ill"><svg viewBox="0 0 240 120" aria-hidden="true"><g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M30 100H210"/><rect x="46" y="34" width="28" height="66" rx="2"/><rect x="92" y="50" width="28" height="50" rx="2"/><path d="M42 24 L156 48" stroke-dasharray="4 5"/><path d="M146 38 L158 49 L143 53"/><circle cx="194" cy="42" r="17"/></g><rect x="138" y="62" width="28" height="38" rx="2" fill="var(--caramel)"/><text x="194" y="47" text-anchor="middle" font-family="Archivo,Arial" font-weight="800" font-size="14" fill="currentColor">R$</text></svg></div><div class="meta"><span>Custos</span><i>2025</i></div><span class="num">−20%</span><h3>Custo industrial</h3><details class="more"><summary>Ver detalhes</summary><p>Otimização da dosagem dos principais insumos da produção, com a equipe engajada em eficiência de custos.</p></details></article>
+      <article class="proj"><div class="ill"><svg viewBox="0 0 240 120" aria-hidden="true"><rect x="55" y="55" width="50" height="33" rx="8" fill="var(--caramel)"/><g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="52" y="20" width="56" height="70" rx="10"/><path d="M52 50h56" stroke-dasharray="3 4"/><path d="M80 90v12h40"/><circle cx="128" cy="102" r="8"/><path d="M136 102h34"/><path d="M196 24c-9 11-13 18-13 25a13 13 0 0 0 26 0c0-7-4-14-13-25z"/></g><path d="M196 74v26m-9-9 9 9 9-9" stroke="var(--caramel)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="meta"><span>Lean Six Sigma</span><i>DMAIC</i></div><span class="num">−30%</span><h3>Consumo de insumos químicos</h3><details class="more"><summary>Ver detalhes</summary><p>Projeto de melhoria que reduziu em 30%, 20% e 15% o consumo dos três principais insumos químicos do processo.</p></details></article>
+      <article class="proj"><div class="ill"><svg viewBox="0 0 240 120" aria-hidden="true"><circle cx="120" cy="40" r="13" fill="var(--caramel)"/><g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="70" cy="50" r="11"/><path d="M50 94c2-15 10-23 20-23s18 8 20 23"/><path d="M96 94c2-18 12-28 24-28s22 10 24 28"/><circle cx="170" cy="50" r="11"/><path d="M150 94c2-15 10-23 20-23s18 8 20 23"/><path d="M34 100h172"/></g><path d="M192 34l16-16m0 0h-11m11 0v11" stroke="var(--caramel)" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="meta"><span>Pessoas</span><i>2024</i></div><span class="num">8<small>projetos</small></span><h3>Primeiro programa trainee</h3><details class="more"><summary>Ver detalhes</summary><p>Estruturou o primeiro programa trainee da empresa e foi mentor dos participantes, da formação técnica aos projetos de melhoria.</p></details></article>
+      <article class="proj"><div class="ill"><svg viewBox="0 0 240 120" aria-hidden="true"><g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M40 94a48 48 0 0 1 96 0"/><path d="M46 94h84"/><path d="M52 70l7 4M88 47v8M124 70l-7 4"/><path d="M186 34a15 15 0 0 0-17 20l-19 19a6 6 0 0 0 8 8l19-19a15 15 0 0 0 20-17l-10 10-9-2-2-9z"/></g><path d="M88 94L116 66" stroke="var(--caramel)" stroke-width="4.5" stroke-linecap="round"/><circle cx="88" cy="94" r="5.5" fill="currentColor"/><text x="42" y="113" font-family="IBM Plex Mono,monospace" font-size="10" fill="currentColor">25%</text><text x="116" y="113" font-family="IBM Plex Mono,monospace" font-size="10" fill="currentColor">55%</text></svg></div><div class="meta"><span>Manutenção</span><i>2021 → 2023</i></div><span class="num">25→55%</span><h3>Manutenção preventiva</h3><details class="more"><summary>Ver detalhes</summary><p>Planos preventivos e rotas de manutenção estruturados do zero, trocando correção por prevenção.</p></details></article>
+      <article class="proj"><div class="ill"><svg viewBox="0 0 240 120" aria-hidden="true"><g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M36 100V24h46"/><path d="M82 24v16"/><rect x="68" y="52" width="100" height="30" rx="15"/><path d="M168 84V62h22l14 14v8z"/><path d="M60 84h146"/><circle cx="92" cy="92" r="8"/><circle cx="146" cy="92" r="8"/><circle cx="190" cy="92" r="8"/><path d="M26 100h192"/></g><path d="M82 40v12" stroke="var(--caramel)" stroke-width="4.5" stroke-linecap="round"/><text x="198" y="42" text-anchor="middle" font-family="Archivo,Arial" font-weight="900" font-size="20" fill="var(--caramel)">×2</text></svg></div><div class="meta"><span>Projetos</span><i>Expedição</i></div><span class="num">+100%</span><h3>Produtividade no carregamento</h3><details class="more"><summary>Ver detalhes</summary><p>Projeto estrutural de ampliação da linha de carregamento de caminhões a granel, que dobrou a capacidade.</p></details></article>
+      <article class="proj"><div class="ill"><svg viewBox="0 0 240 120" aria-hidden="true"><rect x="50" y="62" width="34" height="32" rx="3" fill="var(--caramel)"/><rect x="103" y="48" width="34" height="46" rx="3" fill="var(--caramel)"/><rect x="156" y="56" width="34" height="38" rx="3" fill="var(--caramel)"/><g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="46" y="30" width="42" height="68" rx="6"/><rect x="99" y="30" width="42" height="68" rx="6"/><rect x="152" y="30" width="42" height="68" rx="6"/><path d="M88 80h11M141 80h11"/><path d="M30 104h180"/></g><text x="120" y="22" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="currentColor">3 × 100 m³</text></svg></div><div class="meta"><span>Projetos</span><i>Engenharia</i></div><span class="num">3×100<small>m³</small></span><h3>Ampliação da tancagem</h3><details class="more"><summary>Ver detalhes</summary><p>Aquisição e negociação dos tanques, desenvolvimento de fornecedores de içamento e acompanhamento das obras civis.</p></details></article>
     </div>
   </div>
 </section>
@@ -670,7 +693,7 @@ html.js .proj.in .num{background-size:100% 3px}
     </div>
     <div class="side-work">
       <article class="work oag">
-        <div class="kind"><span>Mentoria de carreira</span><i style="color:#8FA2BC">OAG</i></div>
+        <svg class="wico" viewBox="0 0 64 64" aria-hidden="true"><g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14h30a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4H22l-8 7v-7H8a4 4 0 0 1-4-4V18a4 4 0 0 1 4-4z"/></g><path d="M30 30h22a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4h-4v6l-7-6H30a4 4 0 0 1-4-4V34a4 4 0 0 1 4-4z" fill="var(--caramel)"/></svg><div class="kind"><span>Mentoria de carreira</span><i style="color:#8FA2BC">OAG</i></div>
         <h3>OAG Consultoria em Alimentos &amp; Indústrias</h3>
         <details class="more"><summary>Ver detalhes</summary><p>Mentoria para profissionais e líderes da indústria que querem evoluir na carreira e ganhar visibilidade técnica. Sessões de PDI, acompanhamento de líderes e desenvolvimento de equipes.</p></details>
         <a href="#contato">Falar sobre mentoria</a>
@@ -685,13 +708,13 @@ html.js .proj.in .num{background-size:100% 3px}
         <a href="guia/">Conhecer o guia</a>
       </article>
       <article class="work">
-        <div class="kind"><span>Ferramenta</span><i>grátis · 2 min</i></div>
+        <svg class="wico" viewBox="0 0 64 64" aria-hidden="true"><g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="10" width="40" height="46" rx="4"/><path d="M24 6h16v8H24z"/><path d="M34 26h12M34 38h12M34 50h8"/></g><path d="M19 26l3 3 6-6M19 38l3 3 6-6" stroke="var(--caramel)" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="23" cy="50" r="3" fill="var(--caramel)"/></svg><div class="kind"><span>Ferramenta</span><i>grátis · 2 min</i></div>
         <h3>Diagnóstico de Comunicação Estratégica</h3>
         <details class="more"><summary>Ver detalhes</summary><p>Sete perguntas para descobrir se o seu trabalho está sendo visto pela liderança e o que está travando o seu reconhecimento.</p></details>
         <a href="https://diagnostico-gestaocomotavio.lovable.app" target="_blank" rel="noopener">Fazer o diagnóstico</a>
       </article>
       <article class="work">
-        <div class="kind"><span>Conteúdo</span><i>28 mil seguidores</i></div>
+        <svg class="wico" viewBox="0 0 64 64" aria-hidden="true"><g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="18" y="6" width="28" height="52" rx="5"/><path d="M28 51h8"/></g><path d="M28 22v16l13-8z" fill="var(--caramel)"/></svg><div class="kind"><span>Conteúdo</span><i>28 mil seguidores</i></div>
         <h3>Manual do Líder Industrial</h3>
         <details class="more"><summary>Ver detalhes</summary><p>Série no Instagram @gestaocomotavio sobre liderança no chão de fábrica: feedback, delegação, troca de turno e decisões difíceis.</p></details>
         <a href="https://www.instagram.com/gestaocomotavio/" target="_blank" rel="noopener">Acompanhar no Instagram</a>
@@ -769,16 +792,20 @@ html.js .proj.in .num{background-size:100% 3px}
   /* números que sobem como um medidor */
   function countUp(el){
     if(reduce||el.__done)return; el.__done=1;
-    var raw=el.textContent, nums=raw.match(/\d+([.,]\d+)?/g);
-    if(!nums||nums.length!==1)return;
+    /* mexe só no pedaço de texto com o número, sem apagar o que vem junto (ex.: "8 <small>projetos</small>") */
+    var tn=null;
+    for(var i=0;i<el.childNodes.length;i++){var c=el.childNodes[i]; if(c.nodeType===3&&/\d/.test(c.nodeValue)){tn=c;break}}
+    if(!tn)return;
+    var raw=tn.nodeValue, nums=raw.match(/\d+([.,]\d+)?/g);
+    if(!nums||nums.length!==1||/\d/.test(el.textContent.replace(raw,'')))return;
     var n=nums[0], dec=(n.split(/[.,]/)[1]||'').length, sep=n.indexOf(',')>-1?',':'.';
     var target=parseFloat(n.replace(',','.')), t0=null, dur=900;
     function frame(t){
       if(!t0)t0=t;
       var p=Math.min((t-t0)/dur,1), e=1-Math.pow(1-p,3), v=(target*e).toFixed(dec);
       if(sep===',')v=v.replace('.',',');
-      el.textContent=raw.replace(n,v);
-      if(p<1)requestAnimationFrame(frame); else el.textContent=raw;
+      tn.nodeValue=raw.replace(n,v);
+      if(p<1)requestAnimationFrame(frame); else tn.nodeValue=raw;
     }
     requestAnimationFrame(frame);
   }

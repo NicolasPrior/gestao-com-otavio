@@ -1,0 +1,6 @@
+Logotipos das instituicoes (aparecem sozinhos quando o arquivo existe):
+  ifsuldeminas.svg  -> graduacao
+  metropolitana.png -> MBA Engenharia de Producao
+  usp.svg           -> MBA Gestao de Projetos (USP/ESALQ)
+  voitto.png        -> MBA Excelencia Operacional e Six Sigma
+Enquanto nao existirem, o site mostra o nome da instituicao no lugar.

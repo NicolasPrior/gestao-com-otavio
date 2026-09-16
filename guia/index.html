@@ -416,6 +416,16 @@ html.js .proj.in .num{background-size:100% 3px}
 :root[data-theme="light"] .tema .sol{display:none}
 :root[data-theme="light"] .tema .lua{display:block}
 .nav-acoes{display:flex;align-items:center;gap:10px}
+
+/* ---------- imagens: ícones do método ---------- */
+.mico{width:46px;height:46px;color:var(--on-deep);display:block}
+
+/* topo no celular: sem tubulação atrás do texto e botões do mesmo tamanho */
+@media (max-width:640px){
+  .hero .pid{display:none}
+  .hero-actions{display:grid;grid-template-columns:1fr;gap:10px}
+  .hero-actions .btn{width:100%}
+}
 </style>
 </head>
 <body>
@@ -537,10 +547,10 @@ html.js .proj.in .num{background-size:100% 3px}
       <p class="lead">Funciona como uma linha: cada etapa alimenta a próxima. A maioria dos profissionais técnicos para na primeira.</p>
     </div>
     <div class="method">
-      <div class="stage"><div class="node"><span class="num">1</span></div><h3>Registrar</h3><p>Tirar a entrega da conversa de corredor e colocar no e-mail, no relatório, na ata.</p><span class="ex">“Troca feita às 23h40, registrada na OS 4417.”</span></div>
-      <div class="stage"><div class="node"><span class="num">2</span></div><h3>Medir</h3><p>Traduzir cada entrega em R$, %, horas de linha e risco evitado.</p><span class="ex">“Evitou ~6 h de parada.”</span></div>
-      <div class="stage"><div class="node"><span class="num">3</span></div><h3>Posicionar</h3><p>Levar os números para a reunião e defender ideias com dados, sem parecer arrogante.</p><span class="ex">“Proponho incluir no preventivo.”</span></div>
-      <div class="stage"><div class="node"><span class="num">4</span></div><h3>Conversar</h3><p>Ter a conversa de carreira com o gestor com um histórico de resultados em mãos.</p><span class="ex">“Quero ser considerado para a coordenação.”</span></div>
+      <div class="stage"><div class="node"><span class="num">1</span></div><svg class="mico" viewBox="0 0 48 48" aria-hidden="true"><g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="8" width="26" height="34" rx="3"/><path d="M15 18h14M15 25h14M15 32h8"/></g><path d="M30 38l12-12 3 3-12 12h-3z" fill="var(--caramel)"/></svg><h3>Registrar</h3><p>Tirar a entrega da conversa de corredor e colocar no e-mail, no relatório, na ata.</p><span class="ex">“Troca feita às 23h40, registrada na OS 4417.”</span></div>
+      <div class="stage"><div class="node"><span class="num">2</span></div><svg class="mico" viewBox="0 0 48 48" aria-hidden="true"><g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M6 36a18 18 0 0 1 36 0"/><path d="M10 36h28"/></g><path d="M24 36l10-11" stroke="var(--caramel)" stroke-width="3.2" stroke-linecap="round"/><circle cx="24" cy="36" r="3" fill="currentColor"/></svg><h3>Medir</h3><p>Traduzir cada entrega em R$, %, horas de linha e risco evitado.</p><span class="ex">“Evitou ~6 h de parada.”</span></div>
+      <div class="stage"><div class="node"><span class="num">3</span></div><svg class="mico" viewBox="0 0 48 48" aria-hidden="true"><g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="8" width="36" height="24" rx="2"/><path d="M24 32v8M16 42l8-6 8 6"/></g><path d="M12 26l7-6 5 4 10-9" stroke="var(--caramel)" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Posicionar</h3><p>Levar os números para a reunião e defender ideias com dados, sem parecer arrogante.</p><span class="ex">“Proponho incluir no preventivo.”</span></div>
+      <div class="stage"><div class="node"><span class="num">4</span></div><svg class="mico" viewBox="0 0 48 48" aria-hidden="true"><g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10h22a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H16l-6 5v-5H6a3 3 0 0 1-3-3V13a3 3 0 0 1 3-3z"/></g><path d="M22 22h18a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-3v5l-6-5h-9a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3z" fill="var(--caramel)"/></svg><h3>Conversar</h3><p>Ter a conversa de carreira com o gestor com um histórico de resultados em mãos.</p><span class="ex">“Quero ser considerado para a coordenação.”</span></div>
     </div>
   </div>
 </section>
@@ -713,16 +723,20 @@ html.js .proj.in .num{background-size:100% 3px}
   /* números que sobem como um medidor */
   function countUp(el){
     if(reduce||el.__done)return; el.__done=1;
-    var raw=el.textContent, nums=raw.match(/\d+([.,]\d+)?/g);
-    if(!nums||nums.length!==1)return;
+    /* mexe só no pedaço de texto com o número, sem apagar o que vem junto (ex.: "8 <small>projetos</small>") */
+    var tn=null;
+    for(var i=0;i<el.childNodes.length;i++){var c=el.childNodes[i]; if(c.nodeType===3&&/\d/.test(c.nodeValue)){tn=c;break}}
+    if(!tn)return;
+    var raw=tn.nodeValue, nums=raw.match(/\d+([.,]\d+)?/g);
+    if(!nums||nums.length!==1||/\d/.test(el.textContent.replace(raw,'')))return;
     var n=nums[0], dec=(n.split(/[.,]/)[1]||'').length, sep=n.indexOf(',')>-1?',':'.';
     var target=parseFloat(n.replace(',','.')), t0=null, dur=900;
     function frame(t){
       if(!t0)t0=t;
       var p=Math.min((t-t0)/dur,1), e=1-Math.pow(1-p,3), v=(target*e).toFixed(dec);
       if(sep===',')v=v.replace('.',',');
-      el.textContent=raw.replace(n,v);
-      if(p<1)requestAnimationFrame(frame); else el.textContent=raw;
+      tn.nodeValue=raw.replace(n,v);
+      if(p<1)requestAnimationFrame(frame); else tn.nodeValue=raw;
     }
     requestAnimationFrame(frame);
   }
