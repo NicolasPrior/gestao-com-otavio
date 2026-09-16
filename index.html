@@ -436,10 +436,10 @@ html.js .proj.in .num{background-size:100% 3px}
 .work.oag .wico{color:#EAF0F9}
 .inst{display:flex;align-items:center;justify-content:center;height:68px;padding:10px 14px;border-radius:8px;background:#FFFFFF;border:1px solid var(--line);margin-bottom:6px}
 .deg.main .inst{border-color:transparent}
-.inst img{max-height:46px;max-width:100%;object-fit:contain;display:block}
-.inst .mono{display:none;font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 108;font-size:1rem;letter-spacing:.03em;color:#1C51BE;white-space:nowrap}
-.inst.sem img{display:none}
-.inst.sem .mono{display:block}
+.inst img{max-height:46px;max-width:100%;object-fit:contain;display:none}
+.inst.ok img{display:block}
+.inst.ok .mono{display:none}
+.inst .mono{display:block;font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 108;font-size:1rem;letter-spacing:.03em;color:#1C51BE;white-space:nowrap}
 .deg{grid-template-rows:auto auto auto 1fr auto}
 
 /* topo no celular: sem tubulação atrás do texto e botões do mesmo tamanho */
@@ -623,10 +623,10 @@ html.js .proj.in .num{background-size:100% 3px}
       <p class="lead">Uma graduação, três MBAs e duas certificações Lean Six Sigma, todos aplicados na operação.</p>
     </div>
     <div class="degrees">
-      <article class="deg"><div class="inst"><img src="img/inst/ifsuldeminas.svg" alt="IFSULDEMINAS" loading="lazy" onerror="this.parentNode.classList.add('sem')"><span class="mono">IFSULDEMINAS</span></div><span class="lvl">Graduação</span><h3>Engenharia de Alimentos</h3><p>Instituto Federal do Sul de Minas (IFSULDEMINAS)</p><span class="yrs">2017 – 2021</span></article>
-      <article class="deg"><div class="inst"><img src="img/inst/metropolitana.png" alt="Faculdade Metropolitana" loading="lazy" onerror="this.parentNode.classList.add('sem')"><span class="mono">FAMEESP</span></div><span class="lvl">MBA</span><h3>Engenharia de Produção</h3><p>Faculdade Metropolitana</p><span class="yrs">2021 – 2022</span></article>
-      <article class="deg main"><div class="inst"><img src="img/inst/usp.svg" alt="Universidade de São Paulo" loading="lazy" onerror="this.parentNode.classList.add('sem')"><span class="mono">USP/ESALQ</span></div><span class="lvl">MBA</span><h3>Gestão de Projetos</h3><p>USP / Esalq</p><span class="yrs">2023 – 2024</span></article>
-      <article class="deg"><div class="inst"><img src="img/inst/voitto.png" alt="Grupo Voitto" loading="lazy" onerror="this.parentNode.classList.add('sem')"><span class="mono">VOITTO</span></div><span class="lvl">MBA</span><h3>Excelência Operacional e Six Sigma</h3><p>Grupo Voitto</p><span class="yrs">2025 – 2026</span></article>
+      <article class="deg"><div class="inst"><img src="img/inst/ifsuldeminas.svg" alt="IFSULDEMINAS" onload="this.parentNode.classList.add('ok')"><span class="mono">IFSULDEMINAS</span></div><span class="lvl">Graduação</span><h3>Engenharia de Alimentos</h3><p>Instituto Federal do Sul de Minas (IFSULDEMINAS)</p><span class="yrs">2017 – 2021</span></article>
+      <article class="deg"><div class="inst"><img src="img/inst/metropolitana.png" alt="Faculdade Metropolitana" onload="this.parentNode.classList.add('ok')"><span class="mono">FAMEESP</span></div><span class="lvl">MBA</span><h3>Engenharia de Produção</h3><p>Faculdade Metropolitana</p><span class="yrs">2021 – 2022</span></article>
+      <article class="deg main"><div class="inst"><img src="img/inst/usp.svg" alt="Universidade de São Paulo" onload="this.parentNode.classList.add('ok')"><span class="mono">USP/ESALQ</span></div><span class="lvl">MBA</span><h3>Gestão de Projetos</h3><p>USP / Esalq</p><span class="yrs">2023 – 2024</span></article>
+      <article class="deg"><div class="inst"><img src="img/inst/voitto.png" alt="Grupo Voitto" onload="this.parentNode.classList.add('ok')"><span class="mono">VOITTO</span></div><span class="lvl">MBA</span><h3>Excelência Operacional e Six Sigma</h3><p>Grupo Voitto</p><span class="yrs">2025 – 2026</span></article>
     </div>
     <div class="edu-more">
       <div class="panel">
@@ -875,7 +875,10 @@ html.js .proj.in .num{background-size:100% 3px}
   var ticking=false;
   addEventListener('scroll',function(){
     if(ticking)return; ticking=true;
-    requestAnimationFrame(function(){sweep(false);paint();ticking=false});
+    var feito=false;
+    function roda(){ if(feito)return; feito=true; ticking=false; sweep(false); paint(); }
+    requestAnimationFrame(roda);
+    setTimeout(roda,120); /* plano B: abas em segundo plano pausam a animação */
   },{passive:true});
   addEventListener('resize',function(){place();sweep(false);paint()},{passive:true});
   addEventListener('load',function(){place();sweep(false);paint()});

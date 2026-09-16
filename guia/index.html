@@ -806,7 +806,10 @@ html.js .proj.in .num{background-size:100% 3px}
   var ticking=false;
   addEventListener('scroll',function(){
     if(ticking)return; ticking=true;
-    requestAnimationFrame(function(){sweep(false);paint();ticking=false});
+    var feito=false;
+    function roda(){ if(feito)return; feito=true; ticking=false; sweep(false); paint(); }
+    requestAnimationFrame(roda);
+    setTimeout(roda,120); /* plano B: abas em segundo plano pausam a animação */
   },{passive:true});
   addEventListener('resize',function(){place();sweep(false);paint()},{passive:true});
   addEventListener('load',function(){place();sweep(false);paint()});
