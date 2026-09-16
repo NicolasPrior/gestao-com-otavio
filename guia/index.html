@@ -42,6 +42,7 @@
   --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
   color-scheme:light;
 }
+html{overflow-x:clip}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
@@ -323,11 +324,12 @@ html.js .rv.now{transition:none}
 @media (prefers-reduced-motion:reduce){html.js .rv{opacity:1;transform:none;transition:none}}
 
 /* varredura de medição nos títulos */
-html.js .sec-title{position:relative;clip-path:inset(-14% -3% -24% -3%)}
-html.js .sec-title.rv::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transform:translateX(-115%);
-  background:linear-gradient(90deg,transparent 0%,rgba(255,176,32,.3) 45%,transparent 100%)}
+html.js .sec-title{position:relative}
+html.js .sec-title.rv::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;
+  background:linear-gradient(90deg,transparent 0%,rgba(255,176,32,.32) 50%,transparent 100%);
+  background-size:240% 100%;background-repeat:no-repeat;background-position:170% 0}
 html.js .sec-title.rv.in::after{animation:scan .85s cubic-bezier(.3,.7,.2,1) .04s forwards}
-@keyframes scan{0%{transform:translateX(-115%);opacity:.95}100%{transform:translateX(115%);opacity:0}}
+@keyframes scan{0%{background-position:170% 0;opacity:0}15%{opacity:.95}100%{background-position:-70% 0;opacity:0}}
 @media (prefers-reduced-motion:reduce){html.js .sec-title.rv.in::after{animation:none}}
 
 /* o trilho da trajetória desenha conforme você desce */

@@ -41,6 +41,7 @@
   --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
   color-scheme:light;
 }
+html{overflow-x:clip}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
@@ -271,6 +272,8 @@ section[id]{scroll-margin-top:12px}
 .work.oag .kind span{color:var(--caramel)}
 .work.oag h3{color:var(--on-deep)}
 .work.oag p{color:var(--on-deep-2)}
+.work.oag .more summary{color:#FFC24D}
+.work.oag .more > p{color:var(--on-deep-2)}
 .work.oag > a{color:#FFC24D;border-top-color:rgba(233,239,249,.2)}
 .work.book{background:var(--paper)}
 .book-row{display:grid;grid-template-columns:96px 1fr;gap:18px;align-items:center}
@@ -314,11 +317,12 @@ html.js .rv.now{transition:none}
 @media (prefers-reduced-motion:reduce){html.js .rv{opacity:1;transform:none;transition:none}}
 
 /* varredura de medição nos títulos */
-html.js .sec-title{position:relative;clip-path:inset(-14% -3% -24% -3%)}
-html.js .sec-title.rv::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transform:translateX(-115%);
-  background:linear-gradient(90deg,transparent 0%,rgba(255,176,32,.3) 45%,transparent 100%)}
+html.js .sec-title{position:relative}
+html.js .sec-title.rv::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;
+  background:linear-gradient(90deg,transparent 0%,rgba(255,176,32,.32) 50%,transparent 100%);
+  background-size:240% 100%;background-repeat:no-repeat;background-position:170% 0}
 html.js .sec-title.rv.in::after{animation:scan .85s cubic-bezier(.3,.7,.2,1) .04s forwards}
-@keyframes scan{0%{transform:translateX(-115%);opacity:.95}100%{transform:translateX(115%);opacity:0}}
+@keyframes scan{0%{background-position:170% 0;opacity:0}15%{opacity:.95}100%{background-position:-70% 0;opacity:0}}
 @media (prefers-reduced-motion:reduce){html.js .sec-title.rv.in::after{animation:none}}
 
 /* o trilho da trajetória desenha conforme você desce */
@@ -606,7 +610,7 @@ html.js .proj.in .num{background-size:100% 3px}
       <article class="work oag">
         <div class="kind"><span>Mentoria de carreira</span><i style="color:#8FA2BC">OAG</i></div>
         <h3>OAG Consultoria em Alimentos &amp; Indústrias</h3>
-        <p>Mentoria para profissionais e líderes da indústria que querem evoluir na carreira e ganhar visibilidade técnica. Sessões de PDI, acompanhamento de líderes e desenvolvimento de equipes.</p>
+        <details class="more"><summary>Ver detalhes</summary><p>Mentoria para profissionais e líderes da indústria que querem evoluir na carreira e ganhar visibilidade técnica. Sessões de PDI, acompanhamento de líderes e desenvolvimento de equipes.</p></details>
         <a href="#contato">Falar sobre mentoria</a>
       </article>
       <article class="work book">
@@ -621,13 +625,13 @@ html.js .proj.in .num{background-size:100% 3px}
       <article class="work">
         <div class="kind"><span>Ferramenta</span><i>grátis · 2 min</i></div>
         <h3>Diagnóstico de Comunicação Estratégica</h3>
-        <p>Sete perguntas para descobrir se o seu trabalho está sendo visto pela liderança e o que está travando o seu reconhecimento.</p>
+        <details class="more"><summary>Ver detalhes</summary><p>Sete perguntas para descobrir se o seu trabalho está sendo visto pela liderança e o que está travando o seu reconhecimento.</p></details>
         <a href="https://diagnostico-gestaocomotavio.lovable.app" target="_blank" rel="noopener">Fazer o diagnóstico</a>
       </article>
       <article class="work">
         <div class="kind"><span>Conteúdo</span><i>28 mil seguidores</i></div>
         <h3>Manual do Líder Industrial</h3>
-        <p>Série no Instagram @gestaocomotavio sobre liderança no chão de fábrica: feedback, delegação, troca de turno e decisões difíceis.</p>
+        <details class="more"><summary>Ver detalhes</summary><p>Série no Instagram @gestaocomotavio sobre liderança no chão de fábrica: feedback, delegação, troca de turno e decisões difíceis.</p></details>
         <a href="https://www.instagram.com/gestaocomotavio/" target="_blank" rel="noopener">Acompanhar no Instagram</a>
       </article>
     </div>
@@ -665,9 +669,6 @@ html.js .proj.in .num{background-size:100% 3px}
     </nav>
   </div>
 </footer>
-
-  <a class="btn btn-caramel" href="#contato">Falar comigo</a>
-</div>
 
 <script>
 (function(){
